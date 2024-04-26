@@ -1,0 +1,330 @@
+@extends('website.master')
+
+@section('title')
+    Template
+@endsection
+
+@section('template')
+    active
+@endsection
+
+@section('body')
+    <div class="shop_sidebar_area">
+        <!-- ##### Single Widget ##### -->
+        <div class="widget catagory mb-50">
+            <!-- Widget Title -->
+            <h6 class="widget-title mb-30">Catagories</h6>
+
+            <!--  Catagories  -->
+            <div class="catagories-menu">
+                <ul>
+                    <li class="active"><a href="#">Admin & Dashboard</a></li>
+                    <li><a href="#">ECommerce</a></li>
+                    <li><a href="#">Business & Corporate</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Educational</a></li>
+                    <li><a href="#">Blogging</a></li>
+                    <li><a href="#">Brochure</a></li>
+                    <li><a href="#">Non-Profit</a></li>
+                    <li><a href="#">Magazine</a></li>
+                    <li><a href="#">Forum</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="amado_product_area section-padding-100">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                        <!-- Total Products -->
+                        <div class="total-products">
+                            <p>Showing 1-8 0f 25</p>
+                            <div class="view d-flex">
+                                <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <!-- Sorting -->
+                        <div class="product-sorting d-flex">
+                            <div class="sort-by-date d-flex align-items-center mr-15">
+                                <p>Sort by</p>
+                                <form action="#" method="get">
+                                    <select name="select" id="sortBydate">
+                                        <option value="value">Date</option>
+                                        <option value="value">Newest</option>
+                                        <option value="value">Popular</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="view-product d-flex align-items-center">
+                                <p>View</p>
+                                <form action="#" method="get">
+                                    <select name="select" id="viewProduct">
+                                        <option value="value">12</option>
+                                        <option value="value">24</option>
+                                        <option value="value">48</option>
+                                        <option value="value">96</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        <a href="{{ route('single.template') }}">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ asset('/') }}website/assets/img/product-img/product1.jpg" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src="{{ asset('/') }}website/assets/img/product-img/product2.jpg"
+                                    alt="">
+                            </div>
+                        </a>
+
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">$180</p>
+                                <a href="{{ route('single.template') }}">
+                                    <h6>Modern Chair</h6>
+                                </a>
+                            </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        <a href="{{ route('single.template') }}">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ asset('/') }}website/assets/img/product-img/product2.jpg" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src="{{ asset('/') }}website/assets/img/product-img/product3.jpg"
+                                    alt="">
+                            </div>
+                        </a>
+
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">$180</p>
+                                <a href="{{ route('single.template') }}">
+                                    <h6>Modern Chair</h6>
+                                </a>
+                            </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        <a href="{{ route('single.template') }}">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ asset('/') }}website/assets/img/product-img/product3.jpg" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img"
+                                    src="{{ asset('/') }}website/assets/img/product-img/product4.jpg" alt="">
+                            </div>
+                        </a>
+
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">$180</p>
+                                <a href="{{ route('single.template') }}">
+                                    <h6>Modern Chair</h6>
+                                </a>
+                            </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        <a href="{{ route('single.template') }}">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ asset('/') }}website/assets/img/product-img/product4.jpg" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img"
+                                    src="{{ asset('/') }}website/assets/img/product-img/product5.jpg" alt="">
+                            </div>
+                        </a>
+
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">$180</p>
+                                <a href="{{ route('single.template') }}">
+                                    <h6>Modern Chair</h6>
+                                </a>
+                            </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        <a href="{{ route('single.template') }}">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ asset('/') }}website/assets/img/product-img/product5.jpg" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img"
+                                    src="{{ asset('/') }}website/assets/img/product-img/product6.jpg" alt="">
+                            </div>
+                        </a>
+
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">$180</p>
+                                <a href="{{ route('single.template') }}">
+                                    <h6>Modern Chair</h6>
+                                </a>
+                            </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        <a href="{{ route('single.template') }}">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{ asset('/') }}website/assets/img/product-img/product6.jpg" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img"
+                                    src="{{ asset('/') }}website/assets/img/product-img/product1.jpg" alt="">
+                            </div>
+                        </a>
+
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">$180</p>
+                                <a href="{{ route('single.template') }}">
+                                    <h6>Modern Chair</h6>
+                                </a>
+                            </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Pagination -->
+                    <nav aria-label="navigation">
+                        <ul class="pagination justify-content-end mt-50">
+                            <li class="page-item active"><a class="page-link" href="#">01.</a></li>
+                            <li class="page-item"><a class="page-link" href="#">02.</a></li>
+                            <li class="page-item"><a class="page-link" href="#">03.</a></li>
+                            <li class="page-item"><a class="page-link" href="#">04.</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        @include('website.testimonial.slider-testimonial')
+        @include('website.team.slider-team')
+    </div>
+
+@endsection
