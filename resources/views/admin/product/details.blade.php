@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-    product
+    Product Detail
 @endsection
 
 @section('products')
@@ -156,14 +156,22 @@
                                                     <div class="columns col-md-4">
                                                         <ul class="price">
                                                             <li class="header">Basic</li>
-                                                            <li style="font-size: 20px">{{ $price->basic_page }} Pages</li>
+
+                                                            <li style="font-size: 20px">
+                                                                {{ ' 0 to ' . $price->basic_page }} Pages
+                                                            </li>
+
                                                             <li class="grey">
-                                                                @foreach ($price->basicTypes as $basicType)
-                                                                    {{ $basicType->basic_type_id }}<br>
-                                                                @endforeach
+                                                                    @foreach ($price->basicTypes as $basicType)
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                                                    @endforeach
                                                             </li>
-                                                            <li style="font-size: 20px">{{ $price->basic_delivery }} Days
+
+                                                            <li style="font-size: 20px">
+                                                                {{ $price->basic_delivery }} Days
                                                             </li>
+
                                                             <li class="grey">
                                                                 @php
                                                                     $totalBasicPrice =
@@ -172,19 +180,29 @@
                                                                 @endphp
                                                                 ${{ $totalBasicPrice }}
                                                             </li>
-                                                            </li>
                                                         </ul>
                                                     </div>
 
                                                     <div class="columns col-md-4">
                                                         <ul class="price">
                                                             <li class="header" style="background-color:#CBA070">Pro</li>
-                                                            <li>25GB Storage</li>
-                                                            <li class="grey">25 Emails</li>
-                                                            <li>25 Domains</li>
-                                                            <li class="grey">2GB Bandwidth</li>
-                                                            <li>$ 24.99</li>
-                                                            <li class="grey"><a href="#" class="button">Sign Up</a>
+                                                            <li style="font-size: 20px">{{ ' 0 to ' . $price->pro_page }}
+                                                                Pages</li>
+                                                            <li class="grey">
+                                                                @foreach ($price->basicTypes as $basicType)
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                                                @endforeach
+                                                            </li>
+                                                            <li style="font-size: 20px">{{ $price->pro_delivery }} Days
+                                                            </li>
+                                                            <li class="grey">
+                                                                @php
+                                                                    $totalProPrice =
+                                                                        $price->pro_selling_price +
+                                                                        $product->template_selling_price;
+                                                                @endphp
+                                                                ${{ $totalProPrice }}
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -192,13 +210,25 @@
                                                     <div class="columns col-md-4">
                                                         <ul class="price">
                                                             <li class="header">Premium</li>
-                                                            <li>50GB Storage</li>
-                                                            <li class="grey">50 Emails</li>
-                                                            <li>50 Domains</li>
-                                                            <li class="grey">5GB Bandwidth</li>
-                                                            <li>$ 49.99</li>
-                                                            <li class="grey"><a href="#" class="button">Sign
-                                                                    Up</a></li>
+                                                            <li style="font-size: 20px">{{ ' 0 to ' . $price->pre_page }}
+                                                                Pages</li>
+                                                            <li class="grey">
+                                                                @foreach ($price->basicTypes as $basicType)
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-dark disabled">
+                                                                        {{ $basicType->basic_type_id }}</button>
+                                                                @endforeach
+                                                            </li>
+                                                            <li style="font-size: 20px">{{ $price->pre_delivery }} Days
+                                                            </li>
+                                                            <li class="grey">
+                                                                @php
+                                                                    $totalPrePrice =
+                                                                        $price->pre_selling_price +
+                                                                        $product->template_selling_price;
+                                                                @endphp
+                                                                ${{ $totalPrePrice }}
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>

@@ -1,4 +1,4 @@
-@include('website.includes.style')
+{{-- @include('website.includes.style') --}}
 <!-- General CSS Files -->
 <link rel="stylesheet" href="{{ asset('/') }}admin/assets/css/app.min.css">
 <link rel="stylesheet" href="{{ asset('/') }}admin/assets/bundles/datatables/datatables.min.css">
