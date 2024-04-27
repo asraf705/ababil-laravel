@@ -59,14 +59,15 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return $request;
-    }
+        Testimonial::updateTestimonial($request, $id);
+        return redirect('/testimonial')->with('Gmessage', 'Testimonial Updated Successfully');    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        Testimonial::deleteTestimonial($id);
+        return redirect('/testimonial')->with('Rmessage', 'Testimonial Deleted Successfully');
     }
 }

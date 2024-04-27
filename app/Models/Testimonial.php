@@ -33,6 +33,38 @@ class Testimonial extends Model
 
     }
 
+    public static function  updateTestimonial($request, $id)
+    {
+
+        self::$testimonial = Testimonial::find($id);
+
+        if ($request->file('image'))
+        {
+            if (file_exists(self::$testimonial->image))
+            {
+                unlink(self::$testimonial->image);
+            }
+
+            self::getImageUrl($request);
+        }
+        else{
+            self::$imageUrl = self::$testimonial->image;
+        }
+
+        self::saveBasicInfo(self::$testimonial, $request, self::$imageUrl);
+    }
+
+    public static function  deleteTestimonial($id)
+    {
+
+        self::$testimonial = Testimonial::find($id);
+
+        if (file_exists(self::$testimonial->image))
+        {
+            unlink(self::$testimonial->image);
+        }
+        self::$testimonial->delete();
+    }
 
     private static function saveBasicInfo($testimonial, $request, $imageUrl)
     {
