@@ -12,102 +12,22 @@
     <div class="products-catagories-area clearfix">
         <div class="amado-pro-catagory clearfix">
 
-            <!-- Single Catagory -->
+            @foreach ($categories as $category)
+                <!-- Single Catagory -->
             <div class="single-products-catagory clearfix">
                 <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/1.jpg" alt="">
+                    <img src="{{ asset($category->image) }}" style="height: 550px;width:1000px"  alt="">
                     <!-- Hover Content -->
                     <div class="hover-content">
                         <div class="line"></div>
-                        <h4>Category</h4>
+                        <h4>{{$category->name}}</h4>
                     </div>
                 </a>
             </div>
+            @endforeach
 
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/2.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
 
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/3.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/4.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/5.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/6.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/7.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/8.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
-
+{{--
             <!-- Single Catagory -->
             <div class="single-products-catagory clearfix">
                 <a href="{{route('template')}}">
@@ -118,7 +38,8 @@
                         <h4>Category</h4>
                     </div>
                 </a>
-            </div>
+            </div> --}}
+
         </div>
     </div>
 
