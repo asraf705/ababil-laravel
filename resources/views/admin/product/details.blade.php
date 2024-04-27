@@ -58,14 +58,13 @@
                                         <div class="col-7 col-lg-4">
 
                                             <div class="single_product_thumb">
-                                                <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                                                <div id="product_details_slider" class="carousel slide"
+                                                    data-ride="carousel">
                                                     <div class="carousel-inner">
                                                         <div class="carousel-item active">
-                                                            <a class="gallery_img"
-                                                                href="{{ asset($product->image) }}">
+                                                            <a class="gallery_img" href="{{ asset($product->image) }}">
                                                                 <img class="d-block w-100"
-                                                                    src="{{ asset($product->image) }}"
-                                                                    alt="First slide">
+                                                                    src="{{ asset($product->image) }}" alt="First slide">
                                                             </a>
                                                         </div>
                                                     </div>
@@ -187,9 +186,9 @@
                                                             <li style="font-size: 20px">{{ ' 0 to ' . $price->pro_page }}
                                                                 Pages</li>
                                                             <li class="grey">
-                                                                @foreach ($price->basicTypes as $basicType)
+                                                                @foreach ($price->proTypes as $proType)
                                                                     <button type="button"
-                                                                        class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                                                        class="btn btn-outline-dark disabled">{{ $proType->pro_type }}</button>
                                                                 @endforeach
                                                             </li>
                                                             <li style="font-size: 20px">{{ $price->pro_delivery }} Days
@@ -211,10 +210,9 @@
                                                             <li style="font-size: 20px">{{ ' 0 to ' . $price->pre_page }}
                                                                 Pages</li>
                                                             <li class="grey">
-                                                                @foreach ($price->basicTypes as $basicType)
+                                                                @foreach ($price->preTypes as $preType)
                                                                     <button type="button"
-                                                                        class="btn btn-outline-dark disabled">
-                                                                        {{ $basicType->basic_type_id }}</button>
+                                                                        class="btn btn-outline-dark disabled">{{ $preType->pre_type }}</button>
                                                                 @endforeach
                                                             </li>
                                                             <li style="font-size: 20px">{{ $price->pre_delivery }} Days

@@ -39,10 +39,20 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Testimonial Name</div>
+                                            <div class="section-title mt-0">Name</div>
                                             <div class="form-group">
                                                 <input type="text" name="name" class="form-control"
-                                                    placeholder="Testimonial Name" required>
+                                                    placeholder="Name" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 d-flex">
+                                        <div class="col-md-12">
+                                            <div class="section-title mt-0">Post</div>
+                                            <div class="form-group">
+                                                <input type="text" name="post" class="form-control"
+                                                    placeholder="Post" required>
                                             </div>
                                         </div>
                                     </div>

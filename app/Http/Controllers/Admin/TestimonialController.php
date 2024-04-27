@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
@@ -28,7 +29,8 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        Testimonial::newTestimonial($request);
+        return back()->with('Gmessage', 'Testimonial create successfully.');
     }
 
     /**
