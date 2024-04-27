@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('post')->nullable();
             $table->text('description')->nullable();
             $table->text('image')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

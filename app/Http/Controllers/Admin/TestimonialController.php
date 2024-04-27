@@ -13,7 +13,9 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        return view('admin.testimonial.index');
+        return view('admin.testimonial.index',[
+            'testimonials' => Testimonial::all(),
+        ]);
     }
 
     /**
@@ -38,7 +40,8 @@ class TestimonialController extends Controller
      */
     public function show(string $id)
     {
-        //
+        Testimonial::checkStatus($id);
+        return redirect('/testimonial')->with('Gmessage', 'Testimonial Status Updated Successfully');
     }
 
     /**
@@ -46,7 +49,9 @@ class TestimonialController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.testimonial.edit',[
+            'testimonial' => Testimonial::find($id)
+        ]);
     }
 
     /**
@@ -54,7 +59,7 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return $request;
     }
 
     /**

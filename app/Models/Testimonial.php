@@ -33,6 +33,7 @@ class Testimonial extends Model
 
     }
 
+
     private static function saveBasicInfo($testimonial, $request, $imageUrl)
     {
         $testimonial->name                  = $request->name;
@@ -40,5 +41,17 @@ class Testimonial extends Model
         $testimonial->description           = $request->description;
         $testimonial->image                 = $imageUrl;
         $testimonial->save();
+    }
+
+
+    public static function checkStatus($id){
+        self::$testimonial = Testimonial::find($id);
+        if (self::$testimonial->status == 1){
+            self::$testimonial->status = 0;
+        }else{
+            self::$testimonial->status = 1;
+
+        }
+        self::$testimonial->save();
     }
 }

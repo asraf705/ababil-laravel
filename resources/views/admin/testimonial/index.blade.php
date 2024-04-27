@@ -40,28 +40,30 @@
                                     <thead>
                                         <tr class="text-center">
                                             <th>Name</th>
+                                            <th>Post</th>
                                             <th>Description</th>
                                             <th>Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody class="text-center">
-                                        @foreach ($categories as $item)
+                                    <tbody class="text-center">
+                                        @foreach ($testimonials as $testimonial)
                                             <tr>
 
-                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $testimonial->name }}</td>
+                                                <td>{{ $testimonial->post }}</td>
+                                                <td>{{ $testimonial->description }}</td>
                                                 <td>
-                                                    <img src="{{ asset($item->image) }}" alt="Categry"
+                                                    <img src="{{ asset($testimonial->image) }}" alt="Categry"
                                                         style="height: 50px; width: 50px;"></td>
-                                                <td>{{ date('j M Y', strtotime($item->updated_at)) }}</td>
                                                 <td>
-                                                    @if ($item->status == 1)
-                                                        <a href="{{ route('categories.show', $item->id) }}"
+                                                    @if ($testimonial->status == 1)
+                                                        <a href="{{ route('testimonial.show', $testimonial->id) }}"
                                                             class="btn btn-success"><i class="fa fa-eye"></i>
                                                             Publish</a>
                                                     @else
-                                                        <a href="{{ route('categories.show', $item->id) }}"
+                                                        <a href="{{ route('testimonial.show', $testimonial->id) }}"
                                                             class="btn btn-warning"><i class="fa fa-eye-slash"></i>
                                                             Unpublish</a>
                                                     @endif
@@ -70,11 +72,11 @@
                                                 </td>
                                                 <td class="justify-content-center d-flex">
 
-                                                    <a href="{{ route('categories.edit', $item->id) }}"
+                                                    <a href="{{ route('testimonial.edit', $testimonial->id) }}"
                                                         class="btn btn-primary" style="margin-right: 10px;">
                                                         <i class="fa fa-edit"></i></a>
 
-                                                    <form action="{{ route('categories.destroy', $item->id) }}"
+                                                    <form action="{{ route('testimonial.destroy', $testimonial->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
@@ -90,7 +92,7 @@
                                         @endforeach
 
 
-                                    </tbody> --}}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
