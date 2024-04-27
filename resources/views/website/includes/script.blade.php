@@ -8,3 +8,10 @@
 <script src="{{ asset('/') }}website/assets/js/plugins.js"></script>
 <!-- Active js -->
 <script src="{{ asset('/') }}website/assets/js/active.js"></script>
+
+
+<script>
+    $(window).on("load", function () {
+  $(".loader").fadeOut("slow");
+});
+</script>

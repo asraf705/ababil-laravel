@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <div class="loader"></div>
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">

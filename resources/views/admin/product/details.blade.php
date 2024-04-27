@@ -22,14 +22,10 @@
                             <h4>Theme Details</h4>
                             <div class="card-header-action d-flex">
 
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary"
-                                    style="margin-right: 10px;">
-                                    <i class="fas fa-edit"></i></a>
-
                                 <form action="{{ route('products.destroy', $product->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger "
+                                    <button type="submit" class="btn btn-danger " title="Delete"
                                         onclick="return confirm('Are you sure delete this!!')"><i
                                             class="fa fa-trash"></i></button>
                                 </form>
@@ -61,20 +57,22 @@
                                     <div class="row">
                                         <div class="col-7 col-lg-4">
 
-                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                                <ol class="carousel-indicators">
-                                                    <li data-target="#carouselExampleIndicators" data-slide-to="0"
-                                                        class="active"></li>
-                                                </ol>
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <a class="gallery_img" href="{{ asset($product->image) }}">
-                                                            <img src="{{ asset($product->image) }}" class="d-block w-100">
-                                                        </a>
+                                            <div class="single_product_thumb">
+                                                <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active">
+                                                            <a class="gallery_img"
+                                                                href="{{ asset($product->image) }}">
+                                                                <img class="d-block w-100"
+                                                                    src="{{ asset($product->image) }}"
+                                                                    alt="First slide">
+                                                            </a>
+                                                        </div>
                                                     </div>
-
                                                 </div>
                                             </div>
+
+
                                         </div>
 
                                         <div class="col-12 col-lg-5">
@@ -117,8 +115,8 @@
                                                 </div>
 
                                                 <!-- Add to view Form -->
-                                                <div class="cart">
-                                                    <div class="mb-2 d-flex">
+                                                <div class="cart mt-5">
+                                                    <div class="mb-2 padding-100 d-flex">
                                                         <a href="{{ $product->view_url }}" class="btn btn-info"
                                                             style="margin-right: 10px;" target="_blank">Live View</a>
                                                         <a href="{{ $product->download_url }}" class="btn btn-success"
@@ -131,7 +129,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card">
+                                <div class="card mt-3">
                                     <div class="card-header">
                                         <h4><b>Details</b></h4>
                                     </div>
@@ -148,7 +146,7 @@
 
                             @foreach ($prices as $price)
                                 @if ($price->product_id == $product->id)
-                                    <div class="cart-table-area col-md-12">
+                                    <div class="cart-table-area padding-10 col-md-12">
                                         <div class="container-fluid">
                                             <div class="row g-3">
                                                 <div class="col-12 col-lg-12">
@@ -162,10 +160,10 @@
                                                             </li>
 
                                                             <li class="grey">
-                                                                    @foreach ($price->basicTypes as $basicType)
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
-                                                                    @endforeach
+                                                                @foreach ($price->basicTypes as $basicType)
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                                                @endforeach
                                                             </li>
 
                                                             <li style="font-size: 20px">

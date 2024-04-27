@@ -35,7 +35,8 @@
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb mt-50">
                                                     <li class="breadcrumb-item">
-                                                        <a href="{{ route('products.index') }}"><i class="fas fa-tachometer-alt"></i>Home</a>
+                                                        <a href="{{ route('products.index') }}"><i
+                                                                class="fas fa-tachometer-alt"></i>Home</a>
                                                     </li>
                                                     <li class="breadcrumb-item">
                                                         @foreach ($products as $item)
@@ -54,7 +55,7 @@
                                                 <div class="card">
                                                     <a href="{{ route('products.show', $product->id) }}">
                                                         <img class="card-img-top" src="{{ asset($product->image) }}"
-                                                            alt="Card image cap" style="height=50;">
+                                                            alt="Card image cap" style="height: 380px;">
                                                     </a>
                                                     <div class="card-body">
                                                         <h5 class="card-title">{{ $product->title }}</h5>
@@ -74,18 +75,21 @@
                                                             <i class="far fa-file">
                                                                 <samp>
                                                                     @if ($product->web_page <= 1)
-                                                                        <b> {{$product->web_page}} Page</b>
+                                                                        <b> {{ $product->web_page }} Page</b>
                                                                     @else
-                                                                    <b> {{$product->web_page}} Pages</b>
+                                                                        <b> {{ $product->web_page }} Pages</b>
                                                                     @endif
                                                                 </samp>
                                                             </i>
                                                         </h6>
+                                                        <div>
+                                                            <h6 class="d-flex">Price:{{ $product->template_selling_price }}</h6>
 
-                                                        <a href="{{ route('products.show', $product->id) }}"
-                                                            class="btn btn-outline-success float-right"><i
-                                                                class="fa fa-info-circle"></i>
-                                                            Details</a>
+                                                            <a href="{{ route('products.show', $product->id) }}"
+                                                                class="btn btn-outline-success float-right"><i
+                                                                    class="fa fa-info-circle"></i>
+                                                                Details</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
