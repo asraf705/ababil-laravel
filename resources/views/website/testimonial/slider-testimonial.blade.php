@@ -17,7 +17,7 @@
                                 <div class="author-img mr-3"> <img src="{{ asset($testimonial->image) }}">
                                 </div>
                                 <div>
-                                    <h6 class="m-0 float-left font-weight-bold ">{{ $testimonial->name }}</h6>
+                                    <h6 class="m-0 float-left font-weight-bold ">{{ $testimonial->name }}</h6><br />
                                     <p class="m-0 small font-medium text-muted">{{ $testimonial->post }}</p>
                                 </div>
                             </div>
