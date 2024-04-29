@@ -11,11 +11,11 @@ class ProductPreAuth extends Model
 
     private static $ProductPreAuth, $ProductPreAuths;
 
-    public static function newPreType($pre_types, $productID){
+    public static function newPreType($pre_types, $priceID, $productID){
         foreach ($pre_types as $pre_auth_type){
             self::$ProductPreAuth = new ProductPreAuth();
-            self::$ProductPreAuth->product_price_id = $productID;
-            self::$ProductPreAuth->pre_type = $pre_auth_type;
+            self::$ProductPreAuth->product_price_id = $priceID;
+            self::$ProductPreAuth->product_id = $productID;
             self::$ProductPreAuth->save();
         }
     }

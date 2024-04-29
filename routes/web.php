@@ -24,9 +24,9 @@ use App\Http\Controllers\Admin\TestimonialController;
 |
 */
 
- Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
- });
+});
 
 Route::get('/', [WebsiteController::class, 'home'])->name('home');
 Route::get('/template', [WebsiteController::class, 'template'])->name('template');
@@ -55,14 +55,19 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resources(['discountes' => DiscountController::class]);
 
 
-    //  Product
+    // Start Product
     Route::resources(['products' => ProductController::class]);
     Route::get('/product/status/{id}', [ProductController::class, 'info'])->name('products.status');
-    Route::get('/product/category/{categoryId}', [ProductController::class, 'categoryWiseProduct'])->name('category.wise.product');
 
     // Template Auth price (basic, pro,pre)
     Route::resources(['theme-price' => ProductPriceController::class]);
-    Route::get('/get-product-info-by-title',[ProductPriceController::class,'getProductInfoByTitle'])->name('get-product-info-by-title');
+    Route::get('/get-product-info-by-title', [ProductPriceController::class, 'getProductInfoByTitle'])->name('get-product-info-by-title');
+
+    // Product Category wise details and  Product details wise Delete(product & price)
+    Route::get('/product/detail/full-Delete/{id}',[ProductController::class,'fullDetails'])->name('delete.category');
+    Route::get('/product/category/{categoryId}', [ProductController::class, 'categoryWiseProduct'])->name('category.wise.product');
+
+    // End Product
 
     // Testimonial
     Route::resources(['testimonial' => TestimonialController::class]);

@@ -12,10 +12,11 @@ class ProductBasicAuth extends Model
 
     private static $ProductBasicAuth, $ProductBasicAuths;
 
-    public static function newBasicType($basicTypes, $productID){
+    public static function newBasicType($basicTypes, $priceID, $productID){
         foreach ($basicTypes as $basicType){
             self::$ProductBasicAuth = new ProductBasicAuth();
-            self::$ProductBasicAuth->product_price_id = $productID;
+            self::$ProductBasicAuth->product_price_id = $priceID;
+            self::$ProductBasicAuth->product_id = $productID;
             self::$ProductBasicAuth->basic_type_id = $basicType;
             self::$ProductBasicAuth->save();
         }

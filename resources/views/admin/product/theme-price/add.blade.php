@@ -40,7 +40,8 @@
                                         <div class="col-md-12">
                                             <div class="section-title mt-0">Title</div>
                                             <div class="form-group">
-                                                <select class="form-control select2" name="product_id" required>
+                                                <select class="form-control select2" onchange="setProductInfo(this.value)"
+                                                    id="" name="product_id" required>
                                                     <option value=" ">Seclect Title</option>
                                                     @foreach ($products as $product)
                                                         <option value="{{ $product->id }}">{{ $product->title }}</option>
@@ -55,18 +56,10 @@
                                         <div class="col-md-4">
                                             <div class="section-title mt-0">Category</div>
                                             <div class="form-group">
-                                                <input type="text" value="{{ $product->category->name }}" id="CategoryId"
-                                                    class="form-control" readonly>
+                                                <input type="text" value="" id="CategoryId" class="form-control"
+                                                    readonly>
                                             </div>
 
-                                            {{-- <div class="form-group">
-                                                <select class="form-control" id="CategoryId">
-                                                    <option>Set Category</option>
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div> --}}
                                         </div>
                                         <div class="col-md-4">
                                             <div class="section-title mt-0">Auther Name</div>

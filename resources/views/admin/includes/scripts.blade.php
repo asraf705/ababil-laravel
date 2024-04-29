@@ -70,17 +70,15 @@
             url: "{{ route('get-product-info-by-title') }}",
             data: {id: id},
             dataType:"JSON",
-            success:function (response) {
+            success: function(response) {
                 // alert(response);
-                    var option = '';
-                    option +='<option value=" ">Set Category</option>';
 
-                    $.each(response,function (key,value) {
-                        option +='<option value="'+value.id+'">'+value.name+'</option>'
-                    });
+                $('#CategoryId').val(response.category_id);
 
-                    $('#subCategoryID').empty();
-                    $('#CategoryId').append(option);
+                // $('#product_name').text(data.product_name);
+
+                $('#subCategoryID').empty();
+                $('#CategoryId').append(option);
             }
         })
     }

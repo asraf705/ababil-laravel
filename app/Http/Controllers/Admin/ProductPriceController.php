@@ -46,9 +46,9 @@ class ProductPriceController extends Controller
     {
         // return $request;
         $this->price = ProductPrice::newPrice($request);
-        ProductBasicAuth::newBasicType($request->basic_types, $this->price->id);
-        ProductProAuth::newProType($request->pro_types, $this->price->id);
-        ProductPreAuth::newPreType($request->pre_types, $this->price->id);
+        ProductBasicAuth::newBasicType($request->basic_types, $this->price->id, $this->price->product_id);
+        ProductProAuth::newProType($request->pro_types, $this->price->id, $this->price->product_id);
+        ProductPreAuth::newPreType($request->pre_types, $this->price->id, $this->price->product_id);
         return back()->with('Gmessage', 'Product Price create successfully.');
     }
 

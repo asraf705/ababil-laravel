@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    private static $product, $image, $imageUrl, $directory, $imageName, $extension, $images, $ba_auth_types, $ba_auth_type, $pro_auth_types, $pro_auth_type, $pre_auth_types, $pre_auth_type;
+    private static $product, $image, $imageUrl, $directory, $imageName, $extension, $images, $ba_auth_types, $ba_auth_type, $pro_auth_types, $pro_auth_type, $pre_auth_types, $pre_auth_type, $productprices, $basicPrices, $basicPrice, $proPrices, $proPrice, $prePrices, $prePrice   ;
 
     private static function getImageUrl($request)
     {
@@ -58,6 +58,7 @@ class Product extends Model
         return self::saveBasicInfo(self::$product, $request, self::$imageUrl);
     }
 
+    // only Product delete
     public static function  deleteProduct($id)
     {
 
@@ -67,6 +68,39 @@ class Product extends Model
         {
             unlink(self::$product->image);
         }
+        self::$product->delete();
+    }
+
+
+
+    // Product and Price(basic,pro,pre) Delete
+    public static function  deletefullProduct($id)
+    {
+
+        self::$product = Product::find($id);
+
+        if (file_exists(self::$product->image))
+        {
+            unlink(self::$product->image);
+        }
+
+        self::$productprices = ProductPrice::where('product_id', self::$product->id)->get();
+
+        self::$basicPrices = ProductBasicAuth::where('product_id', self::$product->id)->get();
+        foreach (self::$basicPrices as self::$basicPrice) {
+            self::$basicPrice->delete();
+        }
+
+        self::$proPrices = ProductProAuth::where('product_id', self::$product->id)->get();
+        foreach (self::$proPrices as self::$proPrice) {
+            self::$proPrice->delete();
+        }
+
+        self::$prePrices = ProductBasicAuth::where('product_id', self::$product->id)->get();
+        foreach (self::$prePrices as self::$prePrice) {
+            self::$prePrice->delete();
+        }
+
         self::$product->delete();
     }
 
