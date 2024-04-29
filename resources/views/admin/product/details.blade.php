@@ -22,7 +22,7 @@
                             <h4>Theme Details</h4>
                             <div class="card-header-action d-flex">
 
-                                <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                                <form action="{{ route('delete.product-and-price',['id'=>$product->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger " title="Delete"

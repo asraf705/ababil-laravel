@@ -80,13 +80,18 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        Product::deleteProduct($id);
-        return redirect('/products')->with('Rmessage', 'Product Deleted Successfully');
+
+
     }
 
     public function info($id){
         Product::checkStatus($id);
         return back()->with('Gmessage', 'Product Status Updated Successfully');
+    }
+
+    public function fullDetailDelete(string $id){
+        Product::deletefullProduct($id);
+        return back()->with('Rmessage', 'Full Product Deleted Successfully');
     }
 
     public function categoryWiseProduct($categoryId){

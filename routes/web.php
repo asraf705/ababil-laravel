@@ -64,7 +64,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/get-product-info-by-title', [ProductPriceController::class, 'getProductInfoByTitle'])->name('get-product-info-by-title');
 
     // Product Category wise details and  Product details wise Delete(product & price)
-    Route::get('/product/detail/full-Delete/{id}',[ProductController::class,'fullDetails'])->name('delete.category');
+    Route::get('/product/detail/full-Delete/{id}',[ProductController::class,'fullDetailDelete'])->name('delete.product-and-price');
     Route::get('/product/category/{categoryId}', [ProductController::class, 'categoryWiseProduct'])->name('category.wise.product');
 
     // End Product
