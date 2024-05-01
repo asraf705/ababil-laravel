@@ -20,7 +20,8 @@ class WebsiteController extends Controller
     // template
     public static function template(){
         return view('website.template.index',[
-            'themes' => Product::where('status',1)->latest()->get()
+            'categories' => Category::where('status',1)->get(),
+            'themes' => Product::where('status',1)->latest()->get(),
         ]);
     }
 
@@ -32,12 +33,12 @@ class WebsiteController extends Controller
         ]);
     }
 
+
      // Category Wise Template
      private $category;
      public function categoryWiseTemplate($id){
         $this->category =Category::find($id);
         return view('website.template.category-template',[
-
             'themes' => Product::where('category_id',$this->category->id)->latest()->get(),
         ]);
     }

@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductPriceController;
 use App\Http\Controllers\Admin\TestimonialController;
-
+use App\Http\Controllers\Admin\ThemeInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,4 +71,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
     // Testimonial
     Route::resources(['testimonial' => TestimonialController::class]);
+
+
+
+
+    // Theme All Info
+    Route::resources(['theme-info' => ThemeInfoController::class]);
 });

@@ -15,7 +15,7 @@
             @foreach ($categories as $category)
                 <!-- Single Catagory -->
             <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
+                <a href="{{ route('category.wise.template',$category->id) }}">
                     <img src="{{ asset($category->image) }}" style="height: 550px;width:1000px"  alt="">
                     <!-- Hover Content -->
                     <div class="hover-content">
@@ -25,20 +25,6 @@
                 </a>
             </div>
             @endforeach
-
-
-{{--
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{route('template')}}">
-                    <img src="{{ asset('/') }}website/assets/img/bg-img/9.jpg" alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div> --}}
 
         </div>
     </div>

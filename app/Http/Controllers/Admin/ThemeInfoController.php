@@ -4,18 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
 
-class CategoryController extends Controller
+class ThemeInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.category.index',
-        ['categories' => Category::all()
-    ]);
+        return view('admin.product.theme.theme-info.add');
+        // return view('admin.product.theme.edit');
     }
 
     /**
@@ -23,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.add');
+        //
     }
 
     /**
@@ -31,8 +29,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::newCategory($request);
-        return back()->with('Gmessage', 'Category create successfully.');
+        //
     }
 
     /**
@@ -40,8 +37,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        Category::checkStatus($id);
-        return redirect('/categories')->with('Gmessage', 'Category Status Updated Successfully');
+        //
     }
 
     /**
@@ -49,9 +45,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.category.edit',[
-            'item' => Category::find($id)
-        ]);
+        //
     }
 
     /**
@@ -59,8 +53,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Category::updateCategory($request, $id);
-        return redirect('categories')->with('Gmessage', 'Category Updated Successfully');
+        //
     }
 
     /**
@@ -68,7 +61,6 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        Category::deleteCategory($id);
-        return redirect('/categories')->with('Rmessage', 'Category Deleted Successfully');
+        //
     }
 }

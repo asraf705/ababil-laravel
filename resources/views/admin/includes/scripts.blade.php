@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 <script src="{{ asset('/') }}admin/assets/js/app.min.js"></script>
 <!-- JS Libraies -->
 <script src="{{ asset('/') }}admin/assets/bundles/apexcharts/apexcharts.min.js"></script>
@@ -31,14 +34,19 @@
 <script src="{{ asset('/') }}admin/assets/js/custom.js"></script>
 
 
+
+
+
 <!--templet Discount Price Script Start -->
 <script>
     $(document).ready(function() {
 
         $(".tempfree").click(function() {
-            var discountAmount = $('#tempdiscountAmount').val();
-            var price = $('#tempprice').val();
+            var discountAmount = 0;
+            var price = 0;
             var discountPrice = 0;
+            $('#tempdiscountAmount').val(discountPrice);
+            $('#tempprice').val(discountPrice);
             $('#tempdiscountPrice').val(discountPrice);
         });
 
@@ -68,8 +76,10 @@
         $.ajax({
             type: "GET",
             url: "{{ route('get-product-info-by-title') }}",
-            data: {id: id},
-            dataType:"JSON",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
             success: function(response) {
                 // alert(response);
 
@@ -82,7 +92,6 @@
             }
         })
     }
-
 </script>
 
 

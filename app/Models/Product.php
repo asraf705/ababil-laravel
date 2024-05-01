@@ -120,11 +120,10 @@ class Product extends Model
         $product->template_delivery              = $request->template_delivery;
         $product->template_regular_price         = $request->template_regular_price;
         // Template
-        if ($request->template_selling_price){
             $product->template_selling_price         = $request->template_selling_price;
             $product->template_discount_type         = $request->template_discount_type;
             $product->template_discount_amount       = $request->template_discount_amount;
-        }
+
 
         $product->save();
         return $product;

@@ -423,9 +423,31 @@ img {
   font-weight: 400;
 }
 
+.dowld-btn {
+    display: inline;
+    min-width: 160px;
+    height: 55px;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    padding: 0 7px;
+    font-size: 18px;
+    line-height: 56px;
+    background-color: #fbb710;
+    font-weight: 400;
+  }
+
 .amado-btn.active,
 .amado-btn:hover,
 .amado-btn:focus {
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #131212;
+}
+
+.dowld-btn.active,
+.dowld-btn:hover,
+.dowld-btn:focus {
   font-size: 18px;
   color: #ffffff;
   background-color: #131212;
@@ -1294,20 +1316,20 @@ img {
   color: #959595;
 }
 
-.main-content-wrapper .single-product-area .single_product_desc .cart .amado-btn .live-btn {
+.main-content-wrapper .single-product-area .single_product_desc .cart .amado-btn .live-btn .dowld-btn {
   width: 310px;
   height: 80px;
   line-height: 80px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .main-content-wrapper .single-product-area .single_product_desc .cart .amado-btn .live-btn {
+  .main-content-wrapper .single-product-area .single_product_desc .cart .amado-btn .live-btn .dowld-btn {
     width: 250px;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .main-content-wrapper .single-product-area .single_product_desc .cart .amado-btn .live-btn  {
+  .main-content-wrapper .single-product-area .single_product_desc .cart .amado-btn .live-btn .dowld-btn  {
     width: 280px;
   }
 }

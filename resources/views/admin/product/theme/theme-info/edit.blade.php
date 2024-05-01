@@ -32,7 +32,7 @@
 
                             <p class="text-center text-success">{{ session('Gmessage') }}</p>
 
-                            <form class="form-horizontal" action="{{ route('products.update', $product->id) }}"
+                            <form class="form-horizontal" action=""
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -44,11 +44,7 @@
                                             <div class="form-group">
                                                 <select name="category_id" class="form-control">
                                                     <option value=" ">Select Category</option>
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}"
-                                                            {{ $product->category_id == $category->id ? ' selected' : ' ' }}>
-                                                            {{ $category->name }}</option>
-                                                    @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -89,7 +85,7 @@
                                             <div class="section-title mt-0">Short Description</div>
                                             <div class="form-group row mb-4">
                                                 <div class="col-sm-12 col-md-12">
-                                                    <textarea name="short_description" class="summernote">{{ $product->short_description }}</textarea>
+                                                    <input type="text" name="short_description" value="{{ $product->short_description }}" class="form-control" enctype="multipart/form-data">
                                                 </div>
                                             </div>
                                         </div>

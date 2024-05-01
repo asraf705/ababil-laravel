@@ -21,16 +21,13 @@
                 <ul class="@if (Request::route()->getName() == 'home') show @else hide @endif">
                     <li><a href="{{ route('template') }}">All Theme</a></li>
                     @foreach ($categories as $category)
-                        @if ($theme->product_id == $category->id)
-                            @section('categorywiseTemplate')
-                                active
-                            @endsection
-                        @endif
-                        <li>
-                            <a class="@yield('categorywiseTemplate')" href="{{ route('category.wise.template', $category->id) }}">
-                                {{ $category->name }}
-                            </a>
-                        </li>
+                        @foreach ($themes as $theme)
+                            <li class="{{ $theme->category_id == $category->id ? 'active' : '' }}">
+                                <a href="{{ route('category.wise.template', $category->id) }}">
+                                    {{ $category->name }}
+                                </a>
+                            </li>
+                        @endforeach
                     @endforeach
                 </ul>
             </div>
@@ -109,19 +106,8 @@
 
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <!-- Pagination -->
-                <nav aria-label="navigation">
-                    <ul class="pagination justify-content-end mt-50">
-                        <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">04.</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        @include('website.testimonial.slider-testimonial')
+        @include('website.team.slider-team')
     </div>
     </div>
 @endsection

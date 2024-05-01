@@ -17,7 +17,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mt-50">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">{{ $theme->category->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('category.wise.template',$theme->category_id) }}">{{ $theme->category->name }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $theme->title }}</li>
                         </ol>
                     </nav>
@@ -25,27 +25,25 @@
             </div>
 
             <div class="row">
-                <div class="col-7 col-lg-4">
+                <div class="col-7 col-lg-5">
                     <div class="single_product_thumb">
                         <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <a class="gallery_img"
-                                        href="{{ asset('/') }}website/assets/img/product-img/pro-big-1.jpg">
-                                        <img class="d-block w-100"
-                                            src="{{ asset('/') }}website/assets/img/product-img/pro-big-1.jpg"
-                                            alt="First slide">
+                                    <a class="gallery_img" href="{{ asset($theme->image) }}">
+                                        <img class="d-block w-100" src="{{ asset($theme->image) }}" alt="First slide">
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-2">
+                <div class="col-12 col-lg-6">
                     <div class="single_product_desc">
                         <!-- Product Meta Data -->
                         <div class="product-meta-data">
                             <h4><b>{{ $theme->title }}</b></h4>
+                            <p>Auther: {{ $theme->auther_id ==  '0' ? 'Admin' : ''  }}</p>
                             <div class="line"></div>
                             <p class="product-price">
                                 @if ($theme->template_discount_amount > 0)
@@ -80,7 +78,9 @@
                         </div>
 
                         <div class="short_overview my-5">
-                            {!! $theme->short_description !!}
+                            <p>
+                                {{ $theme->short_description }}
+                            </p>
 
                         </div>
 
@@ -88,9 +88,16 @@
                         <div class="cart">
                             <div class="mb-2 d-flex">
                                 <a href="{{ $theme->view_url }}" class="btn live-btn" style="margin-right: 10px;"
-                                    target="_blank">Live
-                                    View</a>
-                                <a href="cart.html" class="btn amado-btn">Add to cart</a>
+                                    target="_blank">
+                                    Live View
+                                </a>
+                                @if ($theme->template_discount_type == 'free')
+                                    <a href="{{ $theme->download_url }}" class="btn amado-btn" style="margin-right: 10px;">
+                                        Download
+                                    </a>
+                                @endif
+
+                                <a href="{{route('cart')}}" class="btn dowld-btn">Add to cart</a>
                             </div>
 
                         </div>
@@ -167,11 +174,8 @@
                                         <li style="font-size: 20px">{{ $price->pro_delivery }} Days
                                         </li>
                                         <li class="grey">
-                                            @php
-                                                $totalProPrice =
-                                                    $price->pro_selling_price + $theme->template_selling_price;
-                                            @endphp
-                                            ${{ $totalProPrice }}
+
+                                            ${{ $price->pro_selling_price + $theme->template_selling_price }}
                                         </li>
                                     </ul>
                                 </div>

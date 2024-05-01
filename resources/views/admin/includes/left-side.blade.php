@@ -81,11 +81,11 @@
 
             <!-- theime -->
             <li class="menu-header">Theme</li>
-            <li class="dropdown @yield('discount')">
+            <li class="dropdown @yield('theme')">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="copy"></i><span>Theme</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="account/manage-account.html">Manage Theme</a></li>
+                    <li><a class="dropdown @yield('theme-info')" href="{{ route('theme-info.index') }}">Manage Theme</a></li>
                 </ul>
             </li>
 

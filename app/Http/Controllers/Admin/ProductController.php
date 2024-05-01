@@ -80,8 +80,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-
-
+        Product::deleteProduct($id);
+        return back()->with('Rmessage', 'Full Product Deleted Successfully');
     }
 
     public function info($id){
