@@ -23,7 +23,7 @@ class ThemeInfoController extends Controller
     public function create()
     {
         // return view('admin.error.404error');
-        return view('admin.theme.theme-info.add');
+        return view('admin.theme-info.add');
     }
 
     /**

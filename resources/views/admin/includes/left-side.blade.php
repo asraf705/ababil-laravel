@@ -38,7 +38,7 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="box"></i><span>Product</span></a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown @yield('theme')"><a class="nav-link" href="{{ route('products.index') }}">Website Theme Manage</a></li>
+                    <li class="dropdown @yield('themes')"><a class="nav-link" href="{{ route('products.index') }}">Website Theme Manage</a></li>
                     <li class="dropdown @yield('themePrice')"><a class="nav-link" href="{{ route('theme-price.index') }}">Theme Price Manage</a></li>
                 </ul>
             </li>
@@ -85,7 +85,7 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="copy"></i><span>Theme</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown @yield('theme-info')" href="{{ route('theme-info.create') }}">Theme Info</a></li>
+                    <li><a class="dropdown @yield('theme-infos')" href="{{ route('theme-info.create') }}">Theme Info</a></li>
                 </ul>
             </li>
 

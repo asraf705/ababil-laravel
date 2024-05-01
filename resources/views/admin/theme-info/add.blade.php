@@ -4,15 +4,23 @@
     product
 @endsection
 
-@section('products')
-    active
-@endsection
-
 @section('theme')
     active
 @endsection
 
+@section('theme-infos')
+    active
+@endsection
+
 @section('body')
+    <!-- css style -->
+    <style>
+        .required {
+            color: red;
+        }
+    </style>
+    <!-- css style -->
+
     <!-- Main Content -->
 
     <section class="section">
@@ -32,7 +40,8 @@
 
                             <p class="text-center text-success">{{ session('Gmessage') }}</p>
 
-<form class="form-horizontal" action="{{}}" method="POST" enctype="multipart/form-data">
+                            <form class="form-horizontal" action="{{ route('theme-info.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="col-md-12 d-flex">
@@ -67,7 +76,8 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-4">
-                                            <div class="section-title mt-0">Contact Mobile<samp class="required">*</samp></div>
+                                            <div class="section-title mt-0">Contact Mobile<samp class="required">*</samp>
+                                            </div>
                                             <div class="form-group">
                                                 <input type="number" name="contact_mobile" class="form-control"
                                                     enctype="multipart/form-data">
@@ -75,7 +85,8 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class="section-title mt-0">Whatapp Mobile<samp class="required">*</samp></div>
+                                            <div class="section-title mt-0">Whatapp Mobile<samp class="required">*</samp>
+                                            </div>
                                             <div class="form-group">
                                                 <input type="number" name="whapp_mobile" class="form-control"
                                                     enctype="multipart/form-data">
@@ -93,7 +104,8 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Contact Email<samp class="required">*</samp></div>
+                                            <div class="section-title mt-0">Contact Email<samp class="required">*</samp>
+                                            </div>
                                             <div class="form-group">
                                                 <input type="email" name="contact_email" class="form-control"
                                                     enctype="multipart/form-data">
@@ -217,7 +229,8 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Logo (.jpg/.png)<samp class="required">*</samp></div>
+                                            <div class="section-title mt-0">Logo (.jpg/.png)<samp
+                                                    class="required">*</samp></div>
                                             <div class="form-group custom-file">
                                                 <input type="file" name="logo" class="custom-file-input"
                                                     id="customFile" accept=".jpg,.jpeg,.png" />
@@ -227,7 +240,8 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Favicon(.jpg/.png/.ico)<samp class="required">*</samp></div>
+                                            <div class="section-title mt-0">Favicon(.jpg/.png/.ico)<samp
+                                                    class="required">*</samp></div>
                                             <div class="form-group custom-file">
                                                 <input type="file" name="favicon" class="custom-file-input"
                                                     id="customFile" accept=".jpg,.jpeg,.png,.ico" />
@@ -242,7 +256,7 @@
                                             <div class="section-title mt-0">Trade License</div>
                                             <div class="form-group custom-file">
                                                 <input type="file" name="trade_license" class="custom-file-input"
-                                                    id="customFile" accept=".pdf"/>
+                                                    id="customFile" accept=".pdf" />
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>

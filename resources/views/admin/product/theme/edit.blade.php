@@ -8,7 +8,7 @@
     active
 @endsection
 
-@section('theme')
+@section('themes')
     active
 @endsection
 

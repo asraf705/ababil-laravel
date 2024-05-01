@@ -8,11 +8,12 @@
     active
 @endsection
 
-@section('theme')
+@section('themes')
     active
 @endsection
 
 @section('body')
+
     <!-- Main Content -->
 
     <section class="section">
@@ -26,7 +27,7 @@
                             <div class="card-header">
                                 <h4>Add Theme</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('products.index') }}" class="btn btn-danger">Back</a>
+                                    <a href="{{ route('.index') }}" class="btn btn-danger">Back</a>
                                 </div>
                             </div>
 

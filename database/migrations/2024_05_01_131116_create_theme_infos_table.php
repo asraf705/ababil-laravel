@@ -17,9 +17,9 @@ return new class extends Migration
             $table->text('motto')->default(0)->nullable();
             $table->text('biography')->default(0)->nullable();
             $table->string('contact_mobile')->default(0)->nullable();
+            $table->string('whapp_mobile')->default(0)->nullable();
             $table->string('support_mobile')->default(0)->nullable();
             $table->string('contact_email')->default(0)->nullable();
-            $table->string('whapp_mobile')->default(0)->nullable();
             $table->string('support_email')->default(0)->nullable();
             $table->text('address')->default(0)->nullable();
             $table->text('domain_url')->default(0)->nullable();
