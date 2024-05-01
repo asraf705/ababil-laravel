@@ -1431,6 +1431,16 @@ img {
   transition-duration: 250ms;
 }
 
+.whatappstage {
+    font-size: 16px;
+    color: #6d6d6d;
+    line-height: 1;
+    margin-bottom: 5px;
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
+    text-decoration: none;
+  }
+
 .single-products-catagory .hover-content h4 {
   margin-bottom: 0;
   -webkit-transition-duration: 250ms;
@@ -1444,8 +1454,10 @@ img {
 }
 
 .single-products-catagory:hover .hover-content p,
+.single-products-catagory:hover .whatappstage,
 .single-products-catagory:hover .hover-content h4,
 .single-products-catagory:focus .hover-content p,
+.single-products-catagory:focus .whatappstage,
 .single-products-catagory:focus .hover-content h4 {
   color: #fff;
 }

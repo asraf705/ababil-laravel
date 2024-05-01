@@ -39,6 +39,7 @@ class WebsiteController extends Controller
      public function categoryWiseTemplate($id){
         $this->category =Category::find($id);
         return view('website.template.category-template',[
+            'categories' => Category::where('status',1)->get(),
             'themes' => Product::where('category_id',$this->category->id)->latest()->get(),
         ]);
     }

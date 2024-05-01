@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ThemeInfo;
 use Illuminate\Http\Request;
+use Psy\Output\Theme;
 
 class ThemeInfoController extends Controller
 {
@@ -22,8 +23,8 @@ class ThemeInfoController extends Controller
      */
     public function create()
     {
-        // return view('admin.error.404error');
-        return view('admin.theme-info.add');
+        return view('admin.error.404error');
+        // return view('admin.theme-info.add');
     }
 
     /**
@@ -48,7 +49,9 @@ class ThemeInfoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.theme-info.edit',[
+            'info' => ThemeInfo::find($id),
+        ]);
     }
 
     /**
@@ -56,7 +59,8 @@ class ThemeInfoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        ThemeInfo::updateThemeInfo($request, $id);
+        return back()->with('Gmessage', 'Information updated Successfully.');
     }
 
     /**

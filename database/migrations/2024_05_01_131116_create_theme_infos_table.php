@@ -28,7 +28,8 @@ return new class extends Migration
             $table->text('youtube_url')->default(0)->nullable();
             $table->text('linked_in_url')->default(0)->nullable();
             $table->text('instagram_url')->default(0)->nullable();
-            $table->text('logo')->default(0)->nullable();
+            $table->text('header_logo')->default(0)->nullable();
+            $table->text('footer_logo')->default(0)->nullable();
             $table->text('favicon')->default(0)->nullable();
             $table->text('trade_license')->default(0)->nullable();
             $table->text('tin_certificate')->default(0)->nullable();

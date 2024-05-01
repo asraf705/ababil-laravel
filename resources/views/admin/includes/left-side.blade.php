@@ -85,7 +85,7 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="copy"></i><span>Theme</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown @yield('theme-infos')" href="{{ route('theme-info.create') }}">Theme Info</a></li>
+                    <li><a class="dropdown @yield('theme-infos')" href="{{ route('theme-info.edit',1) }}">Theme Info</a></li>
                 </ul>
             </li>
 

@@ -5,8 +5,11 @@
     <!-- Meta -->
     @include('website.includes.meta')
 
-    <!-- Title  -->
-    <title>Ababil | @yield('title')</title>
+    @foreach ($themeInfos as $themeInfo)
+        <!-- Title  -->
+        <title>{{ $themeInfo->name }} | @yield('title')</title>
+        <link rel='shortcut icon' type='image/x-icon' href='{{ asset($themeInfo->favicon) }}' />
+    @endforeach
 
     <!-- Core Style CSS -->
     @include('website.includes.style')
@@ -26,7 +29,8 @@
                     <div class="search-content">
                         <form action="#" method="get">
                             <input type="search" name="search" id="search" placeholder="Type your keyword...">
-                            <button type="submit"><img src="{{asset('/')}}website/assets/img/core-img/search.png" alt=""></button>
+                            <button type="submit"><img src="{{ asset('/') }}website/assets/img/core-img/search.png"
+                                    alt=""></button>
                         </form>
                     </div>
                 </div>

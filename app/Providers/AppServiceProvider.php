@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use View;
 use App\Models\Category;
 use App\Models\Testimonial;
+use App\Models\ThemeInfo;
 
 use function Nette\Utils\first;
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
         // });
         View::composer('*', function($view){
             $view->with('testimonials', Testimonial::all());
+        });
+        View::composer('*', function($view){
+            $view->with('themeInfos', ThemeInfo::all());
         });
     }
 }

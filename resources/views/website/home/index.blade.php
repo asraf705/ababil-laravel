@@ -14,16 +14,16 @@
 
             @foreach ($categories as $category)
                 <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="{{ route('category.wise.template',$category->id) }}">
-                    <img src="{{ asset($category->image) }}" style="height: 550px;width:1000px"  alt="">
-                    <!-- Hover Content -->
-                    <div class="hover-content">
-                        <div class="line"></div>
-                        <h4>{{$category->name}}</h4>
-                    </div>
-                </a>
-            </div>
+                <div class="single-products-catagory clearfix">
+                    <a href="{{ route('category.wise.template', $category->id) }}">
+                        <img src="{{ asset($category->image) }}" style="height: 550px;width:1000px" alt="">
+                        <!-- Hover Content -->
+                        <div class="hover-content">
+                            <div class="line"></div>
+                            <h4>{{ $category->name }}</h4>
+                        </div>
+                    </a>
+                </div>
             @endforeach
 
         </div>
@@ -31,5 +31,5 @@
 
     @include('website.testimonial.slider-testimonial')
     @include('website.team.slider-team')
-
+    @include('website.partner.partneres')
 @endsection

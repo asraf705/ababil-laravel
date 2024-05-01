@@ -8,8 +8,11 @@
 
     @include('admin.includes.meta')
 
-    <!-- Title  -->
-    <title>Ababil | @yield('title')</title>
+    @foreach ($themeInfos as $themeInfo)
+        <!-- Title  -->
+        <title>{{ $themeInfo->name }} | @yield('title')</title>
+        <link rel='shortcut icon' type='image/x-icon' href='{{ asset($themeInfo->favicon) }}' />
+    @endforeach
 
     <!-- Style file -->
 

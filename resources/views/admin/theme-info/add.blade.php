@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-    product
+    Theme Info
 @endsection
 
 @section('theme')
@@ -32,9 +32,9 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <h4>Add Theme</h4>
+                                <h4>Add Theme Info</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('products.index') }}" class="btn btn-danger">Back</a>
+                                    <a href="{{ route('theme-info.edit',1)}}" class="btn btn-danger">Back</a>
                                 </div>
                             </div>
 
@@ -228,18 +228,29 @@
 
 
                                     <div class="col-md-12 d-flex">
-                                        <div class="col-md-6">
-                                            <div class="section-title mt-0">Logo (.jpg/.png)<samp
+                                        <div class="col-md-4">
+                                            <div class="section-title mt-0">Header Logo (.jpg/.png)<samp
                                                     class="required">*</samp></div>
                                             <div class="form-group custom-file">
-                                                <input type="file" name="logo" class="custom-file-input"
+                                                <input type="file" name="header_logo" class="custom-file-input"
                                                     id="customFile" accept=".jpg,.jpeg,.png" />
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
+                                            <div class="section-title mt-0">Footer Logo (.jpg/.png)<samp
+                                                    class="required">*</samp></div>
+                                            <div class="form-group custom-file">
+                                                <input type="file" name="footer_logo" class="custom-file-input"
+                                                    id="customFile" accept=".jpg,.jpeg,.png" />
+                                                <label class="custom-file-label" for="customFile">Choose
+                                                    file</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
                                             <div class="section-title mt-0">Favicon(.jpg/.png/.ico)<samp
                                                     class="required">*</samp></div>
                                             <div class="form-group custom-file">
