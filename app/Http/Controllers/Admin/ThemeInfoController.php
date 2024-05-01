@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ThemeInfo;
 use Illuminate\Http\Request;
 
 class ThemeInfoController extends Controller
@@ -12,8 +13,8 @@ class ThemeInfoController extends Controller
      */
     public function index()
     {
-        return view('admin.product.theme.theme-info.add');
-        // return view('admin.product.theme.edit');
+
+        return view('admin.error.404error');
     }
 
     /**
@@ -21,7 +22,8 @@ class ThemeInfoController extends Controller
      */
     public function create()
     {
-        //
+        // return view('admin.error.404error');
+        return view('admin.theme.theme-info.add');
     }
 
     /**
@@ -29,7 +31,8 @@ class ThemeInfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ThemeInfo::newThemeInfo($request);
+        return back()->with('Gmessage', 'ThemeInfo create successfully.');
     }
 
     /**

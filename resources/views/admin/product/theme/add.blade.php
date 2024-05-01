@@ -1,14 +1,14 @@
 @extends('admin.master')
 
 @section('title')
-    Theme Info
+    product
 @endsection
 
-@section('theme')
+@section('products')
     active
 @endsection
 
-@section('theme-info')
+@section('theme')
     active
 @endsection
 
@@ -38,9 +38,41 @@
                                 <div class="card-body">
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Name</div>
+                                            <div class="section-title mt-0">Category Name</div>
                                             <div class="form-group">
-                                                <input type="text" name="name" class="form-control"
+                                                <select name="category_id" class="form-control">
+                                                    <option value=" ">Select Category</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 d-flex">
+                                        <div class="col-md-12">
+                                            <div class="section-title mt-0">Title</div>
+                                            <div class="form-group">
+                                                <input type="text" name="title" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 d-flex">
+                                        <div class="col-md-6">
+                                            <div class="section-title mt-0">Auther Name</div>
+                                            <div class="form-group">
+                                                <select name="auther_id" class="form-control select2">
+                                                    <option value="0">Seclect Auther</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="section-title mt-0">Product Code</div>
+                                            <div class="form-group">
+                                                <input type="text" name="code" class="form-control"
                                                     enctype="multipart/form-data">
                                             </div>
                                         </div>
@@ -48,43 +80,10 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Motto</div>
-                                            <div class="form-group">
-                                                <input type="text" name="motto" class="form-control"
-                                                    enctype="multipart/form-data">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12 d-flex">
-                                        <div class="col-md-12">
-                                            <div class="section-title mt-0">Domain Url</div>
-                                            <div class="form-group">
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control text-right"
-                                                        id="inlineFormInputGroup2" name="domain_url"
-                                                        placeholder="Domain URL">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">.com</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12 d-flex">
-                                        <div class="col-md-12">
-                                            <div class="section-title mt-0">Facebook Url</div>
-                                            <div class="form-group">
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control text-right"
-                                                        id="inlineFormInputGroup2" name="facebook_url"
-                                                        placeholder="Facebook URL">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">.com</div>
-                                                    </div>
+                                            <div class="section-title mt-0">Short Description</div>
+                                            <div class="form-group row mb-4">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <input type="text" name="short_description" class="form-control" enctype="multipart/form-data">
                                                 </div>
                                             </div>
                                         </div>
@@ -92,61 +91,36 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Twitter Url</div>
-                                            <div class="form-group">
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control text-right"
-                                                        id="inlineFormInputGroup2" name="twitter_url"
-                                                        placeholder="Twitter URL">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">.com</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 d-flex">
-                                        <div class="col-md-12">
-                                            <div class="section-title mt-0">Youtube Url</div>
-                                            <div class="form-group">
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control text-right"
-                                                        id="inlineFormInputGroup2" name="youtube_url"
-                                                        placeholder="Youtube URL">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">.com</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 d-flex">
-                                        <div class="col-md-12">
-                                            <div class="section-title mt-0">Facebook Url</div>
-                                            <div class="form-group">
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control text-right"
-                                                        id="inlineFormInputGroup2" name="facebook_url"
-                                                        placeholder="Facebook URL">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">.com</div>
-                                                    </div>
+                                            <div class="section-title mt-0">Long Description</div>
+                                            <div class="form-group row mb-4">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <textarea name="long_description" class="summernote"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 d-flex">
-                                        <div class="col-md-12">
-                                            <div class="section-title mt-0">Copy Right Year</div>
+                                        <div class="col-md-6">
+                                            <div class="section-title mt-0">Font-End Page</div>
                                             <div class="form-group">
-                                                <input type="text" id="datepicker"  class="form-control"/>
+                                                <input type="number" name="web_page" class="form-control">
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="section-title mt-0">Template View Url</div>
+                                            <div class="form-group">
+                                                <div class="input-group mb-2">
+                                                    <input type="text" class="form-control text-right"
+                                                        id="inlineFormInputGroup2" name="view_url" placeholder="View URL">
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text">.com</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-
-
-
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-6">
@@ -257,5 +231,4 @@
                 </div>
             </div>
     </section>
-
 @endsection
