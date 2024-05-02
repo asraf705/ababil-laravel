@@ -26,12 +26,12 @@
     <nav class="amado-nav">
         <ul>
             <li class="@yield('home')"><a href="{{ route('home') }}">Home</a></li>
-            <li class="@yield('template')"><a href="{{ route('template') }}">Template</a></li>
             <li class="@yield('about')"><a href="{{ route('about') }}">About</a></li>
+            <li class="@yield('template')"><a href="{{ route('template') }}">Template</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
             {{-- <li class="@yield('price')"><a href="{{route('price')}}" >Price</a></li> --}}
             <li class="@yield('userlogin')"><a href="{{ route('userlogin') }}">Login</a></li>
-            {{-- <li class="active"><a href="{{route('home')}}">Home</a></li> --}}
+            <!-- <li class="active"><a href="{{route('home')}}">Home</a></li> -->
         </ul>
     </nav>
     <!-- Button Group -->
