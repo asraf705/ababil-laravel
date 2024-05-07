@@ -1,7 +1,9 @@
 @extends('website.master')
 
 @section('title')
-    Category Wise Template
+    @foreach ($themes as $theme)
+        {{ $theme->category->name }}
+    @endforeach
 @endsection
 
 @section('template')
@@ -47,67 +49,67 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            @foreach ($themes as $theme)
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                    <div class="single-product-wrapper">
-                        <a href="{{ route('single.template', ['title' => $theme->title]) }}">
-                            <!-- Product Image -->
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="{{ asset($theme->image) }}" style="height: 484px;" alt="">
-                            </div>
-                        </a>
 
-                        <!-- Product Description -->
-                        <div class="product-description d-flex align-items-center justify-content-between">
-                            <!-- Product Meta Data -->
-                            <div class="product-meta-data">
-                                <div class="line"></div>
-                                <p class="product-price">
-                                    @if ($theme->template_discount_amount > 0)
-                                        <h5 class="product-price">
-                                            ${{ $theme->template_regular_price }}
-                                            @if ($theme->template_discount_type == 'fixed')
-                                                <sup class="text-danger">${{ $theme->template_discount_amount }}
-                                                    OFF</sup>
-                                            @else
-                                                <sup class="text-danger">{{ $theme->template_discount_amount }}%
-                                                    OFF</sup>
-                                            @endif
-                                        </h5>
-                                    @else
-                                        <h4 class="text-success">FREE</h4>
-                                    @endif
-                                </p>
+            <div class="row">
+                @foreach ($themes as $theme)
+                    @if ($theme->status == '1')
+                        <!-- Single Product Area -->
+                        <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                            <div class="single-product-wrapper">
                                 <a href="{{ route('single.template', ['title' => $theme->title]) }}">
-                                    <h6>{{ $theme->title }}</h6>
+                                    <!-- Product Image -->
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{ asset($theme->image) }}" style="height: 484px;" alt="">
+                                    </div>
                                 </a>
-                            </div>
-                            <!-- Ratings & Cart -->
-                            <div class="ratings-cart text-right">
-                                <div class="ratings">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
 
+                                <!-- Product Description -->
+                                <div class="product-description d-flex align-items-center justify-content-between">
+                                    <!-- Product Meta Data -->
+                                    <div class="product-meta-data">
+                                        <div class="line"></div>
+                                        <p class="product-price">
+                                            @if ($theme->template_discount_amount > 0)
+                                                <h5 class="product-price">
+                                                    ${{ $theme->template_regular_price }}
+                                                    @if ($theme->template_discount_type == 'fixed')
+                                                        <sup class="text-danger">${{ $theme->template_discount_amount }}
+                                                            OFF</sup>
+                                                    @else
+                                                        <sup class="text-danger">{{ $theme->template_discount_amount }}%
+                                                            OFF</sup>
+                                                    @endif
+                                                </h5>
+                                            @else
+                                                <h4 class="text-success">FREE</h4>
+                                            @endif
+                                        </p>
+                                        <a href="{{ route('single.template', ['title' => $theme->title]) }}">
+                                            <h6>{{ $theme->title }}</h6>
+                                        </a>
+                                    </div>
+                                    <!-- Ratings & Cart -->
+                                    <div class="ratings-cart text-right">
+                                        <div class="ratings">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            @endforeach
+                    @endif
+                @endforeach
+            </div>
 
-
+            @include('website.testimonial.slider-testimonial')
+            @include('website.team.slider-team')
         </div>
-
-        @include('website.testimonial.slider-testimonial')
-        @include('website.team.slider-team')
-    </div>
     </div>
 @endsection

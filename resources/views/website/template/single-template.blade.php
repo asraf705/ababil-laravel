@@ -1,7 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    Template
+    {{ $theme->title }}
 @endsection
 
 @section('template')
@@ -17,7 +17,9 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mt-50">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('category.wise.template',$theme->category_id) }}">{{ $theme->category->name }}</a></li>
+                            <li class="breadcrumb-item"><a
+                                    href="{{ route('category.wise.template', $theme->category_id) }}">{{ $theme->category->name }}</a>
+                            </li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $theme->title }}</li>
                         </ol>
                     </nav>
@@ -43,7 +45,7 @@
                         <!-- Product Meta Data -->
                         <div class="product-meta-data">
                             <h4><b>{{ $theme->title }}</b></h4>
-                            <p>Auther: {{ $theme->auther_id ==  '0' ? 'Admin' : ''  }}</p>
+                            <p>Auther: {{ $theme->auther_id == '0' ? 'Admin' : '' }}</p>
                             <div class="line"></div>
                             <p class="product-price">
                                 @if ($theme->template_discount_amount > 0)
@@ -97,7 +99,7 @@
                                     </a>
                                 @endif
 
-                                <a href="{{route('cart')}}" class="btn dowld-btn">Add to cart</a>
+                                <a href="{{ route('cart') }}" class="btn dowld-btn">Add to cart</a>
                             </div>
 
                         </div>

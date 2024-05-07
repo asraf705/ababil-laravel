@@ -53,14 +53,9 @@
 
                                 <div class="col-12">
                                     <div class="custom-control custom-checkbox d-block mb-2">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
                                         <label class="custom-control-label" for="customCheck2">Create an
                                             accout</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-block">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                        <label class="custom-control-label" for="customCheck3">Ship to a different
-                                            address</label>
                                     </div>
                                 </div>
                             </div>
@@ -77,16 +72,11 @@
                         </ul>
 
                         <div class="payment-method">
-                            <!-- Cash on delivery -->
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="checkbox" class="custom-control-input" id="cod" checked>
-                                <label class="custom-control-label" for="cod">Cash on Delivery</label>
-                            </div>
                             <!-- Paypal -->
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="checkbox" class="custom-control-input" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal <img class="ml-15"
-                                        src="img/core-img/paypal.png" alt=""></label>
+                            <div class="custom-control custom-radio mr-sm-2">
+                                <input type="radio" class="custom-control-input" id="paypal" checked>
+                                <label class="custom-control-label" for="paypal">Online Payment<img class="ml-15"
+                                        src="{{asset('/') }}website/assets/img/core-img/paypal.png" alt=""></label>
                             </div>
                         </div>
 

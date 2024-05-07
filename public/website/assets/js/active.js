@@ -44,12 +44,23 @@
         $('.header-area').removeClass('bp-xs-on');
     });
 
+        // :: 3.0 whatapp Active Code
+        if ($.fn.whatsApp) {
+            $.whatsApp({
+                scrollSpeed: 1000,
+                whatappeasingType: 'easeInOutQuart',
+                whatappText: '<i class="fa fa-whatsapp" aria-hidden="true"></i>'
+
+            });
+        }
+
     // :: 3.0 ScrollUp Active Code
     if ($.fn.scrollUp) {
         $.scrollUp({
             scrollSpeed: 1000,
             easingType: 'easeInOutQuart',
             scrollText: '<i class="fa fa-angle-up" aria-hidden="true"></i>'
+
         });
     }
 
