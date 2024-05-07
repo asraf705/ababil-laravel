@@ -13,13 +13,6 @@
 @endsection
 
 @section('body')
-    <!-- css style -->
-    <style>
-        .required {
-            color: red;
-        }
-    </style>
-    <!-- css style -->
 
     <!-- Main Content -->
 

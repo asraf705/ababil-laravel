@@ -39,9 +39,9 @@
                                 <div class="card-body">
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Category Name</div>
+                                            <div class="section-title mt-0">Category Name<samp class="required">*</samp></div>
                                             <div class="form-group">
-                                                <select name="category_id" class="form-control">
+                                                <select name="category_id" class="form-control" required>
                                                     <option value=" ">Select Category</option>
                                                     @foreach ($categories as $category)
                                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -53,38 +53,38 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Title</div>
+                                            <div class="section-title mt-0">Title<samp class="required">*</samp></div>
                                             <div class="form-group">
-                                                <input type="text" name="title" class="form-control">
+                                                <input type="text" name="title" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Auther Name</div>
+                                            <div class="section-title mt-0">Auther Name<samp class="required">*</samp></div>
                                             <div class="form-group">
-                                                <select name="auther_id" class="form-control select2">
+                                                <select name="auther_id" class="form-control select2" required>
                                                     <option value="0">Seclect Auther</option>
 
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Product Code</div>
+                                            <div class="section-title mt-0">Product Code<samp class="required">*</samp></div>
                                             <div class="form-group">
                                                 <input type="text" name="code" class="form-control"
-                                                    enctype="multipart/form-data">
+                                                    enctype="multipart/form-data" required>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Short Description</div>
+                                            <div class="section-title mt-0">Short Description<samp class="required">*</samp></div>
                                             <div class="form-group row mb-4">
                                                 <div class="col-sm-12 col-md-12">
-                                                    <input type="text" name="short_description" class="form-control" enctype="multipart/form-data">
+                                                    <input type="text" name="short_description" class="form-control" enctype="multipart/form-data" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,10 +92,10 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
-                                            <div class="section-title mt-0">Long Description</div>
+                                            <div class="section-title mt-0">Long Description<samp class="required">*</samp></div>
                                             <div class="form-group row mb-4">
                                                 <div class="col-sm-12 col-md-12">
-                                                    <textarea name="long_description" class="summernote"></textarea>
+                                                    <textarea name="long_description" class="summernote" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,11 +109,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Template View Url</div>
+                                            <div class="section-title mt-0">Template View Url<samp class="required">*</samp></div>
                                             <div class="form-group">
                                                 <div class="input-group mb-2">
                                                     <input type="text" class="form-control text-right"
-                                                        id="inlineFormInputGroup2" name="view_url" placeholder="View URL">
+                                                        id="inlineFormInputGroup2" name="view_url" placeholder="View URL" required>
                                                     <div class="input-group-append">
                                                         <div class="input-group-text">.com</div>
                                                     </div>
@@ -125,12 +125,12 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Download Url</div>
+                                            <div class="section-title mt-0">Download Url<samp class="required">*</samp></div>
                                             <div class="form-group">
                                                 <div class="input-group mb-2">
                                                     <input type="text" class="form-control text-right"
                                                         id="inlineFormInputGroup2" name="download_url"
-                                                        placeholder="Download URL">
+                                                        placeholder="Download URL" required>
                                                     <div class="input-group-append">
                                                         <div class="input-group-text">.com</div>
                                                     </div>
@@ -139,10 +139,10 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="section-title mt-0">Image</div>
+                                            <div class="section-title mt-0">Image<samp class="required">*</samp></div>
                                             <div class="form-group custom-file">
                                                 <input type="file" name="image" class="custom-file-input"
-                                                    id="customFile">
+                                                    id="customFile" required>
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>
@@ -154,12 +154,12 @@
                                             <div class="section-title mt-0">Delivery Date</div>
                                             <div class="form-group">
                                                 <input type="number" name="template_delivery" class="form-control"
-                                                    placeholder="(exmple:10)" required>
+                                                    placeholder="(exmple:10)">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class="section-title mt-0">Product Price($)</div>
+                                            <div class="section-title mt-0">Product Price($)<samp class="required">*</samp></div>
                                             <div class="form-group">
                                                 <input type="number" name="template_regular_price" id="tempprice"
                                                     class="form-control" placeholder="(exmple:Price in USD)" required>
@@ -170,7 +170,7 @@
                                             <div class="section-title mt-0">Discount Amount</div>
                                             <div class="form-group">
                                                 <input type="number" name="template_discount_amount"
-                                                    id="tempdiscountAmount" class="form-control">
+                                                    id="tempdiscountAmount" class="form-control" required>
                                             </div>
                                         </div>
 
@@ -213,7 +213,7 @@
                                             <div class="section-title mt-0">Selling Price</div>
                                             <div class="form-group">
                                                 <input type="number" id="tempdiscountPrice"
-                                                    name="template_selling_price" class="form-control" readonly>
+                                                    name="template_selling_price" class="form-control" readonly required>
                                             </div>
                                         </div>
 
