@@ -27,7 +27,7 @@
                             <div class="card-header">
                                 <h4>Add Theme</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('.index') }}" class="btn btn-danger">Back</a>
+                                    <a href="{{ route('products.index') }}" class="btn btn-danger">Back</a>
                                 </div>
                             </div>
 
