@@ -35,14 +35,14 @@ class WebsiteController extends Controller
 
 
      // Category Wise Template
-     private $category;
-     public function categoryWiseTemplate($id){
-        $this->category =Category::find($id);
-        return view('website.template.category-template',[
-            'categories' => Category::where('status',1)->get(),
-            'themes' => Product::where('category_id',$this->category->id)->latest()->get(),
-        ]);
-    }
+    public function categoryWiseTemplate($id)
+{
+    $category = Category::find($id);
+    $categories = Category::where('status', 1)->get();
+    $themes = Product::where('category_id', $category->id)->latest()->get();
+    return view('website.template.category-template', compact('categories', 'themes', 'category'));
+}
+
 
      // Contact
      public static function about(){

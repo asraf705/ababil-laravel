@@ -34,6 +34,7 @@ class ProductPriceController extends Controller
         return view('admin.product.theme-price.add', [
             'products' => Product::where('status', 1)->get(),
             'productTypes' => ProductType::where('status', 1)->get(),
+            'prices' => ProductPrice::all(),
         ]);
     }
 

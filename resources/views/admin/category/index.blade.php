@@ -39,6 +39,7 @@
                                 <table class="table table-striped" id="table-1">
                                     <thead>
                                         <tr class="text-center">
+                                            <th>Sl</th>
                                             <th>Name</th>
                                             <th>Image</th>
                                             <th>Create Date</th>
@@ -50,6 +51,7 @@
                                         @foreach ($categories as $item)
                                             <tr>
 
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>
                                                     <img src="{{ asset($item->image) }}" alt="Categry"

@@ -1,9 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    @foreach ($themes as $theme)
-        {{ $theme->category->name }}
-    @endforeach
+    {{ $category->name }}
 @endsection
 
 @section('template')

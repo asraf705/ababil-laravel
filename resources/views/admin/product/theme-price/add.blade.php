@@ -44,7 +44,9 @@
                                                     id="" name="product_id" required>
                                                     <option value=" ">Seclect Title</option>
                                                     @foreach ($products as $product)
-                                                        <option value="{{ $product->id }}">{{ $product->title }}</option>
+                                                        <option value="{{ $product->id }}">
+                                                            {{ $product->title }} ({{ $product->category->name }})
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -81,7 +83,7 @@
                                         <div class="col-md-4">
                                             <div class="section-title mt-0">Font-End Page</div>
                                             <div class="form-group">
-                                                <input type="text" value="{{ $product->code }}" id="web_page"
+                                                <input type="text" value="{{ $product->web_page }}" id="web_page"
                                                     class="form-control" readonly>
                                             </div>
                                         </div>

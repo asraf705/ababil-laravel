@@ -98,7 +98,6 @@
                                         Download
                                     </a>
                                 @endif
-
                                 <a href="{{ route('cart') }}" class="btn dowld-btn">Add to cart</a>
                             </div>
 

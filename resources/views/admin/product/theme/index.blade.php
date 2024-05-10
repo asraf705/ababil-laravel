@@ -39,6 +39,7 @@
                                 <table class="table table-striped" id="table-1">
                                     <thead>
                                         <tr class="text-center">
+                                            <th>Sl</th>
                                             <th>Title</th>
                                             <th>Category</th>
                                             <th>Auther</th>
@@ -54,6 +55,7 @@
                                         @foreach ($products as $product)
                                             <tr>
 
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $product->title }}</td>
                                                 <td><a href="{{ route('category.wise.product', ['categoryId' => $product->category_id]) }}">
                                                         {{ $product->category->name }} </a></td>

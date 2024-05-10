@@ -48,33 +48,26 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     // Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::resources(['categories' => CategoryController::class]);
-    Route::resources(['product-type' => ProductTypeController::class]); // for  Product package
-    Route::resources(['post' => PostController::class]); // for  Product package
-    Route::resources(['skill' => SkillController::class]); // for  Product package
-    Route::resources(['discountes' => DiscountController::class]);
+    Route::resources([
+        'categories' => CategoryController::class,
+        'product-type' => ProductTypeController::class, // for  Product type
+        'post' => PostController::class, // for  Post
+        'skill' => SkillController::class, // for   Skills
+        'products' => ProductController::class, // for  Product Theme
+        'theme-price' => ProductPriceController::class, // for  Product price
+        'testimonial' => TestimonialController::class, // for Testimonial
+        'theme-info' => ThemeInfoController::class, // for ThemeInfo
 
+]);
 
     // Start Product
-    Route::resources(['products' => ProductController::class]);
     Route::get('/product/status/{id}', [ProductController::class, 'info'])->name('products.status');
-
     // Template Auth price (basic, pro,pre)
-    Route::resources(['theme-price' => ProductPriceController::class]);
     Route::get('/get-product-info-by-title', [ProductPriceController::class, 'getProductInfoByTitle'])->name('get-product-info-by-title');
-
     // Product Category wise details and  Product details wise Delete(product & price)
     Route::get('/product/detail/full-Delete/{id}',[ProductController::class,'fullDetailDelete'])->name('delete.product-and-price');
     Route::get('/product/category/{categoryId}', [ProductController::class, 'categoryWiseProduct'])->name('category.wise.product');
-
     // End Product
 
-    // Testimonial
-    Route::resources(['testimonial' => TestimonialController::class]);
 
-
-
-
-    // Theme All Info
-    Route::resources(['theme-info' => ThemeInfoController::class]);
 });
