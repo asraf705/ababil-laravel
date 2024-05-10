@@ -21,13 +21,11 @@
                 <ul class="@if (Request::route()->getName() == 'home') show @else hide @endif">
                     <li><a href="{{ route('template') }}">All Theme</a></li>
                     @foreach ($categories as $category)
-                        @foreach ($themes as $theme)
-                            <li class="{{ $theme->category_id == $category->id ? 'active' : '' }}">
-                                <a href="{{ route('category.wise.template', $category->id) }}">
-                                    {{ $category->name }}
-                                </a>
-                            </li>
-                        @endforeach
+                        <li class="{{ $category->id == $themes->first()->category_id ? 'active' : '' }}">
+                            <a href="{{ route('category.wise.template', $category->id) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -50,6 +48,7 @@
 
 
             <div class="row">
+
                 @foreach ($themes as $theme)
                     @if ($theme->status == '1')
                         <!-- Single Product Area -->
@@ -104,6 +103,7 @@
                         </div>
                     @endif
                 @endforeach
+
             </div>
 
             @include('website.testimonial.slider-testimonial')
