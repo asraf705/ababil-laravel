@@ -70,7 +70,7 @@
                                         <p class="product-price">
                                             @if ($theme->template_discount_amount > 0)
                                                 <h5 class="product-price">
-                                                    ${{ $theme->template_regular_price }}
+                                                    {{ number_format($theme->template_selling_price) }}<sup>$</sup>
                                                     @if ($theme->template_discount_type == 'fixed')
                                                         <sup class="text-danger">${{ $theme->template_discount_amount }}
                                                             OFF</sup>

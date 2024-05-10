@@ -51,45 +51,95 @@
                                     <!-- cartegory wise all products -->
                                     <div class="row row-cols-1 row-cols-md-6 g-3">
                                         @foreach ($products as $product)
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="card">
                                                     <a href="{{ route('products.show', $product->id) }}">
                                                         <img class="card-img-top" src="{{ asset($product->image) }}"
                                                             alt="Card image cap" style="height: 380px;">
                                                     </a>
                                                     <div class="card-body">
-                                                        <h5 class="card-title">{{ $product->title }}</h5>
-                                                        <h6 class="d-flex">
-                                                            <i class="fas fa-user" style="margin-right: 10px;">
-                                                                <samp>
-                                                                    @if ($product->auther_id == 0)
-                                                                        <b>Admin</b>
-                                                                    @else
-                                                                        {{ $product->auther_id }}
-                                                                    @endif
-                                                                </samp>
-                                                            </i>
-                                                            <i class="fas fa-barcode" style="margin-right: 10px;">
-                                                                <samp> {{ $product->code }}</samp>
-                                                            </i>
-                                                            <i class="far fa-file">
-                                                                <samp>
-                                                                    @if ($product->web_page <= 1)
-                                                                        <b> {{ $product->web_page }} Page</b>
-                                                                    @else
-                                                                        <b> {{ $product->web_page }} Pages</b>
-                                                                    @endif
-                                                                </samp>
-                                                            </i>
-                                                        </h6>
-                                                        <div>
-                                                            <h6 class="d-flex">Price:{{ $product->template_selling_price }}</h6>
+                                                        <table>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <h5 class="card-title">{{ $product->title }}</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h6 class="d-flex">
+                                                                        <i class="fas fa-user" style="margin-right: 10px;">
+                                                                            <samp>
+                                                                                @if ($product->auther_id == 0)
+                                                                                    <b>Admin</b>
+                                                                                @else
+                                                                                    {{ $product->auther_id }}
+                                                                                @endif
+                                                                            </samp>
+                                                                        </i>
+                                                                        <i class="fas fa-barcode"
+                                                                            style="margin-right: 10px;">
+                                                                            <samp> {{ $product->code }}</samp>
+                                                                        </i>
+                                                                        <i class="far fa-file">
+                                                                            <samp>
+                                                                                @if ($product->web_page <= 1)
+                                                                                    <b> {{ $product->web_page }} Page</b>
+                                                                                @else
+                                                                                    <b> {{ $product->web_page }} Pages</b>
+                                                                                @endif
+                                                                            </samp>
+                                                                        </i>
+                                                                    </h6>
+                                                                </td>
+                                                                <td>
+                                                                    <h6 class="d-flex">
+                                                                        <i class="fas fa-user" style="margin-right: 10px;">
+                                                                            <samp>
+                                                                                @if ($product->auther_id == 0)
+                                                                                    <b>Admin</b>
+                                                                                @else
+                                                                                    {{ $product->auther_id }}
+                                                                                @endif
+                                                                            </samp>
+                                                                        </i>
+                                                                        <i class="fas fa-barcode"
+                                                                            style="margin-right: 10px;">
+                                                                            <samp> {{ $product->code }}</samp>
+                                                                        </i>
+                                                                        <i class="far fa-file">
+                                                                            <samp>
+                                                                                @if ($product->web_page <= 1)
+                                                                                    <b> {{ $product->web_page }} Page</b>
+                                                                                @else
+                                                                                    <b> {{ $product->web_page }} Pages</b>
+                                                                                @endif
+                                                                            </samp>
+                                                                        </i>
+                                                                    </h6>
+                                                                </td>
+                                                            </tr>
+                                                            <br>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <div>
+                                                                        <h6 class="d-flex">
+                                                                            Price:
+                                                                            @if ($product->template_selling_price == 0)
+                                                                                Free
+                                                                            @else
+                                                                                {{ number_format($product->template_selling_price, 2) }}$
+                                                                            @endif
 
-                                                            <a href="{{ route('products.show', $product->id) }}"
-                                                                class="btn btn-outline-success float-right"><i
-                                                                    class="fa fa-info-circle"></i>
-                                                                Details</a>
-                                                        </div>
+                                                                        </h6>
+
+                                                                        <a href="{{ route('products.show', $product->id) }}"
+                                                                            class="btn btn-outline-success float-right"><i
+                                                                                class="fa fa-info-circle"></i>
+                                                                            Details</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>

@@ -44,7 +44,7 @@
                                             <th>Category</th>
                                             <th>Auther</th>
                                             <th>Code</th>
-                                            <th>Web-Page</th>
+                                            <th>Price</th>
                                             <th>Image</th>
                                             <th>Create Date</th>
                                             <th>Status</th>
@@ -57,7 +57,8 @@
 
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $product->title }}</td>
-                                                <td><a href="{{ route('category.wise.product', ['categoryId' => $product->category_id]) }}">
+                                                <td><a
+                                                        href="{{ route('category.wise.product', ['categoryId' => $product->category_id]) }}">
                                                         {{ $product->category->name }} </a></td>
                                                 <td>
                                                     @if ($product->auther_id == 0)
@@ -67,7 +68,14 @@
                                                     @endif
                                                 </td>
                                                 <td>{{ $product->code }}</td>
-                                                <td>{{ $product->web_page }}</td>
+                                                <td>
+                                                    @if ($product->template_selling_price == 0)
+                                                        Free
+                                                    @else
+                                                        {{ number_format($product->template_selling_price, 2) }}<sup>$</sup>
+                                                        {{-- {{ $product->template_selling_price }} --}}
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <img src="{{ asset($product->image) }}"
                                                         alt="{{ $product->category->name }}"

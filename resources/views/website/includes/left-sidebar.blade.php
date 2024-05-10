@@ -29,7 +29,6 @@
             <li class="@yield('about')"><a href="{{ route('about') }}">About</a></li>
             <li class="@yield('template')"><a href="{{ route('template') }}">Template</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
-            {{-- <li class="@yield('price')"><a href="{{route('price')}}" >Price</a></li> --}}
             <li class="@yield('userlogin')"><a href="{{ route('userlogin') }}">Login</a></li>
             <!-- <li class="active"><a href="{{route('home')}}">Home</a></li> -->
         </ul>
@@ -39,7 +38,7 @@
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
         <a href="{{ route('cart') }}" class="cart-nav @yield('actv-cart')"><img
-                src="{{ asset('/') }}website/assets/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+                src="{{ asset('/') }}website/assets/img/core-img/cart.png" alt=""> Cart <span>({{Cart::count();}})</span></a>
         {{-- <a href="#" class="fav-nav"><img src="{{ asset('/') }}website/assets/img/core-img/favorites.png"
                 alt=""> Favourite</a> --}}
         <a href="#" class="search-nav"><img src="{{ asset('/') }}website/assets/img/core-img/search.png"

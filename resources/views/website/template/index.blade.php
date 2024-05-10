@@ -85,7 +85,7 @@
                                     <div class="line"></div>
                                     @if ($theme->template_discount_amount > 0)
                                         <p class="product-price">
-                                            ${{ $theme->template_regular_price }}
+                                            {{ number_format($theme->template_regular_price) }}<sup>$</sup>
                                             @if ($theme->template_discount_type == 'fixed')
                                                 <sup class="text-danger">${{ $theme->template_discount_amount }}
                                                     OFF</sup>

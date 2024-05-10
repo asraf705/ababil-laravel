@@ -42,66 +42,78 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="single_product_desc">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <h4><b>{{ $theme->title }}</b></h4>
-                            <p>Auther: {{ $theme->auther_id == '0' ? 'Admin' : '' }}</p>
-                            <div class="line"></div>
-                            <p class="product-price">
-                                @if ($theme->template_discount_amount > 0)
-                                    <h5 class="product-price">
-                                        ${{ $theme->template_selling_price }}
-                                        <samp>
-                                            <strike> ${{ $theme->template_regular_price }}</strike>
-                                        </samp>
-                                        @if ($theme->template_discount_type == 'fixed')
-                                            <sup class="text-danger">${{ $theme->template_discount_amount }}
-                                                OFF</sup>
-                                        @else
-                                            <sup class="text-danger">{{ $theme->template_discount_amount }}%
-                                                OFF</sup>
-                                        @endif
-                                    </h5>
-                                @else
-                                    <h4 class="text-success">FREE</h4>
-                                @endif
-                            </p>
-                            <!-- Ratings & Review -->
-                            <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
-                                <div class="ratings">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
+                        <form action="{{ route('carts.store') }}" method="post">
+                            @csrf
+
+                            <!-- hidden input start -->
+                            <input type="hidden" name="id" value="{{ $theme->id }}" />
+                            <input type="hidden" name="name" value="{{ $theme->title }}" />
+                            <input type="hidden" name="code" value="{{ $theme->code }}" />
+                            <input type="hidden" name="qty" value="1" />
+                            <input type="hidden" name="price" value="{{ $theme->template_selling_price }}" />
+
+
+
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <h4><b>{{ $theme->title }}</b></h4>
+                                <div class="line"></div>
+                                <p class="product-price">
+                                    @if ($theme->template_discount_amount > 0)
+                                        <h5 class="product-price">
+                                            {{ number_format($theme->template_selling_price, 2) }}<sup>$</sup>
+                                            <samp>
+                                                <strike> {{ $theme->template_regular_price }}<sup>$</sup></strike>
+                                            </samp>
+                                            @if ($theme->template_discount_type == 'fixed')
+                                                <sup class="text-danger">{{ $theme->template_discount_amount }}<sup>$</sup>
+                                                    OFF</sup>
+                                            @else
+                                                <sup class="text-danger">{{ $theme->template_discount_amount }}%
+                                                    OFF</sup>
+                                            @endif
+                                        </h5>
+                                    @else
+                                        <h4 class="text-success">FREE</h4>
+                                    @endif
+                                </p>
+                                <!-- Ratings & Review -->
+                                <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                                    <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+
                                 </div>
+                            </div>
+
+                            <div class="short_overview my-5">
+                                <p>
+                                    {{ $theme->short_description }}
+                                </p>
 
                             </div>
-                        </div>
 
-                        <div class="short_overview my-5">
-                            <p>
-                                {{ $theme->short_description }}
-                            </p>
-
-                        </div>
-
-                        <!-- Add to Cart Form -->
-                        <div class="cart">
-                            <div class="mb-2 d-flex">
-                                <a href="{{ $theme->view_url }}" class="btn live-btn" style="margin-right: 10px;"
-                                    target="_blank">
-                                    Live View
-                                </a>
-                                @if ($theme->template_discount_type == 'free')
-                                    <a href="{{ $theme->download_url }}" class="btn amado-btn" style="margin-right: 10px;">
-                                        Download
+                            <!-- Add to Cart Form -->
+                            <div class="cart">
+                                <div class="mb-2 d-flex">
+                                    <a href="{{ $theme->view_url }}" class="btn live-btn" style="margin-right: 10px;"
+                                        target="_blank">
+                                        Live View
                                     </a>
-                                @endif
-                                <a href="{{ route('cart') }}" class="btn dowld-btn">Add to cart</a>
+                                    @if ($theme->template_discount_type == 'free')
+                                        <a href="{{ $theme->download_url }}" class="btn amado-btn"
+                                            style="margin-right: 10px;">
+                                            Download
+                                        </a>
+                                    @endif
+                                    <button type="submit" class="btn dowld-btn">Add to cart</button>
+                                </div>
                             </div>
-
-                        </div>
+                        </form>
 
                     </div>
                 </div>
