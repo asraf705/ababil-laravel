@@ -31,9 +31,7 @@ class Category extends Model
         }
 
         self::$category = new Category();
-        self::$category->name           = $request->name;
-        self::$category->image          = self::$imageUrl;
-        self::$category->save();
+        self::saveBasicInfo(self::$category, $request, self::$imageUrl);
     }
 
     public static function  updateCategory($request, $id)

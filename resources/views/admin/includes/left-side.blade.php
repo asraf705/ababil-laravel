@@ -19,6 +19,7 @@
                 <ul class="dropdown-menu">
                     <li class="dropdown @yield('category')"><a class="nav-link" href="{{ route('categories.index') }}">Category</a></li>
                     <li class="dropdown @yield('product-type')"><a class="nav-link" href="{{ route('product-type.index') }}">Product Type</a></li>
+                    <li class="dropdown @yield('tex')"><a class="nav-link" href="{{ route('texInfo.edit',1) }}">Manage Tex & Currency</a></li>
                     <li class="dropdown @yield('post')"><a class="nav-link" href="{{ route('post.index') }}">Post</a></li>
                     <li class="dropdown @yield('skill')"><a class="nav-link" href="{{ route('skill.index') }}">Skill(Lang.)</a></li>
                 </ul>

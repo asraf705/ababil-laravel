@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\TexController;
 use App\Http\Controllers\website\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\WebsiteController;
@@ -36,7 +37,10 @@ Route::get('/template/category-wise-template/{id}', [WebsiteController::class, '
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
 Route::get('/team', [WebsiteController::class, 'team'])->name('team');
 // Route::get('/price', [WebsiteController::class, 'price'])->name('price');
-Route::resource('carts', CartController::class);
+Route::resources([
+    'carts' => CartController::class,
+    'texInfo'=>TexController::class,
+]);
 
 Route::get('/cart', [WebsiteController::class, 'cart'])->name('cart');
 Route::get('/checkout', [WebsiteController::class, 'checkout'])->name('checkout');

@@ -7,6 +7,7 @@ use View;
 use App\Models\Category;
 use App\Models\Testimonial;
 use App\Models\ThemeInfo;
+use App\Models\Tex;
 
 use function Nette\Utils\first;
 class AppServiceProvider extends ServiceProvider
@@ -31,7 +32,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('testimonials', Testimonial::all());
         });
         View::composer('*', function($view){
-            $view->with('themeInfos', ThemeInfo::all());
+            $view->with('themeInfos', ThemeInfo::where('id',1)->get());
+        });
+
+        View::composer('*', function($view){
+            $view->with('currencys', Tex::where('id',1)->get());
         });
     }
 }

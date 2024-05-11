@@ -71,7 +71,8 @@ class CartController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Cart::update($id, $request->quantity);
+        return back()->with('message', 'Cart product info updated Successfully');
     }
 
     /**

@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
     <div class="loader"></div>
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
@@ -46,10 +47,10 @@
         <!-- left Area Start -->
         @include('website.includes.left-sidebar')
         <!-- left Area End -->
+            <!-- Body Area Start -->
+            @yield('body')
+            <!--  Area End -->
 
-        <!-- Body Area Start -->
-        @yield('body')
-        <!--  Area End -->
 
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
@@ -61,7 +62,6 @@
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     @include('website.includes.script')
-
 </body>
 
 </html>

@@ -9,6 +9,9 @@
 @endsection
 
 @section('body')
+
+@foreach ($currencys as $currency)
+
     <div class="shop_sidebar_area">
 
         <!-- ##### Single Widget ##### -->
@@ -70,7 +73,7 @@
                                         <p class="product-price">
                                             @if ($theme->template_discount_amount > 0)
                                                 <h5 class="product-price">
-                                                    {{ number_format($theme->template_selling_price) }}<sup>$</sup>
+                                                    {{ number_format($theme->template_selling_price) }}<sup>{{ $currency->currency_type }}</sup>
                                                     @if ($theme->template_discount_type == 'fixed')
                                                         <sup class="text-danger">${{ $theme->template_discount_amount }}
                                                             OFF</sup>
@@ -110,4 +113,5 @@
             @include('website.team.slider-team')
         </div>
     </div>
+    @endforeach
 @endsection
