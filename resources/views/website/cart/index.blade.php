@@ -50,7 +50,7 @@
                                                         <div class="input-group">
                                                             <input type="number" name="quantity" min="1"
                                                                 class="form-control input-number"
-                                                                value="{{ $cart->qty }}">
+                                                                value="{{ $cart->qty }}"  style="margin-right: 2px;">
                                                             <input type="submit" class="btn btn-success btn-sm"
                                                                 value="Update" />
                                                         </div>
