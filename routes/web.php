@@ -36,7 +36,7 @@ Route::get('/template/single-template/{title}', [WebsiteController::class, 'sing
 Route::get('/template/category-wise-template/{id}', [WebsiteController::class, 'categoryWiseTemplate'])->name('category.wise.template');
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
 Route::get('/team', [WebsiteController::class, 'team'])->name('team');
-// Route::get('/price', [WebsiteController::class, 'price'])->name('price');
+Route::get('/price', [WebsiteController::class, 'price'])->name('price');
 Route::resources([
     'carts' => CartController::class,
     'texInfo'=>TexController::class,

@@ -12,11 +12,10 @@ class ProductProAuth extends Model
 
     private static $ProductProAuth, $ProductProAuths;
 
-    public static function newProType($pro_types, $priceID, $productID){
+    public static function newProType($pro_types, $priceID){
         foreach ($pro_types as $pro_auth_type){
             self::$ProductProAuth = new ProductProAuth();
             self::$ProductProAuth->product_price_id = $priceID;
-            self::$ProductProAuth->product_id = $productID;
             self::$ProductProAuth->pro_type = $pro_auth_type;
             self::$ProductProAuth->save();
         }

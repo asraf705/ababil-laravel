@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('product_pre_auths', function (Blueprint $table) {
             $table->id();
             $table->integer('product_price_id');
-            $table->integer('product_id')->nullable();
             $table->integer('pre_type')->nullable();
             $table->timestamps();
         });

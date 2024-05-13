@@ -20,7 +20,6 @@ class ProductPrice extends Model
 
     private static function saveBasicInfo($price, $request)
     {
-        $price->product_id               = $request->product_id;
         $price->basic_page               = $request->basic_page;
         $price->basic_delivery           = $request->basic_delivery;
         $price->basic_regular_price      = $request->basic_regular_price;

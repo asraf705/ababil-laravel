@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('product_prices', function (Blueprint $table) {
             $table->id();
-            $table->text('product_id')->unique();
             $table->integer('basic_page')->nullable();
             $table->integer('basic_delivery')->nullable();
             $table->float('basic_regular_price')->nullable();

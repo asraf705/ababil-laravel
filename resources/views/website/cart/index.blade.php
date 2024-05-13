@@ -50,7 +50,7 @@
                                                         <div class="input-group">
                                                             <input type="number" name="quantity" min="1"
                                                                 class="form-control input-number"
-                                                                value="{{ $cart->qty }}"  style="margin-right: 2px;">
+                                                                value="{{ $cart->qty }}" style="margin-right: 2px;">
                                                             <input type="submit" class="btn btn-success btn-sm"
                                                                 value="Update" />
                                                         </div>
@@ -76,8 +76,78 @@
 
                                         </tr>
                                     @endforeach
-
                                 </tbody>
+                            </table>
+
+                            <table class="table  text-center">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Basic</th>
+                                        <th>Pro</th>
+                                        <th>Premium</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($prices as $price)
+                                    <tbody>
+                                        <tr>
+                                            <td>Page</td>
+                                            <td>{{ ' 0 to ' . $price->basic_page }}</td>
+                                            <td>{{ ' 0 to ' . $price->pro_page }}</td>
+                                            <td>{{ ' 0 to ' . $price->pre_page }}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td>Our Offer</td>
+                                            <td>
+                                                <ul>
+                                                @foreach ($price->basicTypes as $basicType)
+                                                    <li>{{ $basicType->basic_type_id }}</li>
+                                                @endforeach
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                @foreach ($price->proTypes as $proType)
+                                                    <li>{{ $proType->pro_type }}</li>
+                                                @endforeach
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                @foreach ($price->preTypes as $preType)
+                                                    <li>{{ $preType->pre_type }}</li>
+                                                @endforeach
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td>Delivery</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <td>Price</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>btn</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
                             </table>
                         </div>
                     </div>
@@ -85,10 +155,14 @@
                         <div class="cart-summary">
                             <h5>Cart Total</h5>
                             <ul class="summary-table">
-                                <li       > <span>  subtotal:</span> <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }}</sup></span></li>
-                                <li hidden> <span>  discount:</span> <span>{{ $currency->tex }}%</span></li>
-                                <li       > <span>  tex:     </span> <span>{{ $currency->tex }}%</span></li>
-                                <li       > <span>  total:   </span> <span>$140.00</span></li>
+                                <li> <span> subtotal:</span>
+                                    <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }}</sup></span>
+                                </li>
+                                {{-- <li hidden> <span>  discount:</span> <span>{{ $currency->tex }}%</span></li> --}}
+                                <li> <span> tex: </span> <span>{{ $currency->tex }}%</span></li>
+                                <li> <span> total: </span>
+                                    <span>{{ Cart::total() }}<sup>{{ $currency->currency_type }}</sup></span>
+                                </li>
                             </ul>
                             <div class="cart-btn mt-100">
                                 <a href="{{ route('checkout') }}" class="btn amado-btn w-100">Checkout</a>

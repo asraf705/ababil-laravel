@@ -13,118 +13,139 @@
 @endsection
 
 @section('body')
-    <!-- Main Content -->
-
-    <section class="section">
-        <div class="section-body">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Manage Theme Price</h4>
-                            <div class="card-header-action">
-                                <a href="{{ route('theme-price.create') }}" class="btn btn-info">
-                                    <i class="fa fa-plus"></i> Add Theme Price</a>
+    @foreach ($currencys as $currency)
+        <!-- Main Content -->
+        <section class="section">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Manage Theme Price</h4>
+                                <div class="card-header-action">
+                                    <a href="{{ route('theme-price.edit', 1) }}" class="btn btn-info">
+                                        <i class="fa fa-plus"></i> Edit Price</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="card-body">
 
-                                @if (session('Gmessage'))
-                                    <p class="text-center text-success">{{ session('Gmessage') }}</p>
-                                @else
-                                    <p class="text-center text-danger">{{ session('Rmessage') }}</p>
-                                @endif
+                                @foreach ($prices as $price)
+                                    <div class="cart-table-area padding-10 col-md-12">
+                                        <div class="container-fluid">
+                                            <div class="row g-3">
+                                                <div class="col-12 col-lg-12">
+                                                    <h2 style="text-align:center">Pricing Tables</h2>
+                                                    <div class="columns col-md-4">
+                                                        <ul class="price">
+                                                            <li class="header">Basic</li>
 
-                                <table class="table table-striped" id="table-1">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>Title</th>
-                                            <th>Category</th>
-                                            <th>Code</th>
-                                            <th>Theme Price(Font-End)</th>
-                                            <th>Basic Price</th>
-                                            <th>Pro Price</th>
-                                            <th>Premium Price</th>
-                                            <th>Image</th>
-                                            <th>Create Date</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        @foreach ($productPrices as $productPrice)
-                                            <tr>
+                                                            <li style="font-size: 20px">
+                                                                {{ ' 0 to ' . $price->basic_page }} Pages
+                                                            </li>
 
-                                                <td>
-                                                    <a href="{{ route('products.show', $productPrice->product->id) }}">
-                                                        {{ $productPrice->product->title }}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a
-                                                        href="{{ route('category.wise.product', ['categoryId' => $productPrice->product->category_id]) }}">
-                                                        {{ $productPrice->product->category->name }}
-                                                    </a>
-                                                </td>
-                                                <td>{{ $productPrice->product->code }}</td>
-                                                <td>{{ $productPrice->product->template_selling_price }}</td>
-                                                <td>{{ $productPrice->basic_selling_price }}</td>
-                                                <td>{{ $productPrice->pro_selling_price }}</td>
-                                                <td>{{ $productPrice->pre_selling_price }}</td>
-                                                <td>
-                                                    <img src="{{ asset($productPrice->product->image) }}" alt="Image"
-                                                        style="height: 50px; width: 50px;">
-                                                </td>
-                                                <td>{{ date('j M Y', strtotime($productPrice->updated_at)) }}</td>
-                                                <td>
-                                                    @if ($productPrice->status == 1)
-                                                        <a href="{{ route('products.status', $productPrice->id) }}"
-                                                            class="btn btn-success"><i class="fa fa-eye"></i>
-                                                            Publish</a>
-                                                    @else
-                                                        <a href="{{ route('products.status', $productPrice->id) }}"
-                                                            class="btn btn-warning"><i class="fa fa-eye-slash"></i>
-                                                            Unpublish</a>
-                                                    @endif
+                                                            <li class="grey">
+                                                                @foreach ($price->basicTypes as $basicType)
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                                                @endforeach
+                                                            </li>
 
+                                                            <li style="font-size: 20px">
+                                                                {{ $price->basic_delivery }} Days
+                                                            </li>
 
-                                                </td>
-                                                <td class="justify-content-center d-flex">
+                                                            <li class="grey">
 
-                                                    <a href="{{ route('products.show', $productPrice->product->id) }}"
-                                                        class="btn btn-dark" style="margin-right: 10px;"><i
-                                                            class="fa fa-info-circle"></i>
-                                                        Details</a>
+                                                                @if ($price->basic_discount_amount > 0)
+                                                                    Price:
+                                                                    {{ $price->basic_selling_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                                    <samp>
+                                                                        <strike>{{ $price->basic_regular_price }}<sup>{{ $currency->currency_type }}</sup></strike>
+                                                                        <sup class="text-danger">
+                                                                            {{ $price->basic_discount_amount }}<sup>{{ $price->basic_discount_type == 'fixed' ? $currency->currency_type . $price->basic_discount : $price->basic_discount . '%' }}</sup> OFF
+                                                                        </sup>
+                                                                    </samp>
+                                                                @else
+                                                                    Price:
+                                                                    {{ $price->basic_selling_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                                @endif
 
+                                                            </li>
+                                                        </ul>
+                                                    </div>
 
-                                                    <a href="{{ route('products.edit', $productPrice->id) }}"
-                                                        class="btn btn-primary" style="margin-right: 10px;">
-                                                        <i class="fa fa-edit"></i></a>
+                                                    <div class="columns col-md-4">
+                                                        <ul class="price">
+                                                            <li class="header" style="background-color:#CBA070">Pro</li>
+                                                            <li style="font-size: 20px">{{ ' 0 to ' . $price->pro_page }}
+                                                                Pages</li>
+                                                            <li class="grey">
+                                                                @foreach ($price->proTypes as $proType)
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-dark disabled">{{ $proType->pro_type }}</button>
+                                                                @endforeach
+                                                            </li>
+                                                            <li style="font-size: 20px">{{ $price->pro_delivery }} Days
+                                                            </li>
+                                                            <li class="grey">
 
-                                                    <form action="{{ route('products.destroy', $productPrice->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger "
-                                                            onclick="return confirm('Are you sure delete this!!')"><i
-                                                                class="fa fa-trash"></i></button>
-                                                    </form>
+                                                                @if ($price->pro_discount_amount > 0)
+                                                                    Price:
+                                                                    {{ $price->pro_selling_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                                    <samp><strike>{{ $price->pro_regular_price }}<sup>{{ $currency->currency_type }}</sup></strike>
+                                                                        <sup class="text-danger">
+                                                                            {{ $price->pro_discount_amount }}<sup>{{ $price->pro_discount_type == 'fixed' ? $currency->currency_type . $price->pro_discount : $price->pro_discount . '%' }}</sup> OFF
+                                                                        </sup>
+                                                                    </samp>
+                                                                @else
+                                                                    Price:
+                                                                    {{ $price->pro_selling_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                                @endif
 
-                                                    <!-- <a href="#" class="btn btn-dark"><i class="fa fa-info-circle"></i> Details</a> -->
-                                                </td>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
 
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
+                                                    <div class="columns col-md-4">
+                                                        <ul class="price">
+                                                            <li class="header">Premium</li>
+                                                            <li style="font-size: 20px">{{ ' 0 to ' . $price->pre_page }}
+                                                                Pages</li>
+                                                            <li class="grey">
+                                                                @foreach ($price->preTypes as $preType)
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-dark disabled">{{ $preType->pre_type }}</button>
+                                                                @endforeach
+                                                            </li>
+                                                            <li style="font-size: 20px">{{ $price->pre_delivery }} Days
+                                                            </li>
+                                                            <li class="grey">
+                                                                @if ($price->pre_discount_amount > 0)
+                                                                    Price:
+                                                                    {{ $price->pre_selling_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                                    <samp>
+                                                                        <strike>{{ $price->pre_regular_price }}<sup>{{ $currency->currency_type }}</sup></strike>
+                                                                        <sup class="text-danger">
+                                                                            {{ $price->pre_discount_amount }}<sup>{{ $price->pre_discount_type == 'fixed' ? $currency->currency_type . $price->pre_discount : $price->pre_discount . '%' }}</sup> OFF
+                                                                        </sup>
+                                                                    </samp>
+                                                                @else
+                                                                    Price:
+                                                                    {{ $price->pre_selling_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                                @endif
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-    </section>
+        </section>
+    @endforeach
 @endsection

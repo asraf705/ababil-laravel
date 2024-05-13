@@ -22,7 +22,7 @@ class ProductPriceController extends Controller
     public function index()
     {
         return view('admin.product.theme-price.index',[
-            'productPrices' => ProductPrice::all(),
+            'prices' => ProductPrice::where('id',1)->get(),
         ]);
     }
 
@@ -34,7 +34,6 @@ class ProductPriceController extends Controller
         return view('admin.product.theme-price.add', [
             'products' => Product::where('status', 1)->get(),
             'productTypes' => ProductType::where('status', 1)->get(),
-            'prices' => ProductPrice::all(),
         ]);
     }
 
@@ -47,9 +46,9 @@ class ProductPriceController extends Controller
     {
         // return $request;
         $this->price = ProductPrice::newPrice($request);
-        ProductBasicAuth::newBasicType($request->basic_types, $this->price->id, $this->price->product_id);
-        ProductProAuth::newProType($request->pro_types, $this->price->id, $this->price->product_id);
-        ProductPreAuth::newPreType($request->pre_types, $this->price->id, $this->price->product_id);
+        ProductBasicAuth::newBasicType($request->basic_types, $this->price->id);
+        ProductProAuth::newProType($request->pro_types, $this->price->id);
+        ProductPreAuth::newPreType($request->pre_types, $this->price->id);
         return back()->with('Gmessage', 'Product Price create successfully.');
     }
 
@@ -66,7 +65,14 @@ class ProductPriceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $price = ProductPrice::find($id);
+        return view('admin.product.theme-price.edit',[
+            'price' => $price,
+            'basicTypes' => ProductBasicAuth::where('product_price_id',$price->id)->get(),
+            'proTypes' => ProductProAuth::where('product_price_id',$price->id)->get(),
+            'preTypes' => ProductPreAuth::where('product_price_id',$price->id)->get(),
+            'productTypes' => ProductType::where('status', 1)->get(),
+        ]);
     }
 
     /**
@@ -74,7 +80,11 @@ class ProductPriceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->price = ProductPrice:: updatePrice($request, $id);
+        ProductBasicAuth::updateBasic($request->basic_types, $this->price->id);
+        ProductProAuth::updatePro($request->pro_types, $this->price->id);
+        ProductPreAuth::updatePre($request->pre_types, $this->price->id);
+        return back()->with('Gmessage', 'Product Price create successfully.');
     }
 
     /**

@@ -39,8 +39,8 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="box"></i><span>Product</span></a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown @yield('themes')"><a class="nav-link" href="{{ route('products.index') }}">Website Theme Manage</a></li>
-                    <li class="dropdown @yield('themePrice')"><a class="nav-link" href="{{ route('theme-price.index') }}">Theme Price Manage</a></li>
+                    <li class="dropdown @yield('themes')"><a class="nav-link" href="{{ route('products.index') }}">Manage Theme</a></li>
+                    <li class="dropdown @yield('themePrice')"><a class="nav-link" href="{{ route('theme-price.index') }}">Manage Price</a></li>
                 </ul>
             </li>
 
