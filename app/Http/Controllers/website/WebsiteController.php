@@ -70,11 +70,6 @@ class WebsiteController extends Controller
         return view('website.userAuth.register');
     }
 
-    // cart
-    public static function cart(){
-        return view('website.cart.index');
-    }
-
     // checkout
     public static function checkout(){
         return view('website.checkout.index');

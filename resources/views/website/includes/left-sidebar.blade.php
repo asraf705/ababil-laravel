@@ -37,7 +37,7 @@
     <br>
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
-        <a href="{{ route('cart') }}" class="cart-nav @yield('actv-cart')"><img
+        <a href="{{ route('carts.index') }}" class="cart-nav @yield('actv-cart')"><img
                 src="{{ asset('/') }}website/assets/img/core-img/cart.png" alt=""> Cart <span>({{Cart::count();}})</span></a>
         {{-- <a href="#" class="fav-nav"><img src="{{ asset('/') }}website/assets/img/core-img/favorites.png"
                 alt=""> Favourite</a> --}}

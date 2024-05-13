@@ -49,6 +49,12 @@ class ProductPrice extends Model
         return self::saveBasicInfo(self::$price, $request);
     }
 
+    public static function updatePrice($request, $id)
+    {
+        self::$price = ProductPrice::find($id);
+        return self::saveBasicInfo(self::$price, $request);
+    }
+
 
 
     public static function checkStatus($id){

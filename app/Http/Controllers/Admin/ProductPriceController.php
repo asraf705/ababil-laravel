@@ -84,7 +84,7 @@ class ProductPriceController extends Controller
         ProductBasicAuth::updateBasic($request->basic_types, $this->price->id);
         ProductProAuth::updatePro($request->pro_types, $this->price->id);
         ProductPreAuth::updatePre($request->pre_types, $this->price->id);
-        return back()->with('Gmessage', 'Product Price create successfully.');
+        return redirect('/theme-price')->with('Gmessage', 'Product Price create successfully.');
     }
 
     /**
@@ -93,12 +93,6 @@ class ProductPriceController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function getProductInfoByTitle()
-    {
-        self::$products = Product::where('id', $_GET['id'])->get();
-        return response()->json(self::$products);
     }
 
 }

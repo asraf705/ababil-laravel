@@ -12,8 +12,8 @@ class ProductProAuth extends Model
 
     private static $ProductProAuth, $ProductProAuths;
 
-    public static function newProType($pro_types, $priceID){
-        foreach ($pro_types as $pro_auth_type){
+    public static function newProType($proTypes, $priceID){
+        foreach ($proTypes as $pro_auth_type){
             self::$ProductProAuth = new ProductProAuth();
             self::$ProductProAuth->product_price_id = $priceID;
             self::$ProductProAuth->pro_type = $pro_auth_type;
@@ -21,15 +21,13 @@ class ProductProAuth extends Model
         }
     }
 
-    // public static function updateProductProAuth($pro_types, $productID ){
-
-    //     self::$ProductProAuths = ProductProAuth::where('product_id',$productID)->get();
-
-    //     foreach (self::$ProductProAuths as self::$ProductProAuth){
-    //          self::$ProductProAuth->delete();
-    //     }
-    //     ProductProAuth::newProductProAuth($pro_types, $productID);
-    // }
+    public static function updatePro($proTypes, $priceID){
+        self::$ProductProAuths = ProductProAuth::where('product_price_id',$priceID)->get();
+        foreach (self::$ProductProAuths as self::$ProductProAuth){
+            self::$ProductProAuth->delete();
+        }
+        ProductProAuth::newProType($proTypes, $priceID);
+    }
 
 
     public function productType(){

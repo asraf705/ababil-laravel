@@ -42,7 +42,6 @@ Route::resources([
     'texInfo'=>TexController::class,
 ]);
 
-Route::get('/cart', [WebsiteController::class, 'cart'])->name('cart');
 Route::get('/checkout', [WebsiteController::class, 'checkout'])->name('checkout');
 
 Route::get('/customer/login', [WebsiteController::class, 'customerLogin'])->name('userlogin');
