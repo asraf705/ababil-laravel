@@ -10,7 +10,7 @@ class Customer extends Model
     use HasFactory;
 
     private static $customer, $image, $imageUrl, $directory, $imageName, $extension, $images;
-    private static function saveInfo($request)
+    public static function saveInfo($request)
     {
         self::$customer = new Customer();
         self::$customer->fname              = $request->fname;
