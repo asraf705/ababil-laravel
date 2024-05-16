@@ -65,10 +65,7 @@ class WebsiteController extends Controller
         return view('website.userAuth.login');
     }
 
-    // UserRegister
-    public static function userRegister(){
-        return view('website.userAuth.register');
-    }
+
 
     // checkout
     public static function checkout(){

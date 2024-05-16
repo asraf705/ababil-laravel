@@ -20,44 +20,39 @@
                             <hr>
                         </div>
 
-                        <form action="#" method="post">
+                        <form class="form-horizontal" action="{{ route('customer.register') }}" method="post">
+                            @csrf
+
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" id="first_name" value=""
+                                    <input type="text" class="form-control" id="first_name" name="fname"
                                         placeholder="First Name" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" id="last_name" value=""
-                                        placeholder="Last Name" required>
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <select class="w-100" id="gender">
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="last_name" name="lname"
+                                        placeholder="Last Name">
                                 </div>
 
                                 <div class="col-12 mb-3">
                                     <input type="number" class="form-control" id="phone" placeholder="Phone Number"
-                                        value="">
+                                        name="phone" required>
                                 </div>
 
                                 <div class="col-12 mb-3">
                                     <input type="email" class="form-control" id="email" placeholder="Email"
-                                        value="">
+                                        name="email" required>
                                 </div>
 
                                 <div class="col-12 mb-3">
                                     <input type="password" class="form-control" id="company" placeholder="Password"
-                                        value="">
+                                        name="password" required>
                                 </div>
 
                                 <div class="cart-btn mt-15 col">
-                                    <button class="btn amado-btn w-100">Register</button>
+                                    <button type="submit" class="btn amado-btn w-100">Register</button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

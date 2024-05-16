@@ -38,7 +38,7 @@
                         </form>
                         <div class="col-12 mb-3 mb-4">
                             <!-- <h6 class="widget-title mb-30">Catagories</h6> -->
-                            <p>Cteate an Account <samp style="font: 3em sans-serif;"><a href="{{route('userRegister')}}"
+                            <p>Cteate an Account <samp style="font: 3em sans-serif;"><a href="{{route('customer.register')}}"
                                         style="color: #22cc9d;"><b> Register </b></a></samp></p>
                         </div>
                     </div>

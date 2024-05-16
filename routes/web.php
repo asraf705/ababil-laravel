@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\WebsiteController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\website\CustomerController;
 use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SkillController;
@@ -26,10 +27,6 @@ use App\Http\Controllers\Admin\ThemeInfoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', [WebsiteController::class, 'home'])->name('home');
 Route::get('/template', [WebsiteController::class, 'template'])->name('template');
 Route::get('/template/single-template/{title}', [WebsiteController::class, 'singleTemplate'])->name('single.template');
@@ -44,14 +41,19 @@ Route::resources([
 
 Route::get('/checkout', [WebsiteController::class, 'checkout'])->name('checkout');
 
+// start customer login and Register
+
 Route::get('/customer/login', [WebsiteController::class, 'customerLogin'])->name('userlogin');
-Route::get('/customer/register', [WebsiteController::class, 'userRegister'])->name('userRegister');
+
+Route::get('/customer/register', [CustomerController::class, 'index'])->name('customer.register');
+Route::post('/customer/register', [CustomerController::class, 'saveCustomerInfo'])->name('customer.register');
+
+
+// End customer login and Register
 
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
-
-    // Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resources([
