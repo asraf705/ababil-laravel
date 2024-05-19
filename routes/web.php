@@ -41,15 +41,16 @@ Route::resources([
 
 Route::get('/checkout', [WebsiteController::class, 'checkout'])->name('checkout');
 
+// start customer
 // start customer login and Register
 Route::get('/customer/register', [CustomerController::class, 'index'])->name('customer.register');
 Route::post('/customer/register', [CustomerController::class, 'saveCustomerInfo'])->name('customer.register');
-
 Route::get('/customer/login', [CustomerController::class, 'loginFrom'])->name('customer.login');
 Route::post('/customer/login', [CustomerController::class, 'customerLoginCheck'])->name('customer.login');
-
-
 // End customer login and Register
+Route::get('/customer/profile',[CustomerController::class,'customerProfile'])->name('customer.profile');
+
+// End customer
 
 
 

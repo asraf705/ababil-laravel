@@ -30,25 +30,10 @@
             <li class="@yield('price')"><a href="{{ route('price') }}">Price</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
             @if (Session::get('customer_id'))
-                <li class="@yield('customerProfile') nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-user"></i> {{ Session::get('customer_name') }}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                <li class="@yield('customer')"><a href="customer.profile" data-bs-toggle="dropdown"><i class="fa fa-user"></i>
+                      {{ Session::get('customer_name') }}</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
             @else
                 <li class="@yield('userlogin')"><a href="{{ route('customer.login') }}">Login</a></li>
             @endif

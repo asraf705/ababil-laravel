@@ -15,12 +15,12 @@ class CustomerController extends Controller
     // customer Register
     public function index()
     {
-        return view('website.userAuth.register');
+        return view('website.customer.register');
     }
 
     public function loginFrom()
     {
-        return view('website.userAuth.login');
+        return view('website.customer.login');
     }
 
     public function saveCustomerInfo(Request $request)
@@ -40,6 +40,12 @@ class CustomerController extends Controller
         //     return  redirect('/template/single-template/'.$productId);
         // }
         return redirect(route('home'));
+    }
+
+    public function customerProfile(){
+        return view('website.customer.profile',[
+            // 'customer'=>Customer::find(Session::get('customer_id')),
+        ]);
     }
 
 
