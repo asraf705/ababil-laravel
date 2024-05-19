@@ -20,30 +20,66 @@
                             <hr>
                         </div>
 
-                        <form action="" method="post">
+                        <form action="{{ route('customer.login') }}" method="post" class="theme-form">
+                            @csrf
                             <div class="row">
                                 <div class="col-12 mb-3">
-                                    <input type="email" class="form-control" id="email" placeholder="Phone Number or Email">
+                                    <input type="text" class="form-control" id="email" name="user_name"
+                                        placeholder="Phone Number or Email">
                                 </div>
 
                                 <div class="col-12 mb-3">
-                                    <input type="password" class="form-control" id="company" placeholder="Password"
-                                        >
+                                    <input type="password" class="form-control" name="password" id=""
+                                        placeholder="Password" />
+
+                                </div>
+                                <div class="col-md-12 text-right" >
+                                    <p  style="color: red;">aaaa <i class=" fa fa-info-circle"></i></p>
                                 </div>
 
                                 <div class="cart-btn mt-15 col-12">
-                                    <button href="#" class="btn amado-btn w-100">Login</button>
+                                    <button type="submit" class="btn amado-btn w-100">Login</button>
                                 </div>
                             </div>
                         </form>
-                        <div class="col-12 mb-3 mb-4">
-                            <!-- <h6 class="widget-title mb-30">Catagories</h6> -->
-                            <p>Cteate an Account <samp style="font: 3em sans-serif;"><a href="{{route('customer.register')}}"
-                                        style="color: #22cc9d;"><b> Register </b></a></samp></p>
+                        <div class="row mt-2">
+                            <div class="col-md-8">
+                                <p>Create an Account<a href="{{ route('customer.register') }}"
+                                        style="color: #fbb710; font: 16px sans-serif;"><h5> Register</h5></a></p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <a href="" style="color: #fbb710; font: 16px sans-serif;">Forgot your
+                                        password?</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const inputField = document.getElementById('email');
+
+        inputField.addEventListener('input', (e) => {
+            const inputValue = e.target.value;
+            if (isValidEmail(inputValue)) {
+                // input is an email
+            } else if (isValidPhoneNumber(inputValue)) {
+                // input is a phone number
+            } else {
+                // input is neither an email nor a phone number
+            }
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhoneNumber(phoneNumber) {
+            const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            return phoneRegex.test(phoneNumber);
+        }
+    </script>
 @endsection

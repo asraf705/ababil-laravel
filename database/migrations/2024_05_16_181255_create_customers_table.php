@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('date_of_birth')->nullable();
             $table->string('image')->nullable();
-            $table->tinyInteger('status')->default(1)->comment('1=active,2=unactive');
+            $table->tinyInteger('status')->default(1)->comment('1=Unblock,0=Block');
             $table->timestamps();
         });
     }

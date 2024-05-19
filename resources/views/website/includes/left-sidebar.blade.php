@@ -29,8 +29,32 @@
             <li class="@yield('template')"><a href="{{ route('template') }}">Template</a></li>
             <li class="@yield('price')"><a href="{{ route('price') }}">Price</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
-            <li class="@yield('userlogin')"><a href="{{ route('userlogin') }}">Login</a></li>
+            @if (Session::get('customer_id'))
+                <li class="@yield('customerProfile') nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user"></i> {{ Session::get('customer_name') }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            @else
+                <li class="@yield('userlogin')"><a href="{{ route('customer.login') }}">Login</a></li>
+            @endif
+
             {{-- <!-- <li class="active"><a href="{{route('home')}}">Home</a></li> --> --}}
+
         </ul>
     </nav>
     <!-- Button Group -->
@@ -38,7 +62,8 @@
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
         <a href="{{ route('carts.index') }}" class="cart-nav @yield('actv-cart')"><img
-                src="{{ asset('/') }}website/assets/img/core-img/cart.png" alt=""> Cart <span>({{Cart::count();}})</span></a>
+                src="{{ asset('/') }}website/assets/img/core-img/cart.png" alt=""> Cart
+            <span>({{ Cart::count() }})</span></a>
         {{-- <a href="#" class="fav-nav"><img src="{{ asset('/') }}website/assets/img/core-img/favorites.png"
                 alt=""> Favourite</a> --}}
         <a href="#" class="search-nav"><img src="{{ asset('/') }}website/assets/img/core-img/search.png"
@@ -48,11 +73,11 @@
     <!-- Social Button -->
     <div class="social-info d-flex justify-content-between">
         @foreach ($themeInfos as $themeInfo)
-            <a href="{{$themeInfo->facebook_url}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="{{$themeInfo->instagram_url}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="{{$themeInfo->twitter_url}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="{{$themeInfo->youtube_url}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-            <a href="{{$themeInfo->linked_in_url}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            <a href="{{ $themeInfo->facebook_url }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ $themeInfo->instagram_url }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="{{ $themeInfo->twitter_url }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="{{ $themeInfo->youtube_url }}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+            <a href="{{ $themeInfo->linked_in_url }}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
         @endforeach
 
     </div>

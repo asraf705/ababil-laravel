@@ -33,9 +33,9 @@
                                         placeholder="Last Name">
                                 </div>
 
-                                <div class="col-12 mb-3">
-                                    <input type="number" class="form-control" id="phone" placeholder="Phone Number"
-                                        name="phone" required>
+                                <div class="col-md-12 mb-3">
+                                    <input type="number" class="form-control" id="phone"
+                                        placeholder="Phone Number" name="phone" required>
                                 </div>
 
                                 <div class="col-12 mb-3">
@@ -59,7 +59,7 @@
 
                 <div class="col-12 mb-3 mt-15">
                     <!-- <h6 class="widget-title mb-30">Catagories</h6> -->
-                    <p>I have an Account <samp><a href="{{ route('userlogin') }}"
+                    <p>I have an Account <samp><a href="{{ route('customer.login') }}"
                                 style="color: #fbb710; font: 16px sans-serif;"><b> Login
                                 </b></a></samp></p>
                 </div>

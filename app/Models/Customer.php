@@ -4,14 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Session;
+
 
 class Customer extends Model
 {
     use HasFactory;
 
     private static $customer, $image, $imageUrl, $directory, $imageName, $extension, $images;
+
+    private static function getImageUrl($request){
+        self::$image = $request->file('image');
+        self::$extension = self::$image->getClientOriginalExtension();
+        self::$imageName = rand(1000, 50000000000).'.'.self::$extension;
+        self::$directory = 'upload/customer-images/';
+        self::$image->move(self::$directory, self::$imageName);
+        self::$imageUrl = self::$directory.self::$imageName;
+    }
+
+
     public static function saveInfo($request)
     {
+        if ($request->file('image'))
+        {
+            self::getImageUrl($request);
+        }
+        else{
+            self::$imageUrl = ' ';
+        }
+
         self::$customer = new Customer();
         self::$customer->fname              = $request->fname;
         self::$customer->lname              = $request->lname;
@@ -26,8 +48,31 @@ class Customer extends Model
         self::$customer->address            = $request->address;
         self::$customer->gender             = $request->gender;
         self::$customer->date_of_birth      = $request->date_of_birth;
-        self::$customer->image              = getImageUrl($request->image, 'upload/customer-images/');
+        self::$customer->image              = self::$imageUrl;
         self::$customer->save();
         return self::$customer;
     }
+
+    public static function loginCheck($request)
+    {
+       self::$customer = Customer::where('email',$request->user_name)
+                ->orWhere('phone',$request->user_name)
+                ->first();
+       if (self::$customer){
+           if (password_verify($request->password,self::$customer->password)){
+
+               Session::put('customer_id', self::$customer->id);
+               Session::put('customer_name', self::$customer->fname);
+               return redirect(route('home'));
+
+           }else{
+               return back()->with('passwordMessage','Please use valid password');
+           }
+       }else{
+           return back()->with('nameMessage','Please use valid email or phone number');
+       }
+
+    }
+
+
 }

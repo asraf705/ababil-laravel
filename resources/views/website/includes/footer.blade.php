@@ -74,7 +74,7 @@
                                             <a class="nav-link" href="{{route('price')}}">Price</a>
                                         </li> --}}
                                     <li class="nav-item @yield('userlogin')">
-                                        <a class="nav-link" href="{{ route('userlogin') }}">Login</a>
+                                        <a class="nav-link" href="{{ route('customer.login') }}">Login</a>
                                     </li>
                                 </ul>
                             </div>

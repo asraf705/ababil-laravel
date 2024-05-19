@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Testimonial;
 use App\Models\ThemeInfo;
 use App\Models\Tex;
+use Cart;
+
 
 use function Nette\Utils\first;
 class AppServiceProvider extends ServiceProvider
@@ -26,16 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // View::composer('*', function($view){
-        //     $view->with('cartsProduct', Cart::content());
-        //     if (Session::get('customer_id')){
-        //         $view->with('customerWishlistProducts',Wishlist::where('customer_id',Session::get('customer_id'))->get());
-        //     }
-        // });
 
-        // View::composer('*', function($view){
-        //     $view->with('categories', Category::where('status',1)->get());
-        // });
+
         View::composer('*', function($view){
             $view->with('testimonials', Testimonial::all());
         });
