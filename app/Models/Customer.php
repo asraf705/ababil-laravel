@@ -74,5 +74,31 @@ class Customer extends Model
 
     }
 
+    public static function updateProfile($request, $id){
+
+        self::$customer = Customer::find($id);
+        if ($request->file('image'))
+        {
+            if (file_exists(self::$customer->image)){
+                unlink(self::$customer->image);
+            }
+            self::$imageUrl = self::getImageUrl($request);
+        }
+        else{
+            self::$imageUrl = self::$customer->image;
+        }
+
+
+        self::$customer->fname              = $request->fname;
+        self::$customer->lname              = $request->lname;
+        self::$customer->phone              = $request->phone;
+        self::$customer->email              = $request->email;
+        self::$customer->date_of_birth      = $request->date_of_birth;
+        self::$customer->gender             = $request->gender;
+        self::$customer->address            = $request->address;
+        self::$customer->image              = self::$imageUrl;
+        self::$customer->save();
+
+    }
 
 }

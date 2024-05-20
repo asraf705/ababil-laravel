@@ -45,7 +45,7 @@
                         <div class="row mt-2">
                             <div class="col-md-8">
                                 <p>Create an Account<a href="{{ route('customer.register') }}"
-                                        style="color: #fbb710; font: 16px sans-serif;"><h5> Register</h5></a></p>
+                                        style="color: #fbb710; font: 16px sans-serif;"> Register</a></p>
                             </div>
                             <div class="col-md-4 text-right">
                                 <a href="" style="color: #fbb710; font: 16px sans-serif;">Forgot your

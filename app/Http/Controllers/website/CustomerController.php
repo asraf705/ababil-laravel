@@ -44,9 +44,13 @@ class CustomerController extends Controller
 
     public function customerProfile(){
         return view('website.customer.profile',[
-            // 'customer'=>Customer::find(Session::get('customer_id')),
+            'customerInfo'=>Customer::find(Session::get('customer_id')),
         ]);
     }
 
+    public function customerUpdateProfile(Request $request, $id){
+        Customer::updateProfile($request, $id);
+        return back()->with('Gmessage', 'Profile Info Updated');
+    }
 
 }

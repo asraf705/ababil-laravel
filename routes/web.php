@@ -49,6 +49,7 @@ Route::get('/customer/login', [CustomerController::class, 'loginFrom'])->name('c
 Route::post('/customer/login', [CustomerController::class, 'customerLoginCheck'])->name('customer.login');
 // End customer login and Register
 Route::get('/customer/profile',[CustomerController::class,'customerProfile'])->name('customer.profile');
+Route::post('/customer/update-profile/{id}',[CustomerController::class,'customerUpdateProfile'])->name('customer.update-profile');
 
 // End customer
 

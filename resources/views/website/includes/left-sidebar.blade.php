@@ -30,7 +30,7 @@
             <li class="@yield('price')"><a href="{{ route('price') }}">Price</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
             @if (Session::get('customer_id'))
-                <li class="@yield('customer')"><a href="customer.profile" data-bs-toggle="dropdown"><i class="fa fa-user"></i>
+                <li class="@yield('customer')"><a href="{{ route('customer.profile') }}" data-bs-toggle="dropdown"><i class="fa fa-user"></i>
                       {{ Session::get('customer_name') }}</a>
                 </li>
 
