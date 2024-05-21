@@ -21,6 +21,7 @@ class Customer extends Model
         self::$directory = 'upload/customer-images/';
         self::$image->move(self::$directory, self::$imageName);
         self::$imageUrl = self::$directory.self::$imageName;
+        return self::$imageUrl;
     }
 
 
@@ -87,8 +88,6 @@ class Customer extends Model
         else{
             self::$imageUrl = self::$customer->image;
         }
-
-
         self::$customer->fname              = $request->fname;
         self::$customer->lname              = $request->lname;
         self::$customer->phone              = $request->phone;

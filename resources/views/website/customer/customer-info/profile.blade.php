@@ -100,13 +100,6 @@
             -moz-box-sizing: border-box;
             box-sizing: border-box;
         }
-
-        body {
-            margin: 0;
-            padding: 2rem 1.5rem;
-            font: 1rem/1.5 "PT Sans", Arial, sans-serif;
-            color: #5a5a5a;
-        }
     </style>
 
     <div class="shop_sidebar_area">
@@ -157,11 +150,13 @@
                                         value="{{ $customerInfo->lname }}" placeholder="Last Name">
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    @if ($customerInfo->image == null)
-                                    <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" alt="default-profile" class="d-flex" style=" width: 100px; height: 100px" id='image'>
+                                    @if ($customerInfo->image == 0)
+                                        <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
+                                            alt="Image" class="d-flex"
+                                            style=" width: 100px; height: 100px; border-radius: 50%;" id='image'>
                                     @else
-                                        <img src="{{ asset($customerInfo->image) }}" class="d-flex" alt="profile-image"
-                                            style=" width: 100px; height: 100px" id='image'>
+                                        <img src="{{ asset($customerInfo->image) }}" class="d-flex" alt="Image"
+                                            style=" width: 100px; height: 100px; border-radius: 50%;" id='image'>
                                     @endif
                                     <label class="file">
                                         <input type="file" name="image" for="image" />
@@ -213,7 +208,7 @@
                                 </div>
 
                                 <div class="cart-btn mt-15 col-12">
-                                    <button type="submit" class="btn amado-btn w-100">Save</button>
+                                    <button type="submit" class="btn amado-btn w-100">Update</button>
                                 </div>
                             </div>
                         </form>

@@ -26,24 +26,24 @@ class CustomerController extends Controller
     public function saveCustomerInfo(Request $request)
     {
         Customer::saveInfo($request);
-        // Session::put('customer_id', $this->customer->id);
-        // Session::put('customer_name', $this->customer->fname);
+        Session::put('customer_id', $this->customer->id);
+        Session::put('customer_name', $this->customer->fname);
         return back();
     }
 
     public function customerLoginCheck(Request $request){
         Customer::loginCheck($request);
-        // if (Session::get('product_id'))
-        // {
-        //     $productId = Session::get('product_id');
-        //     Session::forget(Session::get('product_id'));
-        //     return  redirect('/template/single-template/'.$productId);
-        // }
+        if (Session::get('product_id'))
+        {
+            $productId = Session::get('product_id');
+            Session::forget(Session::get('product_id'));
+            return  redirect('/template/single-template/'.$productId);
+        }
         return redirect(route('home'));
     }
 
     public function customerProfile(){
-        return view('website.customer.profile',[
+        return view('website.customer.customer-info.profile',[
             'customerInfo'=>Customer::find(Session::get('customer_id')),
         ]);
     }

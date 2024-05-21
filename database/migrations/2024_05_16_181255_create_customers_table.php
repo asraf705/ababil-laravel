@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('gender')->nullable();
             $table->string('date_of_birth')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->default(0);
             $table->tinyInteger('status')->default(1)->comment('1=Unblock,0=Block');
             $table->timestamps();
         });
