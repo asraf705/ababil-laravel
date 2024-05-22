@@ -14,24 +14,23 @@ class Customer extends Model
 
     private static $customer, $image, $imageUrl, $directory, $imageName, $extension, $images;
 
-    private static function getImageUrl($request){
+    private static function getImageUrl($request)
+    {
         self::$image = $request->file('image');
         self::$extension = self::$image->getClientOriginalExtension();
-        self::$imageName = rand(1000, 50000000000).'.'.self::$extension;
+        self::$imageName = rand(1000, 50000000000) . '.' . self::$extension;
         self::$directory = 'upload/customer-images/';
         self::$image->move(self::$directory, self::$imageName);
-        self::$imageUrl = self::$directory.self::$imageName;
+        self::$imageUrl = self::$directory . self::$imageName;
         return self::$imageUrl;
     }
 
 
     public static function saveInfo($request)
     {
-        if ($request->file('image'))
-        {
+        if ($request->file('image')) {
             self::getImageUrl($request);
-        }
-        else{
+        } else {
             self::$imageUrl = ' ';
         }
 
@@ -40,10 +39,9 @@ class Customer extends Model
         self::$customer->lname              = $request->lname;
         self::$customer->phone              = $request->phone;
         self::$customer->email              = $request->email;
-        if ($request->password){
+        if ($request->password) {
             self::$customer->password = bcrypt($request->password);
-        }
-        else{
+        } else {
             self::$customer->password = bcrypt($request->email);
         }
         self::$customer->address            = $request->address;
@@ -56,36 +54,35 @@ class Customer extends Model
 
     public static function loginCheck($request)
     {
-       self::$customer = Customer::where('email',$request->user_name)
-                ->orWhere('phone',$request->user_name)
-                ->first();
-       if (self::$customer){
-           if (password_verify($request->password,self::$customer->password)){
+        self::$customer = Customer::where('email', $request->user_name)
+            ->orWhere('phone', $request->user_name)
+            ->first();
+        if (self::$customer) {
+            if (password_verify($request->password, self::$customer->password)) {
 
-               Session::put('customer_id', self::$customer->id);
-               Session::put('customer_name', self::$customer->fname);
-               return redirect(route('home'));
-
-           }else{
-               return back()->with('passwordMessage','Please use valid password');
-           }
-       }else{
-           return back()->with('nameMessage','Please use valid email or phone number');
-       }
-
+                Session::put('customer_id', self::$customer->id);
+                Session::put('customer_name', self::$customer->fname);
+                return redirect(route('home'));
+            } else {
+                Session::put('passwordMessage', 'passwordMessage');
+                return redirect(route('customer.login'));
+            }
+        } else {
+            return redirect(route('customer.login'))->with('nameMessage', 'nameMessage');
+        }
     }
 
-    public static function updateProfile($request, $id){
+
+    public static function updateProfile($request, $id)
+    {
 
         self::$customer = Customer::find($id);
-        if ($request->file('image'))
-        {
-            if (file_exists(self::$customer->image)){
+        if ($request->file('image')) {
+            if (file_exists(self::$customer->image)) {
                 unlink(self::$customer->image);
             }
             self::$imageUrl = self::getImageUrl($request);
-        }
-        else{
+        } else {
             self::$imageUrl = self::$customer->image;
         }
         self::$customer->fname              = $request->fname;
@@ -97,7 +94,5 @@ class Customer extends Model
         self::$customer->address            = $request->address;
         self::$customer->image              = self::$imageUrl;
         self::$customer->save();
-
     }
-
 }

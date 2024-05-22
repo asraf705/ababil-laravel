@@ -70,12 +70,18 @@
                                     <li class="nav-item @yield('team')">
                                         <a class="nav-link" href="{{ route('team') }}">Team</a>
                                     </li>
-                                    {{-- <li class="nav-item @yield('price')">
+                                    <li class="nav-item @yield('price')">
                                             <a class="nav-link" href="{{route('price')}}">Price</a>
-                                        </li> --}}
+                                        </li>
+                                        @if (Session::get('customer_id'))
+                                        <li class="nav-item @yield('customer')">
+                                        <a class="nav-link" href="{{ route('customer.profile') }}">{{ Session::get('customer_name') }}</a>
+                                        </li>
+                                        @else
                                     <li class="nav-item @yield('userlogin')">
                                         <a class="nav-link" href="{{ route('customer.login') }}">Login</a>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                         </nav>

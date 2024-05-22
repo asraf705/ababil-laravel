@@ -28,29 +28,45 @@ class CustomerController extends Controller
         Customer::saveInfo($request);
         Session::put('customer_id', $this->customer->id);
         Session::put('customer_name', $this->customer->fname);
-        return back();
+        return redirect(route('customer.login'));
     }
 
-    public function customerLoginCheck(Request $request){
+    public function customerLoginCheck(Request $request)
+    {
         Customer::loginCheck($request);
-        if (Session::get('product_id'))
-        {
+        if (Session::get('product_id')) {
             $productId = Session::get('product_id');
             Session::forget(Session::get('product_id'));
-            return  redirect('/template/single-template/'.$productId);
+            return  redirect('/template/single-template/' . $productId);
         }
         return redirect(route('home'));
     }
 
-    public function customerProfile(){
-        return view('website.customer.customer-info.profile',[
-            'customerInfo'=>Customer::find(Session::get('customer_id')),
+    public function logout()
+    {
+        Session::forget('customer_id');
+        Session::forget('customer_name');
+
+        return redirect('/');
+    }
+
+    public function customerProfile()
+    {
+        return view('website.customer.customer-info.profile', [
+            'customerInfo' => Customer::find(Session::get('customer_id')),
         ]);
     }
 
-    public function customerUpdateProfile(Request $request, $id){
+    public function customerUpdateProfile(Request $request, $id)
+    {
         Customer::updateProfile($request, $id);
         return back()->with('Gmessage', 'Profile Info Updated');
     }
 
+    public function customerOrder()
+    {
+        // $this->orders = Order::where('customer_id', Session::get('customer_id'))->orderBy('id', 'desc')->get();
+        // return view('website.customer.customer-info.oder', ['orders'=>$this->orders]);
+        return view('website.customer.customer-info.oder');
+    }
 }

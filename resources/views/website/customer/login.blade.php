@@ -20,21 +20,40 @@
                             <hr>
                         </div>
 
+                        <?php
+                        if (session('nameMessage') == 'nameMessage') {
+                            $nameError = "<p style='color: red; font: 16px sans-serif; f'>Please use valid email or phone number <i class=' fa fa-info-circle'></i></p>";
+                        } else {
+                            $nameError = '';
+                        }
+
+                        if (session('passwordMessage') == 'passwordMessage') {
+                            $passwordError = "<p style='color: red; font: 16px sans-serif;'>Please use valid password <i class=' fa fa-info-circle'></i></p>";
+                        } else {
+                            $passwordError = '';
+                        }
+                        ?>
+
                         <form action="{{ route('customer.login') }}" method="post" class="theme-form">
                             @csrf
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <input type="text" class="form-control" id="email" name="user_name"
-                                        placeholder="Phone Number or Email">
+                                        placeholder="Phone Number or Email" required />
+                                </div>
+
+                                <div class="col-md-12 text-right">
+                                    <?php echo $nameError; ?>
                                 </div>
 
                                 <div class="col-12 mb-3">
                                     <input type="password" class="form-control" name="password" id=""
-                                        placeholder="Password" />
+                                        placeholder="Password" required />
 
                                 </div>
-                                <div class="col-md-12 text-right" >
-                                    <p  style="color: red;">aaaa <i class=" fa fa-info-circle"></i></p>
+
+                                <div class="col-md-12 text-right">
+                                    <?php echo $passwordError; ?>
                                 </div>
 
                                 <div class="cart-btn mt-15 col-12">
@@ -49,7 +68,7 @@
                             </div>
                             <div class="col-md-4 text-right">
                                 <a href="" style="color: #fbb710; font: 16px sans-serif;">Forgot your
-                                        password?</a>
+                                    password?</a>
                             </div>
                         </div>
                     </div>

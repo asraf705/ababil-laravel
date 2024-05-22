@@ -1,10 +1,14 @@
 @extends('website.master')
 
 @section('title')
-    Customer Profile
+    Profile
 @endsection
 
 @section('customer')
+    active
+@endsection
+
+@section('customerProfile')
     active
 @endsection
 
@@ -105,21 +109,9 @@
     <div class="shop_sidebar_area">
         <!-- ##### Single Widget ##### -->
         <div class="widget catagory mb-50">
-
-
             <!--  Catagories  -->
-            <div class="catagories-menu">
-                <ul>
-                    <li class="active"><a href="customer.profile">Profile</a></li>
-                    <li><a href="">Orders</a></li>
-                    <li><a href="">Wishlist</a></li>
-                    <li><a href="">Change Password</a></li>
-                    <li><a href="">Logout</a></li>
+            @include('website.customer.customer-info.customer-menu')
 
-                </ul>
-
-
-            </div>
         </div>
     </div>
 
@@ -151,15 +143,25 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     @if ($customerInfo->image == 0)
-                                        <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
-                                            alt="Image" class="d-flex"
-                                            style=" width: 100px; height: 100px; border-radius: 50%;" id='image'>
+                                        @if ($customerInfo->gender == 'Male')
+                                            <img src="{{ asset('/') }}upload/default-images/male.png"
+                                                alt="Image" class="d-flex"
+                                                style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
+                                        @elseif($customerInfo->gender == 'Female')
+                                            <img src="{{ asset('/') }}upload/default-images/female.png"
+                                                alt="Image" class="d-flex"
+                                                style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
+                                        @else
+                                            <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
+                                                alt="Image" class="d-flex"
+                                                style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
+                                        @endif
                                     @else
                                         <img src="{{ asset($customerInfo->image) }}" class="d-flex" alt="Image"
-                                            style=" width: 100px; height: 100px; border-radius: 50%;" id='image'>
+                                            style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
                                     @endif
                                     <label class="file">
-                                        <input type="file" name="image" for="image" />
+                                        <input type="file" name="image" for="image" accept=".jpg,.jpeg,.png"/>
                                         <span class="file-custom"></span>
                                     </label>
                                 </div>

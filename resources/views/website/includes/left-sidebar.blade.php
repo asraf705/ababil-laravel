@@ -29,19 +29,30 @@
             <li class="@yield('template')"><a href="{{ route('template') }}">Template</a></li>
             <li class="@yield('price')"><a href="{{ route('price') }}">Price</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
+            <li class="@yield('policy')"><a href="">Privacy Policy</a></li>
             @if (Session::get('customer_id'))
                 <li class="@yield('customer')"><a href="{{ route('customer.profile') }}" data-bs-toggle="dropdown">
                         <div class="d-flex">
                             @if ($customerInfo->image == 0)
-                                <img src="{{ asset('/')}}upload/default-images/default-profile.jpg"
-                                    alt="default-profile" class="d-flex"
-                                    style="width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                @if ($customerInfo->gender == 'Male')
+                                <img src="{{ asset('/') }}upload/default-images/male.png"
+                                        alt="default-profile" class="d-flex"
+                                        style="width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                @elseif($customerInfo->gender == 'Female')
+                                <img src="{{ asset('/') }}upload/default-images/female.png"
+                                        alt="default-profile" class="d-flex"
+                                        style="width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                @else
+                                    <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
+                                        alt="default-profile" class="d-flex"
+                                        style="width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                @endif
                             @else
                                 <img src="{{ asset($customerInfo->image) }}" class="d-flex" alt="profile-image"
                                     style=" width: 50px; height: 50px; border-radius: 50%;" id='image'>
                             @endif
-                            <div style="padding:10%">
-                            {{ Session::get('customer_name') }}
+                            <div style="padding-top:11%;padding-left:5px;">
+                                {{ Session::get('customer_name') }}
                             </div>
                         </div>
                     </a>
