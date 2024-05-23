@@ -13,6 +13,7 @@
 @endsection
 
 @section('body')
+
     <!-- css style -->
     <style>
         .required {
@@ -20,6 +21,7 @@
         }
     </style>
     <!-- css style -->
+
     <!-- Main Content -->
 
     <section class="section">
@@ -135,6 +137,7 @@
                                     <div class="buttons">
                                         <button type="submit" class="btn btn-lg btn-info col-md-12" onclick="return confirm('Are you sure to Update this!!')">Update</button>
                                     </div>
+
                                 </div>
 
                             </form>
