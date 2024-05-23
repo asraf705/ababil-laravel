@@ -5,6 +5,7 @@ namespace App\Http\Controllers\website;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Policy;
 use App\Models\ProductPrice;
 use Illuminate\Http\Request;
 
@@ -48,6 +49,7 @@ class WebsiteController extends Controller
      // Contact
      public static function about(){
         return view('website.team.index');
+
     }
 
     // team
@@ -60,16 +62,33 @@ class WebsiteController extends Controller
         return view('website.price.index');
     }
 
-    // login
-    public static function customerLogin(){
-        return view('website.userAuth.login');
+    // policyOne
+    public static function policyOne(){
+        return view('website.polices.pageOne',[
+            'policy' => Policy::latest()->first(),
+        ]);
     }
 
-
-
-    // checkout
-    public static function checkout(){
-        return view('website.checkout.index');
+    // policyTwo
+    public static function policyTwo(){
+        return view('website.polices.pageTwo',[
+            'policy' => Policy::latest()->first(),
+        ]);
     }
+
+    // policyThree
+    public static function policyThree(){
+        return view('website.polices.pageThree',[
+            'policy' => Policy::latest()->first(),
+        ]);
+    }
+
+    // policyFour
+    public static function policyFour(){
+        return view('website.polices.pageFour',[
+            'policy' => Policy::latest()->first(),
+        ]);
+    }
+
 
 }

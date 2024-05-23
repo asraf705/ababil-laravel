@@ -82,7 +82,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <input type="number" name="whapp_mobile" value="{{ $info->whapp_mobile }}"
-                                                    class="form-control" placeholder="8801314XXXXXXXXXX">
+                                                    class="form-control" placeholder="(880)1314XXXXXXXXXX">
                                             </div>
                                         </div>
 

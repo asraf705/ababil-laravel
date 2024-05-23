@@ -29,7 +29,7 @@
             <li class="@yield('template')"><a href="{{ route('template') }}">Template</a></li>
             <li class="@yield('price')"><a href="{{ route('price') }}">Price</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
-            <li class="@yield('policy')"><a href="">Privacy Policy</a></li>
+            <li class="@yield('policy')"><a href="{{ route('policyOne') }}">Privacy Policy</a></li>
             @if (Session::get('customer_id'))
                 <li class="@yield('customer')"><a href="{{ route('customer.profile') }}" data-bs-toggle="dropdown">
                         <div class="d-flex">

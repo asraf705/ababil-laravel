@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\admin\PolicyController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductPriceController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -34,6 +35,12 @@ Route::get('/template/category-wise-template/{id}', [WebsiteController::class, '
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
 Route::get('/team', [WebsiteController::class, 'team'])->name('team');
 Route::get('/price', [WebsiteController::class, 'price'])->name('price');
+Route::get('/policy/first policy', [WebsiteController::class, 'policyOne'])->name('policyOne');
+Route::get('/policy/second policy', [WebsiteController::class, 'policyTwo'])->name('policyTwo');
+Route::get('/policy/third policy', [WebsiteController::class, 'policyThree'])->name('policyThree');
+Route::get('/policy/fourth policy', [WebsiteController::class, 'policyFour'])->name('policyFour');
+
+
 Route::resources([
     'carts' => CartController::class,
     'texInfo'=>TexController::class,
@@ -69,6 +76,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'theme-price' => ProductPriceController::class, // for  Product price
         'testimonial' => TestimonialController::class, // for Testimonial
         'theme-info' => ThemeInfoController::class, // for ThemeInfo
+        'privacy-policy' => PolicyController::class, // for ThemeInfo
 
 ]);
 

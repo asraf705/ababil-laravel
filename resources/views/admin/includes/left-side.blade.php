@@ -1,27 +1,32 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{route('dashboard')}}"> <img alt="image" src="{{ asset('/') }}admin/assets/img/logo.png"
+            <a href="{{ route('dashboard') }}"> <img alt="image" src="{{ asset('/') }}admin/assets/img/logo.png"
                     class="header-logo" /> <span class="logo-name"></span>
             </a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown @yield('dashboard')">
-                <a href="{{route('dashboard')}}" class="nav-link"><i
+                <a href="{{ route('dashboard') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
             <li class="menu-header">Module Settings</li>
             <li class="dropdown @yield('module')">
-                <a href="#" class="menu-toggle nav-link has-dropdown "><i
-                        data-feather="command"></i><span>Module Settings</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown "><i data-feather="command"></i><span>Module
+                        Settings</span></a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown @yield('category')"><a class="nav-link" href="{{ route('categories.index') }}">Category</a></li>
-                    <li class="dropdown @yield('product-type')"><a class="nav-link" href="{{ route('product-type.index') }}">Product Type</a></li>
-                    <li class="dropdown @yield('tex')"><a class="nav-link" href="{{ route('texInfo.edit',1) }}">Manage Tex & Currency</a></li>
-                    <li class="dropdown @yield('post')"><a class="nav-link" href="{{ route('post.index') }}">Post</a></li>
-                    <li class="dropdown @yield('skill')"><a class="nav-link" href="{{ route('skill.index') }}">Skill(Lang.)</a></li>
+                    <li class="dropdown @yield('category')"><a class="nav-link"
+                            href="{{ route('categories.index') }}">Category</a></li>
+                    <li class="dropdown @yield('product-type')"><a class="nav-link"
+                            href="{{ route('product-type.index') }}">Product Type</a></li>
+                    <li class="dropdown @yield('tex')"><a class="nav-link"
+                            href="{{ route('texInfo.edit', 1) }}">Manage Tex & Currency</a></li>
+                    <li class="dropdown @yield('post')"><a class="nav-link" href="{{ route('post.index') }}">Post</a>
+                    </li>
+                    <li class="dropdown @yield('skill')"><a class="nav-link"
+                            href="{{ route('skill.index') }}">Skill(Lang.)</a></li>
                 </ul>
             </li>
 
@@ -39,8 +44,10 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="box"></i><span>Product</span></a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown @yield('themes')"><a class="nav-link" href="{{ route('products.index') }}">Manage Theme</a></li>
-                    <li class="dropdown @yield('themePrice')"><a class="nav-link" href="{{ route('theme-price.index') }}">Manage Price</a></li>
+                    <li class="dropdown @yield('themes')"><a class="nav-link"
+                            href="{{ route('products.index') }}">Manage Theme</a></li>
+                    <li class="dropdown @yield('themePrice')"><a class="nav-link"
+                            href="{{ route('theme-price.index') }}">Manage Price</a></li>
                 </ul>
             </li>
 
@@ -64,8 +71,8 @@
 
             <li class="menu-header">Team Account</li>
             <li class="dropdown @yield('discount')">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="copy"></i><span>Team Members</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Team
+                        Members</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="account/manage-account.html">Manage Members</a></li>
                 </ul>
@@ -76,7 +83,8 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="copy"></i><span>Testimonial</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown @yield('testimonial')" href="{{ route('testimonial.index') }}">Manage Testimonial</a></li>
+                    <li><a class="dropdown @yield('testimonial')" href="{{ route('testimonial.index') }}">Manage
+                            Testimonial</a></li>
                 </ul>
             </li>
 
@@ -86,7 +94,10 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="copy"></i><span>Theme</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown @yield('theme-infos')" href="{{ route('theme-info.edit',1) }}">Theme Info</a></li>
+                    <li><a class="dropdown @yield('theme-infos')" href="{{ route('theme-info.edit', 1) }}">Theme Info</a>
+                    </li>
+                    <li><a class="dropdown @yield('policyInfo')" href="{{ route('privacy-policy.edit', 1) }} ">Privacy
+                            Policy</a></li>
                 </ul>
             </li>
 
