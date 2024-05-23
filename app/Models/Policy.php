@@ -11,19 +11,6 @@ class Policy extends Model
 
     private static $privacyPolicy;
 
-    private static function saveBasicInfo($privacyPolicy, $request)
-    {
-        $privacyPolicy->one_name                = $request->one_name;
-        $privacyPolicy->one_policy              = $request->one_policy;
-        $privacyPolicy->two_name                = $request->two_name;
-        $privacyPolicy->two_policy              = $request->two_policy;
-        $privacyPolicy->three_name                = $request->three_name;
-        $privacyPolicy->three_policy              = $request->three_policy;
-        $privacyPolicy->four_name                = $request->four_name;
-        $privacyPolicy->four_policy              = $request->four_policy;
-        $privacyPolicy->save();
-    }
-
     public static function newPrivacyPolicy($request)
     {
         self::$privacyPolicy = new Policy();
