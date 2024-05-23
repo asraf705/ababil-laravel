@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- forth policy -->
+                                    <!-- four policy -->
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-12">
