@@ -35,7 +35,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with('customerInfo', Customer::find(Session::get('customer_id')));
         });
 
-
         View::composer('*', function ($view) {
             $view->with('testimonials', Testimonial::all());
         });
@@ -49,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('*', function ($view) {
-            $view->with('prices', ProductPrice::where('id', 1)->get(),);
+            $view->with('prices', ProductPrice::where('id', 1)->get());
         });
     }
 }
