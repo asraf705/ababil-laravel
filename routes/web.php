@@ -10,12 +10,12 @@ use App\Http\Controllers\website\CustomerController;
 use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SkillController;
-use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\admin\PolicyController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductPriceController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\ThemeInfoController;
+use App\Http\Controllers\website\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ Route::resources([
     'texInfo'=>TexController::class,
 ]);
 
-Route::get('/checkout', [WebsiteController::class, 'checkout'])->name('checkout');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 // start customer
 // start customer login and Register

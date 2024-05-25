@@ -84,13 +84,8 @@
                         <div class="cart-summary">
                             <h5>Cart Total</h5>
                             <ul class="summary-table">
-                                <li> <span> subtotal:</span>
+                                <li> <span> total:</span>
                                     <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }}</sup></span>
-                                </li>
-                                {{-- <li hidden> <span>  discount:</span> <span>{{ $currency->tex }}%</span></li> --}}
-                                <li> <span> tex: </span> <span>{{ $currency->tex }}%</span></li>
-                                <li> <span> total: </span>
-                                    <span>{{ Cart::total() }}<sup>{{ $currency->currency_type }}</sup></span>
                                 </li>
                             </ul>
                             <div class="cart-btn mt-100">
