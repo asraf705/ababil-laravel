@@ -162,12 +162,25 @@
                                 <form action="#" method="post">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control" id="first_name"
-                                                placeholder="First Name" name="fname" required>
+                                            @if (isset($customer->fname))
+                                                <input type="text" class="form-control" id="first_name"
+                                                    placeholder="First Name" name="fname" value="{{ $customer->fname }}"
+                                                    readonly required>
+                                            @else
+                                                <input type="text" class="form-control" id="first_name"
+                                                    placeholder="First Name" name="fname" required>
+                                            @endif
+
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control" name="lname" id="last_name"
-                                                placeholder="Last Name">
+                                            @if (isset($customer->lname))
+                                                <input type="text" class="form-control" name="lname" id="last_name"
+                                                    value="{{ $customer->lname }}" readonly placeholder="Last Name">
+                                            @else
+                                                <input type="text" class="form-control" name="lname" id="last_name"
+                                                    placeholder="Last Name">
+                                            @endif
+
                                         </div>
                                         <div class="col-12 mb-3">
                                             <input type="text" class="form-control" id="company"
@@ -175,18 +188,36 @@
                                         </div>
 
                                         <div class="col-12 mb-3">
-                                            <input type="number" class="form-control" name="phone " id="phone"
-                                                placeholder="Mobile">
+                                            @if (isset($customer->phone))
+                                                <input type="number" class="form-control" name="phone" id="phone"
+                                                    value="{{ $customer->phone }}" readonly required placeholder="Mobile">
+                                            @else
+                                                <input type="number" class="form-control" name="phone " id="phone"
+                                                    required placeholder="Mobile">
+                                            @endif
+
                                         </div>
 
                                         <div class="col-12 mb-3">
-                                            <input type="email" class="form-control" name="email " id="email"
-                                                placeholder="Email">
+                                            @if (isset($customer->email))
+                                                <input type="email" class="form-control" name="email " id="email"
+                                                    value="{{ $customer->email }}" readonly required placeholder="Email">
+                                            @else
+                                                <input type="email" class="form-control" name="email " id="email"
+                                                    placeholder="Email">
+                                            @endif
+
                                         </div>
 
                                         <div class="col-12 mb-3">
+                                            @if (isset($customer->address))
                                             <input type="text" class="form-control mb-3" id="street_address"
-                                                name="address" placeholder="Address" required>
+                                                    name="address" placeholder="Address" value="{{ $customer->address }}" readonly required>
+                                            @else
+                                                <input type="text" class="form-control mb-3" id="street_address"
+                                                    name="address" placeholder="Address" required>
+                                            @endif
+
                                         </div>
 
                                         <div class="col-12 mb-3">
@@ -253,29 +284,28 @@
 
     <script>
         $(document).ready(function() {
-          $.ajax({
-            type: "POST",
-            url: "your-php-file.php",
-            data: {
-              basic_regular_price: $("#basic_regular_price").val(),
-              pro_regular_price: $("#pro_regular_price").val(),
-              pre_regular_price: $("#pre_regular_price").val()
-            },
-            success: function(response) {
-              var data = JSON.parse(response);
-              if (data.basic_regular_price == data.basic_regular_price) {
-                $("#input_name").val("Basic");
-                $("#input_price").val(data.pro_selling_price);
-              } else if (data.pro_regular_price == data.pro_regular_price) {
-                $("#input_name").val("Pro");
-                $("#input_price").val(data.pro_selling_price);
-              } else if (data.pre_regular_price == data.pre_regular_price) {
-                $("#input_name").val("Pre");
-                $("#input_price").val(data.pre_selling_price);
-              }
-            }
-          });
+            $.ajax({
+                type: "POST",
+                url: "your-php-file.php",
+                data: {
+                    basic_regular_price: $("#basic_regular_price").val(),
+                    pro_regular_price: $("#pro_regular_price").val(),
+                    pre_regular_price: $("#pre_regular_price").val()
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    if (data.basic_regular_price == data.basic_regular_price) {
+                        $("#input_name").val("Basic");
+                        $("#input_price").val(data.pro_selling_price);
+                    } else if (data.pro_regular_price == data.pro_regular_price) {
+                        $("#input_name").val("Pro");
+                        $("#input_price").val(data.pro_selling_price);
+                    } else if (data.pre_regular_price == data.pre_regular_price) {
+                        $("#input_name").val("Pre");
+                        $("#input_price").val(data.pre_selling_price);
+                    }
+                }
+            });
         });
-      </script>
-
-    @endsection
+    </script>
+@endsection

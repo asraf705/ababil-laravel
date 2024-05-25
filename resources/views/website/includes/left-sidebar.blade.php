@@ -35,21 +35,25 @@
                         <div class="d-flex">
                             @if ($customerInfo->image == 0)
                                 @if ($customerInfo->gender == 'Male')
-                                <img src="{{ asset('/') }}upload/default-images/male.png"
-                                        alt="default-profile" class="d-flex"
-                                        style="width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                    <img src="{{ asset('/') }}upload/default-images/male.png" alt="default-profile"
+                                        class="d-flex"
+                                        style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid;border-color: #22cc9d;"
+                                        id='image'>
                                 @elseif($customerInfo->gender == 'Female')
-                                <img src="{{ asset('/') }}upload/default-images/female.png"
+                                    <img src="{{ asset('/') }}upload/default-images/female.png"
                                         alt="default-profile" class="d-flex"
-                                        style="width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                        style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid;border-color: #22cc9d;"
+                                        id='image'>
                                 @else
                                     <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
                                         alt="default-profile" class="d-flex"
-                                        style="width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                        style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid;border-color: #22cc9d;"
+                                        id='image'>
                                 @endif
                             @else
                                 <img src="{{ asset($customerInfo->image) }}" class="d-flex" alt="profile-image"
-                                    style=" width: 50px; height: 50px; border-radius: 50%;" id='image'>
+                                    style=" width: 50px; height: 50px; border-radius: 50%; border: 1px solid;border-color: #22cc9d;"
+                                    id='image'>
                             @endif
                             <div style="padding-top:11%;padding-left:5px;">
                                 {{ Session::get('customer_name') }}

@@ -146,19 +146,19 @@
                                         @if ($customerInfo->gender == 'Male')
                                             <img src="{{ asset('/') }}upload/default-images/male.png"
                                                 alt="Image" class="d-flex"
-                                                style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
+                                                style=" width: 100px; height: 100px; border-radius: 10%;border: 1px solid;border-color: #22cc9d;" id='image'>
                                         @elseif($customerInfo->gender == 'Female')
                                             <img src="{{ asset('/') }}upload/default-images/female.png"
                                                 alt="Image" class="d-flex"
-                                                style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
+                                                style=" width: 100px; height: 100px; border-radius: 10%;border: 1px solid;border-color: #22cc9d;" id='image'>
                                         @else
                                             <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
                                                 alt="Image" class="d-flex"
-                                                style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
+                                                style=" width: 100px; height: 100px; border-radius: 10%;border: 1px solid;border-color: #22cc9d;" id='image'>
                                         @endif
                                     @else
                                         <img src="{{ asset($customerInfo->image) }}" class="d-flex" alt="Image"
-                                            style=" width: 100px; height: 100px; border-radius: 10%;" id='image'>
+                                            style=" width: 100px; height: 100px; border-radius: 10%;border: 1px solid;border-color: #22cc9d;" id='image'>
                                     @endif
                                     <label class="file">
                                         <input type="file" name="image" for="image" accept=".jpg,.jpeg,.png"/>
