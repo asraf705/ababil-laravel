@@ -112,45 +112,39 @@
                                                 Price
                                             </td>
                                             <td>
-                                                {{ $price->basic_regular_price }}<sup>{{ $currency->currency_type }}</sup>
-                                                <sup class="text-danger">
-                                                    {{ $price->basic_discount_amount }}<sup>{{ $price->basic_discount_type == 'fixed' ? $price->basic_discount . $currency->currency_type : $price->basic_discount . '%' }}</sup>
-                                                    OFF
-                                                </sup>
-                                            </td>
-                                            <td>
-                                                {{ $price->pro_regular_price }}<sup>{{ $currency->currency_type }}</sup>
-                                                <sup class="text-danger">
-                                                    {{ $price->pro_discount_amount }}<sup>{{ $price->pro_discount_type == 'fixed' ? $price->pro_discount . $currency->currency_type : $price->pro_discount . '%' }}</sup>
-                                                    OFF
-                                                </sup>
-                                            </td>
-                                            <td>
-                                                {{ $price->pre_regular_price }}<sup>{{ $currency->currency_type }}</sup>
-                                                <sup class="text-danger">
-                                                    {{ $price->pre_discount_amount }}<sup>{{ $price->pre_discount_type == 'fixed' ? $price->pre_discount . $currency->currency_type : $price->pre_discount . '%' }}</sup>
-                                                    OFF
-                                                </sup>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
+                                                <input type="radio" class="btn-check" name="options-outlined"
+                                                    id="basic" autocomplete="off" onchange="getPrice(this.value)"
+                                                    checked>
+                                                <label class="btn" for="basic">
+                                                    {{ $price->basic_regular_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                    <sup class="text-danger">
+                                                        {{ $price->basic_discount_amount }}<sup>{{ $price->basic_discount_type == 'fixed' ? $price->basic_discount . $currency->currency_type : $price->basic_discount . '%' }}</sup>
+                                                        OFF
+                                                    </sup>
+                                                </label>
 
                                             </td>
                                             <td>
                                                 <input type="radio" class="btn-check" name="options-outlined"
-                                                    id="basic" autocomplete="off" checked>
-                                                <label class="btn" for="basic">Basic</label>
+                                                    id="pro" autocomplete="off" onchange="getPrice(this.value)">
+                                                <label class="btn " for="pro">
+                                                    {{ $price->pro_regular_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                    <sup class="text-danger">
+                                                        {{ $price->pro_discount_amount }}<sup>{{ $price->pro_discount_type == 'fixed' ? $price->pro_discount . $currency->currency_type : $price->pro_discount . '%' }}</sup>
+                                                        OFF
+                                                    </sup>
+                                                </label>
                                             </td>
                                             <td>
                                                 <input type="radio" class="btn-check" name="options-outlined"
-                                                    id="pro" autocomplete="off">
-                                                <label class="btn " for="pro">Pro</label>
-                                            </td>
-                                            <td>
-                                                <input type="radio" class="btn-check" name="options-outlined"
-                                                    id="pre" autocomplete="off">
-                                                <label class="btn" for="pre">Pre</label>
+                                                    id="pre" autocomplete="off" onchange="getPrice(this.value)">
+                                                <label class="btn" for="pre">
+                                                    {{ $price->pre_regular_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                    <sup class="text-danger">
+                                                        {{ $price->pre_discount_amount }}<sup>{{ $price->pre_discount_type == 'fixed' ? $price->pre_discount . $currency->currency_type : $price->pre_discount . '%' }}</sup>
+                                                        OFF
+                                                    </sup>
+                                                </label>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -169,36 +163,32 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <input type="text" class="form-control" id="first_name"
-                                                placeholder="First Name" required>
+                                                placeholder="First Name" name="fname" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control" id="last_name"
+                                            <input type="text" class="form-control" name="lname" id="last_name"
                                                 placeholder="Last Name">
                                         </div>
                                         <div class="col-12 mb-3">
                                             <input type="text" class="form-control" id="company"
                                                 placeholder="Company Name">
                                         </div>
+
                                         <div class="col-12 mb-3">
-                                            <input type="email" class="form-control" id="email" placeholder="Email">
+                                            <input type="number" class="form-control" name="phone " id="phone"
+                                                placeholder="Mobile">
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <input type="email" class="form-control" name="email " id="email"
+                                                placeholder="Email">
                                         </div>
 
                                         <div class="col-12 mb-3">
                                             <input type="text" class="form-control mb-3" id="street_address"
-                                                placeholder="Address" required>
+                                                name="address" placeholder="Address" required>
                                         </div>
-                                        <div class="col-12 mb-3">
-                                            <input type="text" class="form-control" id="city" placeholder="Town"
-                                                required>
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code"
-                                                required>
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="number" class="form-control" id="phone_number" min="0"
-                                                placeholder="Phone" required>
-                                        </div>
+
                                         <div class="col-12 mb-3">
                                             <textarea name="comment" class="form-control w-100" id="comment" cols="30" rows="10"
                                                 placeholder="Leave a comment about your order" required></textarea>
@@ -224,9 +214,13 @@
                                         <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }}</sup>
                                     </li>
                                     <li>
-                                        <span>Package:</span><input type="text" class="form-control" required readonly
-                                            style="width: 75px;"><span><input type="number" class="form-control"
-                                                readonly style="width: 75px;"></span>
+                                        <span>Package:</span>
+                                        <input type="text" class="form-control" required readonly
+                                            style="width: 75px;">
+                                        <span>
+                                            @php($shipping = 0)
+                                            <input type="number" class="form-control" readonly style="width: 75px;">
+                                        </span>
                                     </li>
                                     <li>
                                         <span>tax:</span> <span>{{ $currency->tex }}%</span>
@@ -255,4 +249,33 @@
             </div>
         @endforeach
     @endforeach
-@endsection
+
+
+    <script>
+        $(document).ready(function() {
+          $.ajax({
+            type: "POST",
+            url: "your-php-file.php",
+            data: {
+              basic_regular_price: $("#basic_regular_price").val(),
+              pro_regular_price: $("#pro_regular_price").val(),
+              pre_regular_price: $("#pre_regular_price").val()
+            },
+            success: function(response) {
+              var data = JSON.parse(response);
+              if (data.basic_regular_price == data.basic_regular_price) {
+                $("#input_name").val("Basic");
+                $("#input_price").val(data.pro_selling_price);
+              } else if (data.pro_regular_price == data.pro_regular_price) {
+                $("#input_name").val("Pro");
+                $("#input_price").val(data.pro_selling_price);
+              } else if (data.pre_regular_price == data.pre_regular_price) {
+                $("#input_name").val("Pre");
+                $("#input_price").val(data.pre_selling_price);
+              }
+            }
+          });
+        });
+      </script>
+
+    @endsection
