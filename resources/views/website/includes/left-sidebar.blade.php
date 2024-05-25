@@ -1,3 +1,6 @@
+
+
+
 <!-- Mobile Nav (max width 767px)-->
 <div class="mobile-nav">
     <!-- Navbar Brand -->
@@ -31,7 +34,8 @@
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
             <li class="@yield('policy')"><a href="{{ route('policyOne') }}">Privacy Policy</a></li>
             @if (Session::get('customer_id'))
-                <li class="@yield('customer')"><a href="{{ route('customer.profile') }}" data-bs-toggle="dropdown">
+                <li class="@yield('customer')">
+                    <a href="{{ route('customer.profile') }}">
                         <div class="d-flex">
                             @if ($customerInfo->image == 0)
                                 @if ($customerInfo->gender == 'Male')
@@ -60,6 +64,7 @@
                             </div>
                         </div>
                     </a>
+
                 </li>
             @else
                 <li class="@yield('userlogin')"><a href="{{ route('customer.login') }}">Login</a></li>

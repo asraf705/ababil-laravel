@@ -31,7 +31,7 @@ class Customer extends Model
         if ($request->file('image')) {
             self::getImageUrl($request);
         } else {
-            self::$imageUrl = ' ';
+            self::$imageUrl = '0';
         }
 
         self::$customer = new Customer();

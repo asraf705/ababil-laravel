@@ -211,8 +211,9 @@
 
                                         <div class="col-12 mb-3">
                                             @if (isset($customer->address))
-                                            <input type="text" class="form-control mb-3" id="street_address"
-                                                    name="address" placeholder="Address" value="{{ $customer->address }}" readonly required>
+                                                <input type="text" class="form-control mb-3" id="street_address"
+                                                    name="address" placeholder="Address"
+                                                    value="{{ $customer->address }}" readonly required>
                                             @else
                                                 <input type="text" class="form-control mb-3" id="street_address"
                                                     name="address" placeholder="Address" required>
@@ -245,6 +246,9 @@
                                         <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }}</sup>
                                     </li>
                                     <li>
+                                        @if ()
+
+                                        @endif
                                         <span>Package:</span>
                                         <input type="text" class="form-control" required readonly
                                             style="width: 75px;">
@@ -257,7 +261,9 @@
                                         <span>tax:</span> <span>{{ $currency->tex }}%</span>
                                     </li>
                                     <li>
-                                        <span>total:</span> <span>$140.00</span>
+                                        <span>total:</span>
+                                        <span>{{ number_format((Cart::subtotal() + 0 +(Cart::subtotal() + 0) * ($currency->tex/100)), 2) }}<sup>{{ $currency->currency_type }}</sup></span>
+                                        {{-- <span>{{ Cart::total() }}</span> --}}
                                     </li>
                                 </ul>
                                 <div class="payment-method">

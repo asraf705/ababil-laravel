@@ -2120,6 +2120,42 @@ img {
 .qty-btn{
     vertical-align: middle;
 }
+
+
+.header__menu__dropdown {
+    position: absolute;
+    left: 90px;
+    top: 50px;
+    background: #222222;
+    width: 180px;
+    z-index: 9;
+    padding: 5px 0;
+    -webkit-transition: all, 0.3s;
+    -moz-transition: all, 0.3s;
+    -ms-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.header__menu__dropdown li {
+	margin-right: 0;
+	display: block;
+}
+
+.header__menu__dropdown li a {
+	text-transform: capitalize;
+	color: #ffffff;
+	font-weight: 400;
+	padding: 5px 15px;
+}
+
+.header__menu__dropdown {
+	top: 30px;
+	opacity: 1;
+	visibility: visible;
+}
 /* ##### The End ##### */
 
 /*# sourceMappingURL=core-style.css.map */
