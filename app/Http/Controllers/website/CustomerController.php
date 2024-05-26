@@ -26,8 +26,8 @@ class CustomerController extends Controller
     public function saveCustomerInfo(Request $request)
     {
         Customer::saveInfo($request);
-        Session::put('customer_id', $this->customer->id);
-        Session::put('customer_name', $this->customer->fname);
+        // Session::put('customer_id', $this->customer->id);
+        // Session::put('customer_name', $this->customer->fname);
         return redirect(route('customer.login'));
     }
 

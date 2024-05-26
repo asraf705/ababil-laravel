@@ -27,7 +27,7 @@ class Policy extends Model
 
     public static function updatePrivacyPolicy($request, $id)
     {
-        self::$privacyPolicy = Product::find($id);
+        self::$privacyPolicy = Policy::find($id);
         self::$privacyPolicy->one_name                  = $request->one_name;
         self::$privacyPolicy->one_policy                = $request->one_policy;
         self::$privacyPolicy->two_name                  = $request->two_name;
