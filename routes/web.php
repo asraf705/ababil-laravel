@@ -55,6 +55,8 @@ Route::post('/customer/register', [CustomerController::class, 'saveCustomerInfo'
 Route::get('/customer/login', [CustomerController::class, 'loginFrom'])->name('customer.login');
 Route::post('/customer/login', [CustomerController::class, 'customerLoginCheck'])->name('customer.login');
 Route::get('/customer/logout',[CustomerController::class,'logout'])->name('customer.logout');
+// Route::get('/customer/delete',[CustomerController::class,'deleteCustomer'])->name('customer.delete');
+
 // End customer login and Register
 Route::get('/customer/profile',[CustomerController::class,'customerProfile'])->name('customer.profile');
 Route::post('/customer/update-profile/{id}',[CustomerController::class,'customerUpdateProfile'])->name('customer.update-profile');

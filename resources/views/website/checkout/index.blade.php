@@ -40,7 +40,6 @@
                     <div class="row">
 
                         <div class="col-12 col-lg-10">
-
                             <!-- price tabele -->
                             <div class="cart-title">
                                 <h2>Our Package</h2>
@@ -113,8 +112,8 @@
                                             </td>
                                             <td>
                                                 <input type="radio" class="btn-check" name="options-outlined"
-                                                    id="basic" autocomplete="off" onchange="getPrice(this.value)"
-                                                    checked>
+                                                    id="basic" autocomplete="off" onchange="updatePackagePrice(event)"
+                                                    value="Basic">
                                                 <label class="btn" for="basic">
                                                     {{ $price->basic_regular_price }}<sup>{{ $currency->currency_type }}</sup>
                                                     <sup class="text-danger">
@@ -126,7 +125,8 @@
                                             </td>
                                             <td>
                                                 <input type="radio" class="btn-check" name="options-outlined"
-                                                    id="pro" autocomplete="off" onchange="getPrice(this.value)">
+                                                    value="Pro" id="pro" autocomplete="off"
+                                                    onchange="updatePackagePrice(event)">
                                                 <label class="btn " for="pro">
                                                     {{ $price->pro_regular_price }}<sup>{{ $currency->currency_type }}</sup>
                                                     <sup class="text-danger">
@@ -137,7 +137,8 @@
                                             </td>
                                             <td>
                                                 <input type="radio" class="btn-check" name="options-outlined"
-                                                    id="pre" autocomplete="off" onchange="getPrice(this.value)">
+                                                    value="Premium" id="pre" autocomplete="off"
+                                                    onchange="updatePackagePrice(event)">
                                                 <label class="btn" for="pre">
                                                     {{ $price->pre_regular_price }}<sup>{{ $currency->currency_type }}</sup>
                                                     <sup class="text-danger">
@@ -155,7 +156,6 @@
                             <div class="checkout_details_area mt-50 clearfix">
 
                                 <!-- checkout body -->
-
                                 <div class="cart-title">
                                     <h2>Checkout</h2>
                                 </div>
@@ -238,23 +238,22 @@
                                 </form>
                             </div>
                         </div>
+
                         <div class="col-12 col-lg-4">
                             <div class="cart-summary">
                                 <h5>Cart Total</h5>
                                 <ul class="summary-table">
                                     <li><span>subtotal:</span>
-                                        <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }}</sup>
+                                        <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }} </sup>
                                     </li>
                                     <li>
-                                        @if ()
-
-                                        @endif
                                         <span>Package:</span>
-                                        <input type="text" class="form-control" required readonly
-                                            style="width: 75px;">
-                                        <span>
-                                            @php($shipping = 0)
-                                            <input type="number" class="form-control" readonly style="width: 75px;">
+                                        <span id="packagePriceSpan">
+                                            @php($packageprice = old('packagePrice', isset($_POST['plan']) ? ($_POST['plan'] == 'basic' ? '{{ $price->basic_selling_price }}' : ($_POST['plan'] == 'pro' ? '{{$price->pro_selling_price }}' : '{{ $price->pre_selling_price }}')) : '{{ $price->basic_selling_price }}'))
+                                            <input type="number" hidden class="form-control" id="packagePrice"
+                                                value="{{ $packageprice }}" readonly style="width: 75px;">
+                                            @php($packageprice = $packageprice == 0 ? '{{ $price->basic_selling_price }}' : $packageprice)
+                                            {{ $packageprice}}<sup>{{ $currency->currency_type }}</sup>
                                         </span>
                                     </li>
                                     <li>
@@ -262,7 +261,7 @@
                                     </li>
                                     <li>
                                         <span>total:</span>
-                                        <span>{{ number_format((Cart::subtotal() + 0 +(Cart::subtotal() + 0) * ($currency->tex/100)), 2) }}<sup>{{ $currency->currency_type }}</sup></span>
+                                        <span>{{ number_format(Cart::subtotal() + 0 + (Cart::subtotal() + 0) * ($currency->tex / 100), 2) }}<sup>{{ $currency->currency_type }}</sup></span>
                                         {{-- <span>{{ Cart::total() }}</span> --}}
                                     </li>
                                 </ul>
@@ -284,34 +283,33 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <script>
+                function updatePackagePrice(event) {
+                    if (event.target.value === 'Basic') {
+                        selectedType = 'Basic'
+                        selectedPrice = '{{ $price->basic_selling_price }}';
+                    } else if (event.target.value === 'Pro') {
+                        selectedType = 'Pro'
+                        selectedPrice = '{{ $price->pro_selling_price }}';
+                    } else if (event.target.value === 'Premium') {
+                        selectedType = 'Premium'
+                        selectedPrice = '{{ $price->pre_selling_price }}';
+                    } else{
+                        selectedPrice = 0;
+                    }
+
+                    const packagePriceSpan = document.getElementById('packagePriceSpan');
+                    packagePriceSpan.innerHTML =
+                        `<input type="text" hidden class="form-control" id="packagePrice" value="${selectedType}" readonly>
+                        <input type="number" hidden class="form-control" id="packagePrice" value="${selectedPrice}" readonly ">${selectedPrice}<sup>{{ $currency->currency_type }}</sup>`
+                        ;
+
+
+                }
+            </script>
         @endforeach
     @endforeach
-
-
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                type: "POST",
-                url: "your-php-file.php",
-                data: {
-                    basic_regular_price: $("#basic_regular_price").val(),
-                    pro_regular_price: $("#pro_regular_price").val(),
-                    pre_regular_price: $("#pre_regular_price").val()
-                },
-                success: function(response) {
-                    var data = JSON.parse(response);
-                    if (data.basic_regular_price == data.basic_regular_price) {
-                        $("#input_name").val("Basic");
-                        $("#input_price").val(data.pro_selling_price);
-                    } else if (data.pro_regular_price == data.pro_regular_price) {
-                        $("#input_name").val("Pro");
-                        $("#input_price").val(data.pro_selling_price);
-                    } else if (data.pre_regular_price == data.pre_regular_price) {
-                        $("#input_name").val("Pre");
-                        $("#input_price").val(data.pre_selling_price);
-                    }
-                }
-            });
-        });
-    </script>
 @endsection

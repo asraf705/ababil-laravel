@@ -50,6 +50,14 @@ class CustomerController extends Controller
         return redirect('/');
     }
 
+    // public function deleteCustomer()
+    // {
+    //     Session::forget('customer_id');
+    //     Session::forget('customer_name');
+
+    //     return redirect('/');
+    // }
+
     public function customerProfile()
     {
         return view('website.customer.customer-info.profile', [
