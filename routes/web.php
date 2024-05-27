@@ -48,7 +48,7 @@ Route::resources([
 
 // Start Order
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::post('/checkout/new-order',[CheckoutController::class,'newOrder'])->name('new-order');
+Route::post('/checkout/new-order',[CheckoutController::class,'newOrder'])->name('new.order');
 
 
 // End Order

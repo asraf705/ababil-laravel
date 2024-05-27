@@ -159,111 +159,118 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('new-order') }}" method="post">
-                            @csrf
-                            <div class="row">
-                                <div class="col-12 col-lg-8">
-                                    <div class="checkout_details_area mt-50 clearfix">
-                                        <!-- checkout body -->
-                                        <div class="cart-title">
-                                            <h2>Checkout</h2>
-                                        </div>
+                        <div class="checkout_form_area">
 
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                @if (isset($customer->fname))
-                                                    <input type="text" class="form-control" id="first_name"
-                                                        placeholder="First Name" name="fname"
-                                                        value="{{ $customer->fname }}" readonly required>
-                                                @else
-                                                    <input type="text" class="form-control" id="first_name"
-                                                        placeholder="First Name" name="fname" required>
-                                                @endif
+                            <form action="{{ route('new.order') }}" method="POST">
+                                @csrf
 
+                                <div class="row">
+                                    <div class="col-12 col-lg-8">
+                                        <div class="checkout_details_area mt-50 clearfix">
+                                            <!-- checkout body -->
+                                            <div class="cart-title">
+                                                <h2>Checkout</h2>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                @if (isset($customer->lname))
-                                                    <input type="text" class="form-control" name="lname" id="last_name"
-                                                        value="{{ $customer->lname }}" readonly placeholder="Last Name">
-                                                @else
-                                                    <input type="text" class="form-control" name="lname" id="last_name"
-                                                        placeholder="Last Name">
-                                                @endif
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    @if (isset($customer->fname))
+                                                        <input type="text" class="form-control" id="first_name"
+                                                            placeholder="First Name" name="fname"
+                                                            value="{{ $customer->fname }}" readonly required>
+                                                    @else
+                                                        <input type="text" class="form-control" id="first_name"
+                                                            placeholder="First Name" name="fname" required>
+                                                    @endif
 
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <input type="text" class="form-control" id="company"
-                                                    placeholder="Company Name">
-                                            </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    @if (isset($customer->lname))
+                                                        <input type="text" class="form-control" name="lname"
+                                                            id="last_name" value="{{ $customer->lname }}" readonly
+                                                            placeholder="Last Name">
+                                                    @else
+                                                        <input type="text" class="form-control" name="lname"
+                                                            id="last_name" placeholder="Last Name">
+                                                    @endif
 
-                                            <div class="col-12 mb-3">
-                                                @if (isset($customer->phone))
-                                                    <input type="number" class="form-control" name="phone" id="phone"
-                                                        value="{{ $customer->phone }}" readonly required
-                                                        placeholder="Mobile">
-                                                @else
-                                                    <input type="number" class="form-control" name="phone " id="phone"
-                                                        required placeholder="Mobile">
-                                                @endif
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <input type="text" class="form-control" id="company" name="company_name"
+                                                        placeholder="Company Name">
+                                                </div>
 
-                                            </div>
+                                                <div class="col-12 mb-3">
+                                                    @if (isset($customer->phone))
+                                                        <input type="number" class="form-control" name="phone"
+                                                            id="phone" value="{{ $customer->phone }}" readonly required
+                                                            placeholder="Mobile">
+                                                    @else
+                                                        <input type="number" class="form-control" name="phone "
+                                                            id="phone" required placeholder="Mobile">
+                                                    @endif
 
-                                            <div class="col-12 mb-3">
-                                                @if (isset($customer->email))
-                                                    <input type="email" class="form-control" name="email " id="email"
-                                                        value="{{ $customer->email }}" readonly required
-                                                        placeholder="Email">
-                                                @else
-                                                    <input type="email" class="form-control" name="email "
-                                                        id="email" placeholder="Email">
-                                                @endif
+                                                </div>
 
-                                            </div>
+                                                <div class="col-12 mb-3">
+                                                    @if (isset($customer->email))
+                                                        <input type="email" class="form-control" name="email "
+                                                            id="email" value="{{ $customer->email }}" readonly
+                                                            required placeholder="Email">
+                                                    @else
+                                                        <input type="email" class="form-control" name="email "
+                                                            id="email" placeholder="Email">
+                                                    @endif
 
-                                            <div class="col-12 mb-3">
-                                                @if (isset($customer->address))
-                                                    <input type="text" class="form-control mb-3" id="street_address"
-                                                        name="address" placeholder="Address"
-                                                        value="{{ $customer->address }}" required>
-                                                @else
-                                                    <input type="text" class="form-control mb-3" id="street_address"
-                                                        name="address" placeholder="Address" required>
-                                                @endif
+                                                </div>
 
-                                            </div>
+                                                <div class="col-12 mb-3">
+                                                    @if (isset($customer->address))
+                                                        <input type="text" class="form-control mb-3"
+                                                            id="street_address" name="address" placeholder="Address"
+                                                            value="{{ $customer->address }}" required>
+                                                    @else
+                                                        <input type="text" class="form-control mb-3"
+                                                            id="street_address" name="address" placeholder="Address"
+                                                            required>
+                                                    @endif
 
-                                            <div class="col-12 mb-3">
-                                                <textarea name="comment" class="form-control w-100" id="comment" cols="30" rows="10"
-                                                    placeholder="Leave a comment about your order" required></textarea>
-                                            </div>
+                                                </div>
 
-                                            <div class="col-12">
-                                                <div class="custom-control custom-checkbox d-block mb-2">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck2"
-                                                        checked>
-                                                    <label class="custom-control-label" for="customCheck2">Create an
-                                                        accout</label>
+                                                <div class="col-12 mb-3">
+                                                    <textarea name="comment" class="form-control w-100" id="comment" cols="30" rows="10"
+                                                        placeholder="Leave a comment about your order" ></textarea>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <div class="custom-control custom-checkbox d-block mb-2">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck2" checked>
+                                                        <label class="custom-control-label" for="customCheck2">Create an
+                                                            accout</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-lg-4">
-                                    <div class="cart-summary">
-                                        <h5>Cart Total</h5>
-                                        <ul class="summary-table">
-                                            <li><span>subtotal:</span>
-                                                <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }} </sup>
-                                            </li>
-                                            <li>
-                                                <span>Package:</span>
-                                                <span id="packagePriceSpan">
-                                                    <input type="text" hidden class="form-control packagePrice" name="package_type"
-                                                        value="{{ old('packageType', isset($_POST['plan']) ? $_POST['plan'] : 'basic') }}"
-                                                        readonly />
-                                                    <input type="number" hidden class="form-control packagePriceValue" name="package_type"
-                                                        value="@if (old('packagePrice')) {{ old('packagePrice') }}
+                                    <div class="col-12 col-lg-4">
+                                        <div class="cart-summary">
+                                            <h5>Cart Total</h5>
+                                            <ul class="summary-table">
+                                                <li><span>subtotal:</span>
+                                                    <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }} </sup>
+                                                        <input type="hidden" name="subtotel_price" value="{{ Cart::subtotal() }}"/>
+                                                </li>
+                                                <li>
+                                                    <span>Package:</span>
+                                                    <span id="packagePriceSpan">
+                                                        <input type="text" hidden class="form-control packagePrice"
+                                                            name="package_type"
+                                                            value="{{ old('packageType', isset($_POST['plan']) ? $_POST['plan'] : 'basic') }}"
+                                                            readonly />
+                                                        <input type="number" hidden
+                                                            class="form-control packagePriceValue"
+                                                            value="@if (old('packagePrice')) {{ old('packagePrice') }}
                                                     @else
                                                         @if (isset($_POST['plan']))
                                                             @if ($_POST['plan'] == 'basic')
@@ -276,42 +283,44 @@
 {{ $price->basic_selling_price }}
                                                         @endif
                                                     @endif"
-                                                        readonly />
-                                                    {{ old('packagePrice', isset($_POST['plan']) ? ($_POST['plan'] == 'basic' ? $price->basic_selling_price : ($_POST['plan'] == 'pro' ? $price->pro_selling_price : $price->pre_selling_price)) : $price->basic_selling_price) }}
-                                                    <sup>{{ $currency->currency_type }}</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span>tax:</span> <span>{{ $currency->tex }}%</span>
-                                            </li>
-                                            <li>
-                                                <span>total:</span>
-                                                <span id="totalPriceSpan">
-                                                    {{ number_format(Cart::subtotal(), 2) }}<sup>{{ $currency->currency_type }}</sup>
-                                                </span>
+                                                            readonly />
+                                                        {{ old('packagePrice', isset($_POST['plan']) ? ($_POST['plan'] == 'basic' ? $price->basic_selling_price : ($_POST['plan'] == 'pro' ? $price->pro_selling_price : $price->pre_selling_price)) : $price->basic_selling_price) }}
+                                                        <sup>{{ $currency->currency_type }}</sup>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>tax:</span> <span>{{ $currency->tex }}%</span>
+                                                </li>
+                                                <li>
+                                                    <span>total:</span>
+                                                    <span id="totalPriceSpan">
+                                                        {{ number_format(Cart::subtotal(), 2) }}<sup>{{ $currency->currency_type }}</sup>
+                                                    </span>
 
-                                                <input type="hidden" id="packagePrice" value="0">
-                                                <input type="hidden" id="taxRate" value="{{ $currency->tex }}">
-                                            </li>
-                                        </ul>
-                                        <div class="payment-method">
-                                            <!-- Paypal -->
-                                            <div class="custom-control custom-radio mr-sm-2">
-                                                <input type="radio" class="custom-control-input" id="paypal" name="payment_method" value="Online"
-                                                    checked>
-                                                <label class="custom-control-label" for="paypal">Online Payment<img
-                                                        class="ml-15"
-                                                        src="{{ asset('/') }}website/assets/img/core-img/paypal.png"
-                                                        alt=""></label>
+                                                    <input type="hidden" id="packagePrice" value="0">
+                                                    <input type="hidden" id="taxRate" name="tax_ammount" value="{{ $currency->tex }}">
+                                                    <input type="hidden" name="currency" value="{{ $currency->tex }}"/>
+                                                </li>
+                                            </ul>
+                                            <div class="payment-method">
+                                                <!-- Paypal -->
+                                                <div class="custom-control custom-radio mr-sm-2">
+                                                    <input type="radio" class="custom-control-input" id="paypal"
+                                                        name="payment_method" value="Online" checked>
+                                                    <label class="custom-control-label" for="paypal">Online Payment<img
+                                                            class="ml-15"
+                                                            src="{{ asset('/') }}website/assets/img/core-img/paypal.png"
+                                                            alt=""></label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="cart-btn mt-100">
-                                            <button type="submit" class="btn amado-btn w-100">Checkout</button>
+                                            <div class="cart-btn mt-100">
+                                                <button type="submit" class="btn amado-btn w-100">Checkout</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -327,7 +336,8 @@
                 function updateTotalPrice() {
                     const packagePrice = parseFloat(packagePriceInput.value);
                     const totalPrice = subtotal + (subtotal + packagePrice) * (taxRate / 100);
-                    totalPriceSpan.innerHTML = `${totalPrice.toFixed(2)}<sup>{{ $currency->currency_type }}</sup>`;
+                    totalPriceSpan.innerHTML = `${totalPrice.toFixed(2)}<sup>{{ $currency->currency_type }}</sup>
+                    <input type="hidden" name="totel_price" value='${totalPrice.toFixed(2)}'/>`;
                 }
 
                 function updatePackagePrice(event) {
@@ -350,8 +360,8 @@
 
                     const packagePriceSpan = document.getElementById('packagePriceSpan');
                     packagePriceSpan.innerHTML =
-                        `<input type="text" hidden class="form-control packagePrice" value="${selectedType}" readonly>
-                        <input type="number" hidden class="form-control packagePriceValue" value="${selectedPrice}" readonly>
+                        `<input type="text" hidden class="form-control packagePrice" name="package_type" value="${selectedType}" readonly>
+                        <input type="number" hidden class="form-control packagePriceValue" name="package_price" value="${selectedPrice}" readonly>
                         ${selectedPrice}<sup>{{ $currency->currency_type }}</sup>`;
 
                     // Update the packagePrice input's value
