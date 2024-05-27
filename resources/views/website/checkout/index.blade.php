@@ -259,10 +259,10 @@
                                             <li>
                                                 <span>Package:</span>
                                                 <span id="packagePriceSpan">
-                                                    <input type="text" hidden class="form-control packagePrice"
+                                                    <input type="text" hidden class="form-control packagePrice" name="package_type"
                                                         value="{{ old('packageType', isset($_POST['plan']) ? $_POST['plan'] : 'basic') }}"
                                                         readonly />
-                                                    <input type="number" hidden class="form-control packagePriceValue"
+                                                    <input type="number" hidden class="form-control packagePriceValue" name="package_type"
                                                         value="@if (old('packagePrice')) {{ old('packagePrice') }}
                                                     @else
                                                         @if (isset($_POST['plan']))
@@ -297,7 +297,7 @@
                                         <div class="payment-method">
                                             <!-- Paypal -->
                                             <div class="custom-control custom-radio mr-sm-2">
-                                                <input type="radio" class="custom-control-input" id="paypal"
+                                                <input type="radio" class="custom-control-input" id="paypal" name="payment_method" value="Online"
                                                     checked>
                                                 <label class="custom-control-label" for="paypal">Online Payment<img
                                                         class="ml-15"

@@ -7,6 +7,8 @@ use Cart;
 use App\Models\ProductPrice;
 use App\Models\Customer;
 use Session;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -43,17 +45,17 @@ class CheckoutController extends Controller
 
         return $request;
 
-        // if ($request->payment_method == 'Online')
-        // {
-        //     $sslCommerzePayment = new SslCommerzPaymentController();
-        //     $sslCommerzePayment->index($request, $this->customer);
-        // }
-        // else
-        // {
-        //     $this->order = Order::newOrder($request, $this->customer);
-        //     OrderDetail::newOrderDetail($this->order);
-        //     return redirect('/complete-order')->with('message', 'Congratulations your order info post succesfully. Please Wait Until We Contact With you');
-        // }
+        if ($request->payment_method == 'Online')
+        {
+            $sslCommerzePayment = new SslCommerzPaymentController();
+            $sslCommerzePayment->index($request, $this->customer);
+        }
+        else
+        {
+            $this->order = Order::newOrder($request, $this->customer);
+            OrderDetail::newOrderDetail($this->order);
+            return redirect('/complete-order')->with('message', 'Congratulations your order info post succesfully. Please Wait Until We Contact With you');
+        }
     }
 
 }
