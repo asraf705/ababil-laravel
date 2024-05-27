@@ -46,7 +46,12 @@ Route::resources([
     'texInfo'=>TexController::class,
 ]);
 
+// Start Order
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout/new-order',[CheckoutController::class,'newOrder'])->name('new-order');
+
+
+// End Order
 
 // start customer
 // start customer login and Register
