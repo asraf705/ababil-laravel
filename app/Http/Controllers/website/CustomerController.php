@@ -4,13 +4,15 @@ namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Session;
 
 class CustomerController extends Controller
 {
 
-    private $customer, $orders, $customer_id, $wishlist;
+    private $customer, $orders, $orderDetail, $customer_id, $wishlist;
 
     // customer Register
     public function index()
@@ -73,8 +75,13 @@ class CustomerController extends Controller
 
     public function customerOrder()
     {
-        // $this->orders = Order::where('customer_id', Session::get('customer_id'))->orderBy('id', 'desc')->get();
-        // return view('website.customer.customer-info.oder', ['orders'=>$this->orders]);
-        return view('website.customer.customer-info.oder');
+        $this->orders = Order::where('customer_id', Session::get('customer_id'))->orderBy('id', 'desc')->latest()->get();
+        $this->orderDetail = OrderDetail::where('customer_id', Session::get('customer_id'))->orderBy('id', 'desc')->latest()->get();
+
+        return view('website.customer.customer-info.oder', [
+            'orders' => $this->orders,
+            'orderDetail' => $this->orderDetail,
+        ]);
+        // return view('website.customer.customer-info.oder');
     }
 }

@@ -337,7 +337,7 @@
                     const packagePrice = parseFloat(packagePriceInput.value);
                     const totalPrice = subtotal + (subtotal + packagePrice) * (taxRate / 100);
                     totalPriceSpan.innerHTML = `${totalPrice.toFixed(2)}<sup>{{ $currency->currency_type }}</sup>
-                    <input type="hidden" name="totel_price" value='${totalPrice.toFixed(2)}'/>`;
+                    <input type="hidden" name="order_total" value='${totalPrice.toFixed(2)}'/>`;
                 }
 
                 function updatePackagePrice(event) {

@@ -29,35 +29,36 @@ class CheckoutController extends Controller
         ]);
     }
 
-    public function newOrder(Request $request){
+    public function newOrder(Request $request)
+    {
 
-        return $request;
-    //     if (Session::get('customer_id')) {
-    //         $this->customer = Customer::find(Session::get('customer_id'));
-    //     }
-    //     else{
+        // return $request;
+        if (Session::get('customer_id')) {
+            $this->customer = Customer::find(Session::get('customer_id'));
+        } else {
 
-    //         $this->customer = Customer::where('phone', $request->phone)->orWhere('email', $request->email)->first();
-    //         if (!$this->customer){
-    //             $this->customer = Customer::saveInfo(($request));
-    //         }
-    //         Session::put('customer_id', $this->customer->id);
-    //         Session::put('customer_name', $this->customer->name);
-    //     }
+            $this->customer = Customer::where('phone', $request->phone)->orWhere('email', $request->email)->first();
+            if (!$this->customer) {
+                $this->customer = Customer::saveInfo(($request));
+            }
+            Session::put('customer_id', $this->customer->id);
+            Session::put('customer_name', $this->customer->name);
+        }
 
-    //     return $request;
+        $this->order = Order::newOrder($request, $this->customer);
+        OrderDetail::newOrderDetail($this->order);
+        return back();
 
-    //     if ($request->payment_method == 'Online')
-    //     {
-    //         $sslCommerzePayment = new SslCommerzPaymentController();
-    //         $sslCommerzePayment->index($request, $this->customer);
-    //     }
-    //     else
-    //     {
-    //         $this->order = Order::newOrder($request, $this->customer);
-    //         OrderDetail::newOrderDetail($this->order);
-    //         return redirect('/complete-order')->with('message', 'Congratulations your order info post succesfully. Please Wait Until We Contact With you');
-    //     }
+        // if ($request->payment_method == 'Online')
+        // {
+        //     $sslCommerzePayment = new SslCommerzPaymentController();
+        //     $sslCommerzePayment->index($request, $this->customer);
+        // }
+        // else
+        // {
+        //     $this->order = Order::newOrder($request, $this->customer);
+        //     OrderDetail::newOrderDetail($this->order);
+        //     return redirect('/complete-order')->with('message', 'Congratulations your order info post succesfully. Please Wait Until We Contact With you');
+        // }
     }
-
 }

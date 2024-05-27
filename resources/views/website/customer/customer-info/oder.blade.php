@@ -40,7 +40,6 @@
                                 <thead>
                                     <tr style="background: #7c7b7b59">
                                         <th>Sl</th>
-                                        <th></th>
                                         <th>Name</th>
                                         <th>Qty</th>
                                         <th>Price</th>
@@ -49,57 +48,48 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td style="padding-top: 5%">
-                                            1
-                                        </td>
-                                        <td>
-                                            <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
-                                                alt="Image" style="height: 100px; width: 100px; border-radius: 10%;"
-                                                id='image'>
-                                        </td>
-                                        <td style="padding-top: 5%;width: 40%;">
-                                            khubul he khubul he khubul he
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            4
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            01101001
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            31/05/2001
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            pandding
-                                        </td>
-                                    </tr>
-                                    <hr>
-                                    <tr>
-                                        <td style="padding-top: 5%">
-                                            1
-                                        </td>
-                                        <td>
-                                            <img src="{{ asset('/') }}upload/default-images/default-profile.jpg"
-                                                alt="Image" style="height: 100px; width: 100px; border-radius: 10%;"
-                                                id='image'>
-                                        </td>
-                                        <td style="padding-top: 5%;width: 40%;">
-                                            khubul he khubul he khubul he
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            4
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            01101001
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            31/05/2001
-                                        </td>
-                                        <td style="padding-top: 5%">
-                                            pandding
-                                        </td>
-                                    </tr>
+                                    @foreach ($orders as $order)
+                                        <tr>
+                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;;width: 40%;color: black;">
+                                                @foreach ($orderDetail as $orderDetails)
+                                                    @if ($order->id == $orderDetails->order_id)
+                                                        {{ $orderDetails->product->title }}<br>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                                @php
+                                                    $totalQty = 0;
+                                                @endphp
+
+                                                @foreach ($orderDetail as $orderDetails)
+                                                    @if ($order->id == $orderDetails->order_id)
+                                                        @php
+                                                            $totalQty += $orderDetails->product_qty;
+                                                        @endphp
+                                                    @endif
+                                                @endforeach
+
+                                                @if ($totalQty >= 2)
+                                                    {{ $totalQty }}
+                                                @else
+                                                    {{ $orderDetails->product_qty }}
+                                                @endif
+                                            </td>
+                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                                {{ $order->order_total }}<sup>{{ $order->currency }}</sup>
+                                            </td>
+                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                                {{ $order->order_date }}
+                                            </td>
+                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                                {{ $order->order_status }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

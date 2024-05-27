@@ -16,15 +16,15 @@ return new class extends Migration
             $table->integer('customer_id');
             $table->string('company_name')->nullable();
             $table->longText('comment')->nullable();
-            $table->string('package_type');
+            $table->string('package_type')->nullable();
             $table->float('subtotel_price');
-            $table->integer('tax');
+            $table->integer('tax_ammount');
             $table->integer('package_price');
             $table->float('order_total', 10,2);
             $table->text('order_date');
             $table->text('order_timestamp');
             $table->string('order_status')->default('Pending');
-            $table->text('delivery_address');
+            $table->text('address');
             $table->string('delivery_status')->default('Pending');
             $table->text('delivery_date')->nullable();
             $table->string('payment_method');
