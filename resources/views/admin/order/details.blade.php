@@ -26,56 +26,48 @@
                         <div class="card-body">
                             <div class="table-responsive">
                               <table id="mainTable" class="table table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Name</th>
-                                    <th>Cost</th>
-                                    <th>Profit</th>
-                                    <th>Fun</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>Car</td>
-                                    <td>100</td>
-                                    <td>200</td>
-                                    <td>0</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Bike</td>
-                                    <td>330</td>
-                                    <td>240</td>
-                                    <td>1</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Plane</td>
-                                    <td>430</td>
-                                    <td>540</td>
-                                    <td>3</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Yacht</td>
-                                    <td>100</td>
-                                    <td>200</td>
-                                    <td>0</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Segway</td>
-                                    <td>330</td>
-                                    <td>240</td>
-                                    <td>1</td>
-                                  </tr>
-                                </tbody>
-                                <tfoot>
+
                                   <tr>
                                     <th>
-                                      <strong>TOTAL</strong>
+                                        <strong>Order ID</strong>
                                     </th>
-                                    <th>1290</th>
-                                    <th>1420</th>
-                                    <th>5</th>
+                                    <td>
+                                        #00{{ $order->id }}
+                                    </td>
                                   </tr>
-                                </tfoot>
+                                  <tr>
+                                    <th>
+                                        <strong>Order Date</strong>
+                                    </th>
+                                    <td>
+                                        {{ $order->id }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th>
+                                        <strong>Package</strong>
+                                    </th>
+                                    <td>
+                                        {{ $order->id }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th>
+                                        <strong>Package Price</strong>
+                                    </th>
+                                    <td>
+                                        {{ $order->id }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th>
+                                        <strong>Name</strong>
+                                    </th>
+                                    <td>
+                                        {{ $order->id }}
+                                    </td>
+                                  </tr>
+
                               </table>
                             </div>
                           </div>
