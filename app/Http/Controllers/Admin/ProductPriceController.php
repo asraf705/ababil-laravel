@@ -22,7 +22,10 @@ class ProductPriceController extends Controller
     public function index()
     {
         return view('admin.product.theme-price.index',[
-            'prices' => ProductPrice::where('id',1)->get(),
+            'prices'      => ProductPrice::where('id',1)->get(),
+            'basicPrice'  => ProductBasicAuth::where('product_price_id', 1)->get(),
+            'proPrice'    => ProductProAuth::where('product_price_id', 1)->get(),
+            'prePrice'    => ProductPreAuth::where('product_price_id', 1)->get(),
         ]);
     }
 
@@ -31,10 +34,10 @@ class ProductPriceController extends Controller
      */
     public function create()
     {
-        return view('admin.product.theme-price.add', [
-            'products' => Product::where('status', 1)->get(),
-            'productTypes' => ProductType::where('status', 1)->get(),
-        ]);
+        // return view('admin.product.theme-price.add', [
+        //     'products' => Product::where('status', 1)->get(),
+        //     'productTypes' => ProductType::where('status', 1)->get(),
+        // ]);
     }
 
 

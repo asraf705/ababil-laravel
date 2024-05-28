@@ -82,6 +82,5 @@ class CustomerController extends Controller
             'orders' => $this->orders,
             'orderDetail' => $this->orderDetail,
         ]);
-        // return view('website.customer.customer-info.oder');
     }
 }

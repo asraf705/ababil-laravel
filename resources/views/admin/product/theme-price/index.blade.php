@@ -44,9 +44,8 @@
                                                             </li>
 
                                                             <li class="grey">
-                                                                @foreach ($price->basicTypes as $basicType)
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                                                @foreach ($basicPrice as $basicType)
+                                                                    {{ $basicType->basic_type_id }}<br>
                                                                 @endforeach
                                                             </li>
 
@@ -62,7 +61,8 @@
                                                                     <samp>
                                                                         <strike>{{ $price->basic_regular_price }}<sup>{{ $currency->currency_type }}</sup></strike>
                                                                         <sup class="text-danger">
-                                                                            {{ $price->basic_discount_amount }}<sup>{{ $price->basic_discount_type == 'fixed' ? $currency->currency_type . $price->basic_discount : $price->basic_discount . '%' }}</sup> OFF
+                                                                            {{ $price->basic_discount_amount }}<sup>{{ $price->basic_discount_type == 'fixed' ? $currency->currency_type . $price->basic_discount : $price->basic_discount . '%' }}</sup>
+                                                                            OFF
                                                                         </sup>
                                                                     </samp>
                                                                 @else
@@ -81,8 +81,7 @@
                                                                 Pages</li>
                                                             <li class="grey">
                                                                 @foreach ($price->proTypes as $proType)
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-dark disabled">{{ $proType->pro_type }}</button>
+                                                                    {{ $proType->pro_type }}<br>
                                                                 @endforeach
                                                             </li>
                                                             <li style="font-size: 20px">{{ $price->pro_delivery }} Days
@@ -94,7 +93,8 @@
                                                                     {{ $price->pro_selling_price }}<sup>{{ $currency->currency_type }}</sup>
                                                                     <samp><strike>{{ $price->pro_regular_price }}<sup>{{ $currency->currency_type }}</sup></strike>
                                                                         <sup class="text-danger">
-                                                                            {{ $price->pro_discount_amount }}<sup>{{ $price->pro_discount_type == 'fixed' ? $currency->currency_type . $price->pro_discount : $price->pro_discount . '%' }}</sup> OFF
+                                                                            {{ $price->pro_discount_amount }}<sup>{{ $price->pro_discount_type == 'fixed' ? $currency->currency_type . $price->pro_discount : $price->pro_discount . '%' }}</sup>
+                                                                            OFF
                                                                         </sup>
                                                                     </samp>
                                                                 @else
@@ -126,7 +126,8 @@
                                                                     <samp>
                                                                         <strike>{{ $price->pre_regular_price }}<sup>{{ $currency->currency_type }}</sup></strike>
                                                                         <sup class="text-danger">
-                                                                            {{ $price->pre_discount_amount }}<sup>{{ $price->pre_discount_type == 'fixed' ? $currency->currency_type . $price->pre_discount : $price->pre_discount . '%' }}</sup> OFF
+                                                                            {{ $price->pre_discount_amount }}<sup>{{ $price->pre_discount_type == 'fixed' ? $currency->currency_type . $price->pre_discount : $price->pre_discount . '%' }}</sup>
+                                                                            OFF
                                                                         </sup>
                                                                     </samp>
                                                                 @else

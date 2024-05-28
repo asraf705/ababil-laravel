@@ -51,12 +51,12 @@
                 </ul>
             </li>
 
-            <li class="menu-header">Oder</li>
-            <li class="dropdown">
+            <li class="menu-header">Order</li>
+            <li class="dropdown @yield('allOrder')">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="copy"></i><span>Oder</span></a>
+                        data-feather="copy"></i><span>Order</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="oder/manage-oder.html">Manage Oder</a></li>
+                    <li><a class="dropdown @yield('manageOrder')" href="{{ route('admin-order.manage') }}">Manage Order</a></li>
                 </ul>
             </li>
 

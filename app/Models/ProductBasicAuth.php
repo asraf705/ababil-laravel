@@ -28,7 +28,7 @@ class ProductBasicAuth extends Model
         ProductBasicAuth::newBasicType($basicTypes, $priceID);
     }
 
-    public function productType(){
+    public function producttype(){
         return $this->belongsTo(ProductType::class);
     }
 }

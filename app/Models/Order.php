@@ -20,8 +20,8 @@ class Order extends Model
         self::$order->tax_ammount          = $request->tax_ammount;
         self::$order->package_price        = $request->package_price;
         self::$order->order_total          = $request->order_total;
-        self::$order->order_date           = date('y-m-d');
-        self::$order->order_timestamp      = strtotime(date('y-m-d'));
+        self::$order->order_date           = date('dd-mm-yy');
+        self::$order->order_timestamp      = strtotime(date('dd-mm-yy'));
         self::$order->address              = $request->address;
         self::$order->payment_method       = $request->payment_method;
         self::$order->save();

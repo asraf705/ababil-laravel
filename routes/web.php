@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminOrderController;
 use App\Http\Controllers\admin\TexController;
 use App\Http\Controllers\website\CartController;
 use Illuminate\Support\Facades\Route;
@@ -94,6 +95,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/product/detail/full-Delete/{id}',[ProductController::class,'fullDetailDelete'])->name('delete.product-and-price');
     Route::get('/product/category/{categoryId}', [ProductController::class, 'categoryWiseProduct'])->name('category.wise.product');
     // End Product
+
+    //order management Routes//
+    Route::get('/admin/all-order',[AdminOrderController::class,'index'])->name('admin-order.manage');
+    Route::get('/admin/order-detail/{id}',[AdminOrderController::class,'detail'])->name('admin-order.detail');
 
 
 });

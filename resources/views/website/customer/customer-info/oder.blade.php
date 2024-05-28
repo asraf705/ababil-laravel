@@ -42,23 +42,36 @@
                                         <th>Sl</th>
                                         <th>Name</th>
                                         <th>Qty</th>
+                                        <th>Package Type</th>
                                         <th>Price</th>
                                         <th>Oder Date</th>
+                                        <th>Delivery Date</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $tableSl = 1; ?>
                                     @foreach ($orders as $order)
                                         <tr>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
-                                                {{ $loop->iteration }}
+                                                {{ $tableSl }}
                                             </td>
-                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;;width: 40%;color: black;">
-                                                @foreach ($orderDetail as $orderDetails)
-                                                    @if ($order->id == $orderDetails->order_id)
-                                                        {{ $orderDetails->product->title }}<br>
+                                            <td
+                                                style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;;width: 40%;color: black;">
+                                                <table>
+                                                    <?php $sl = 1; ?>
+                                                    @foreach ($orderDetail as $orderDetails)
+                                                        @if ($order->id == $orderDetails->order_id)
+                                                <thead style="border-top: 1px solid #dee2e6">
+                                                            <tr style="text-align: left;">{{ $sl }}.</tr>
+                                                            <tr>
+                                                                {{ $orderDetails->product->title }}<br>
+                                                            </tr>
+                                                </thead>
+                                                    <?php $sl++; ?>
                                                     @endif
-                                                @endforeach
+                                                    @endforeach
+                                                </table>
                                             </td>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                 @php
@@ -80,15 +93,26 @@
                                                 @endif
                                             </td>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
-                                                {{ $order->order_total }}<sup>{{ $order->currency }}</sup>
+                                                {{ $order->package_type }}
                                             </td>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
-                                                {{ $order->order_date }}
+                                                {{ $order->order_total }}<sup>{{ $order->currency }}</sup>
+                                            </td>
+                                            <td style="width: 127px; padding-left: 0; padding-right: 0;padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                                {{ date('j M Y', strtotime($order->created_at)) }}
+                                            </td>
+                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                                @if ($order->delivery_date == null)
+                                                <p style="color: red"> Please Waiting for Confirmation</p>
+                                                @else
+                                                {{ $order->delivery_date }}
+                                                @endif
                                             </td>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                 {{ $order->order_status }}
                                             </td>
                                         </tr>
+                                        <?php $tableSl++; ?>
                                     @endforeach
                                 </tbody>
                             </table>
