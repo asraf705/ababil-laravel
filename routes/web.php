@@ -99,6 +99,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     //order management Routes//
     Route::get('/admin/all-order',[AdminOrderController::class,'index'])->name('admin-order.manage');
     Route::get('/admin/order-detail/{id}',[AdminOrderController::class,'detail'])->name('admin-order.detail');
+    Route::get('/admin/order/invoice',[AdminOrderController::class,'invoice'])->name('admin-order.invoice');
 
 
 });
