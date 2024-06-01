@@ -21,7 +21,6 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Manage Order</h4>
-
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -31,7 +30,7 @@
                                     <p class="text-center text-danger">{{ session('Rmessage') }}</p>
                                 @endif
 
-                                <table class="table table-striped table-hover" id="tableExport" >
+                                <table class="table table-striped table-hover" id="tableExport">
                                     <thead>
                                         <tr class="text-center">
                                             <th>Sl</th>
@@ -62,15 +61,20 @@
                                                 <td>{{ $order->order_total }}<sup>{{ $order->currency }}</sup></td>
                                                 <td>{{ $order->order_status }}</td>
                                                 <td class="justify-content-center d-flex">
-                                                    <a title="Order Detail" href="{{ route('admin-order.detail', ['id' => $order->id]) }}" class="btn btn-dark"
-                                                        style="margin-right: 10px;"><i class="fa fa-info-circle"></i>
+                                                    <a title="Order Detail"
+                                                        href="{{ route('admin-order.detail', ['id' => $order->id]) }}"
+                                                        class="btn btn-dark" style="margin-right: 10px;"><i
+                                                            class="fa fa-info-circle"></i>
                                                     </a>
-                                                    <a href="" title="Order Edit"
+                                                    {{-- <a href="" title="Order Edit"
                                                         class="btn btn-primary" style="margin-right: 10px;">
-                                                        <i class="fa fa-edit"></i></a>
+                                                        <i class="fa fa-edit"></i></a> --}}
 
-                                                    <form action=""
-                                                        method="post">
+                                                    <a href="" title="Order Detail" class="btn btn-primary"
+                                                        style="margin-right: 10px;">
+                                                        <i class="fa fa-file"></i></a>
+
+                                                    <form action="" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger "
