@@ -2225,7 +2225,7 @@ tr:first-child>td>.fc-day-grid-event {
     margin-bottom: 15px
 }
 
-.invoice .invoice-detail-item .invoice-detail-name {
+.invoice-detail-name {
     letter-spacing: 0.3px;
     color: #98a6ad;
     margin-bottom: 4px
@@ -2237,8 +2237,10 @@ tr:first-child>td>.fc-day-grid-event {
     font-weight: 700
 }
 
-.invoice .invoice-detail-item .invoice-detail-value.invoice-detail-value-lg {
-    font-size: 24px
+.invoice-detail-value-lg {
+    font-size: 24px;
+    color: #34395e;
+    text-align: right;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {

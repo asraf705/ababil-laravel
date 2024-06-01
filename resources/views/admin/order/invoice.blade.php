@@ -123,7 +123,7 @@
                                         </div>
                                         <hr class="mt-2 mb-2">
                                         <div class="invoice-detail-item">
-                                            <div class="invoice-detail-name">Total
+                                            <div><span class="invoice-detail-name" style="text-align: left">Total</span>
                                                 <span class="invoice-detail-value-lg">$685.99</span>
                                             </div>
                                         </div>
