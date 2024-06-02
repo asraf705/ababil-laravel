@@ -102,7 +102,7 @@
                         <i class="fas fa-check"></i>
                     </div>
                     <h4 class="congratulation-contents-title"> Congratulations! </h4>
-                    <p class="congratulation-contents-para"> Your order info post succesfully. Please Wait Until We Contact With you.</p>
+                    <p class="congratulation-contents-para">Your order info post succesfully. Please Wait Until We Contact With you.</p>
                     <h5>Thank You..</h5>
                     <div class="btn-wrapper mt-4">
                         <a href="{{route('home')}}" class="cmn-btn btn-bg-1"> Go to Home </a>

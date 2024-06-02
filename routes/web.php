@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ProductPriceController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\ThemeInfoController;
 use App\Http\Controllers\website\CheckoutController;
+use App\Http\Controllers\SslCommerzPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,15 +45,29 @@ Route::get('/policy/fourth policy', [WebsiteController::class, 'policyFour'])->n
 
 Route::resources([
     'carts' => CartController::class,
-    'texInfo'=>TexController::class,
+    'texInfo' => TexController::class,
 ]);
 
 // Start Order
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::post('/checkout/new-order',[CheckoutController::class,'newOrder'])->name('new.order');
-Route::get('/complete-order',[CheckoutController::class,'completeOrder'])->name('complete-order');
+Route::post('/checkout/new-order', [CheckoutController::class, 'newOrder'])->name('new.order');
+Route::get('/complete-order', [CheckoutController::class, 'completeOrder'])->name('complete-order');
 
 // End Order
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
 
 // start customer
 // start customer login and Register
@@ -60,13 +75,13 @@ Route::get('/customer/register', [CustomerController::class, 'index'])->name('cu
 Route::post('/customer/register', [CustomerController::class, 'saveCustomerInfo'])->name('customer.register');
 Route::get('/customer/login', [CustomerController::class, 'loginFrom'])->name('customer.login');
 Route::post('/customer/login', [CustomerController::class, 'customerLoginCheck'])->name('customer.login');
-Route::get('/customer/logout',[CustomerController::class,'logout'])->name('customer.logout');
+Route::get('/customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 // Route::get('/customer/delete',[CustomerController::class,'deleteCustomer'])->name('customer.delete');
 
 // End customer login and Register
-Route::get('/customer/profile',[CustomerController::class,'customerProfile'])->name('customer.profile');
-Route::post('/customer/update-profile/{id}',[CustomerController::class,'customerUpdateProfile'])->name('customer.update-profile');
-Route::get('/customer/order',[CustomerController::class,'customerOrder'])->name('customer.order');
+Route::get('/customer/profile', [CustomerController::class, 'customerProfile'])->name('customer.profile');
+Route::post('/customer/update-profile/{id}', [CustomerController::class, 'customerUpdateProfile'])->name('customer.update-profile');
+Route::get('/customer/order', [CustomerController::class, 'customerOrder'])->name('customer.order');
 
 // End customer
 
@@ -86,21 +101,19 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'theme-info' => ThemeInfoController::class, // for ThemeInfo
         'privacy-policy' => PolicyController::class, // for ThemeInfo
 
-]);
+    ]);
 
     // Start Product
     Route::get('/product/status/{id}', [ProductController::class, 'info'])->name('products.status');
     // Template Auth price (basic, pro,pre)
     Route::get('/get-product-info-by-title', [ProductPriceController::class, 'getProductInfoByTitle'])->name('get-product-info-by-title');
     // Product Category wise details and  Product details wise Delete(product & price)
-    Route::get('/product/detail/full-Delete/{id}',[ProductController::class,'fullDetailDelete'])->name('delete.product-and-price');
+    Route::get('/product/detail/full-Delete/{id}', [ProductController::class, 'fullDetailDelete'])->name('delete.product-and-price');
     Route::get('/product/category/{categoryId}', [ProductController::class, 'categoryWiseProduct'])->name('category.wise.product');
     // End Product
 
     //order management Routes//
-    Route::get('/admin/all-order',[AdminOrderController::class,'index'])->name('admin-order.manage');
-    Route::get('/admin/order-detail/{id}',[AdminOrderController::class,'detail'])->name('admin-order.detail');
-    Route::get('/admin/order/invoice',[AdminOrderController::class,'invoice'])->name('admin-order.invoice');
-
-
+    Route::get('/admin/all-order', [AdminOrderController::class, 'index'])->name('admin-order.manage');
+    Route::get('/admin/order-detail/{id}', [AdminOrderController::class, 'detail'])->name('admin-order.detail');
+    Route::get('/admin/order/invoice', [AdminOrderController::class, 'invoice'])->name('admin-order.invoice');
 });
