@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SslCommerzPaymentController;
 use Cart;
 use App\Models\ProductPrice;
 use App\Models\Customer;
@@ -45,15 +46,16 @@ class CheckoutController extends Controller
             Session::put('customer_name', $this->customer->name);
         }
 
-        $this->order = Order::newOrder($request, $this->customer);
-        OrderDetail::newOrderDetail($this->order);
-            return redirect('/complete-order');
+        // $this->order = Order::newOrder($request, $this->customer);
+        // OrderDetail::newOrderDetail($this->order);
+        //     return redirect('/complete-order');
 
-        // if ($request->payment_method == 'Online')
-        // {
-        //     $sslCommerzePayment = new SslCommerzPaymentController();
-        //     $sslCommerzePayment->index($request, $this->customer);
-        // }
+        if ($request->payment_method == 'Online')
+        {
+            $sslCommerzePayment = new SslCommerzPaymentController();
+            $sslCommerzePayment->index($request, $this->customer);
+            return redirect('/complete-order');
+        }
         // else
         // {
         //     $this->order = Order::newOrder($request, $this->customer);

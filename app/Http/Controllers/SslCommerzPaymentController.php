@@ -19,38 +19,38 @@ class SslCommerzPaymentController extends Controller
         return view('website.checkout.exampleHosted');
     }
 
-    public function index(Request $request)
+    public function index(Request $request, $customer)
     {
         # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         $post_data = array();
-        $post_data['total_amount'] = '10'; # You cant not pay less than 10
-        $post_data['currency'] = "BDT";
+        $post_data['total_amount'] = $request->order_total; # You cant not pay less than 10
+        $post_data['currency'] = $request->currency;
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = 'Customer Name';
-        $post_data['cus_email'] = 'customer@mail.com';
-        $post_data['cus_add1'] = 'Customer Address';
+        $post_data['cus_name'] = $customer->fname;
+        $post_data['cus_email'] = $customer->email;
+        $post_data['cus_add1'] = $customer->address;
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
         $post_data['cus_state'] = "";
         $post_data['cus_postcode'] = "";
-        $post_data['cus_country'] = "Bangladesh";
-        $post_data['cus_phone'] = '8801XXXXXXXXX';
+        $post_data['cus_country'] = $customer->country;
+        $post_data['cus_phone'] = $customer->phone;
         $post_data['cus_fax'] = "";
 
         # SHIPMENT INFORMATION
         $post_data['ship_name'] = "Store Test";
-        $post_data['ship_add1'] = "Dhaka";
-        $post_data['ship_add2'] = "Dhaka";
-        $post_data['ship_city'] = "Dhaka";
-        $post_data['ship_state'] = "Dhaka";
-        $post_data['ship_postcode'] = "1000";
+        $post_data['ship_add1'] = " ";
+        $post_data['ship_add2'] = " ";
+        $post_data['ship_city'] = " ";
+        $post_data['ship_state'] = " ";
+        $post_data['ship_postcode'] = " ";
         $post_data['ship_phone'] = "";
-        $post_data['ship_country'] = "Bangladesh";
+        $post_data['ship_country'] = " ";
 
         $post_data['shipping_method'] = "NO";
         $post_data['product_name'] = "Computer";
@@ -58,8 +58,8 @@ class SslCommerzPaymentController extends Controller
         $post_data['product_profile'] = "physical-goods";
 
         # OPTIONAL PARAMETERS
-        $post_data['value_a'] = "ref001";
-        $post_data['value_b'] = "ref002";
+        $post_data['value_a'] = $customer->id;
+        $post_data['value_b'] = $customer->name;
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
 
@@ -67,14 +67,17 @@ class SslCommerzPaymentController extends Controller
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
-                'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
-                'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+                'customer_id'        => $customer->id,
+                'package_type'       => $request->package_type,
+                'package_price'      => $request->package_price,
+                'tax_ammount'        => $request->tax_ammount,
+                'order_total'        => $post_data['total_amount'],
+                'order_date'         => date('dd-mm-yyyy'),
+                'order_timestamp'    => strtotime(date('dd-mm-yyyy')),
+                'order_status'       => 'Pending',
+                'payment_method'     => $request->payment_method,
+                'transaction_id'     => $post_data['tran_id'],
+                'currency'           => $post_data['currency']
             ]);
 
         $sslc = new SslCommerzNotification();
@@ -85,7 +88,6 @@ class SslCommerzPaymentController extends Controller
             print_r($payment_options);
             $payment_options = array();
         }
-
     }
 
     public function payViaAjax(Request $request)
@@ -138,14 +140,17 @@ class SslCommerzPaymentController extends Controller
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
-                'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
-                'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+                'customer_id'        => 2,
+                'package_type'       => 23,
+                'package_price'      => 22,
+                'tax_ammount'        => 122,
+                'order_total'        => 2222,
+                'order_date'         => date('dd-mm-yyyy'),
+                'order_timestamp'    => strtotime(date('dd-mm-yyyy')),
+                'order_status'       => 'Pending',
+                'payment_method'     => 'Online',
+                'transaction_id'     => $post_data['tran_id'],
+                'currency'           => $post_data['currency']
             ]);
 
         $sslc = new SslCommerzNotification();
@@ -156,7 +161,6 @@ class SslCommerzPaymentController extends Controller
             print_r($payment_options);
             $payment_options = array();
         }
-
     }
 
     public function success(Request $request)
@@ -198,8 +202,6 @@ class SslCommerzPaymentController extends Controller
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
-
-
     }
 
     public function fail(Request $request)
@@ -220,7 +222,6 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Transaction is Invalid";
         }
-
     }
 
     public function cancel(Request $request)
@@ -241,8 +242,6 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Transaction is Invalid";
         }
-
-
     }
 
     public function ipn(Request $request)
@@ -287,5 +286,4 @@ class SslCommerzPaymentController extends Controller
             echo "Invalid Data";
         }
     }
-
 }
