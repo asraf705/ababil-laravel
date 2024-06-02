@@ -47,7 +47,7 @@ class CheckoutController extends Controller
 
         $this->order = Order::newOrder($request, $this->customer);
         OrderDetail::newOrderDetail($this->order);
-        return back();
+            return redirect('/complete-order');
 
         // if ($request->payment_method == 'Online')
         // {
@@ -60,5 +60,9 @@ class CheckoutController extends Controller
         //     OrderDetail::newOrderDetail($this->order);
         //     return redirect('/complete-order')->with('message', 'Congratulations your order info post succesfully. Please Wait Until We Contact With you');
         // }
+    }
+
+    public function completeOrder(){
+        return view('website.checkout.complete-order');
     }
 }
