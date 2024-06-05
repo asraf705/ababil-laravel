@@ -46,22 +46,13 @@ class CheckoutController extends Controller
             Session::put('customer_name', $this->customer->name);
         }
 
-        // $this->order = Order::newOrder($request, $this->customer);
-        // OrderDetail::newOrderDetail($this->order);
-        //     return redirect('/complete-order');
-
         if ($request->payment_method == 'Online')
         {
             $sslCommerzePayment = new SslCommerzPaymentController();
             $sslCommerzePayment->index($request, $this->customer);
-            return redirect('/complete-order');
         }
-        // else
-        // {
-        //     $this->order = Order::newOrder($request, $this->customer);
-        //     OrderDetail::newOrderDetail($this->order);
-        //     return redirect('/complete-order')->with('message', 'Congratulations your order info post succesfully. Please Wait Until We Contact With you');
-        // }
+
+
     }
 
     public function completeOrder(){

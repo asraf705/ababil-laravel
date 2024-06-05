@@ -27,7 +27,7 @@ class SslCommerzPaymentController extends Controller
 
         $post_data = array();
         $post_data['total_amount'] = $request->order_total; # You cant not pay less than 10
-        $post_data['currency'] = $request->currency;
+        $post_data['currency'] = "USD";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
         # CUSTOMER INFORMATION
@@ -70,7 +70,9 @@ class SslCommerzPaymentController extends Controller
                 'customer_id'        => $customer->id,
                 'package_type'       => $request->package_type,
                 'package_price'      => $request->package_price,
+                'subtotel_price'     => $request->subtotel_price,
                 'tax_ammount'        => $request->tax_ammount,
+                'address'            => $request->address,
                 'order_total'        => $post_data['total_amount'],
                 'order_date'         => date('dd-mm-yyyy'),
                 'order_timestamp'    => strtotime(date('dd-mm-yyyy')),
@@ -148,6 +150,7 @@ class SslCommerzPaymentController extends Controller
                 'order_date'         => date('dd-mm-yyyy'),
                 'order_timestamp'    => strtotime(date('dd-mm-yyyy')),
                 'order_status'       => 'Pending',
+                'address'            => 'dhaka',
                 'payment_method'     => 'Online',
                 'transaction_id'     => $post_data['tran_id'],
                 'currency'           => $post_data['currency']

@@ -62,14 +62,14 @@
                                                     <?php $sl = 1; ?>
                                                     @foreach ($orderDetail as $orderDetails)
                                                         @if ($order->id == $orderDetails->order_id)
-                                                <thead style="border-top: 1px solid #dee2e6">
-                                                            <tr style="text-align: left;">{{ $sl }}.</tr>
-                                                            <tr>
-                                                                {{ $orderDetails->product->title }}<br>
-                                                            </tr>
-                                                </thead>
-                                                    <?php $sl++; ?>
-                                                    @endif
+                                                            <thead style="border-top: 1px solid #dee2e6">
+                                                                <tr style="text-align: left;">{{ $sl }}.</tr>
+                                                                <tr>
+                                                                    {{ $orderDetails->product_name }}<br>
+                                                                </tr>
+                                                            </thead>
+                                                            <?php $sl++; ?>
+                                                        @endif
                                                     @endforeach
                                                 </table>
                                             </td>
@@ -89,7 +89,7 @@
                                                 @if ($totalQty >= 2)
                                                     {{ $totalQty }}
                                                 @else
-                                                    {{ $orderDetails->product_qty }}
+                                                    {{ $totalQty }}
                                                 @endif
                                             </td>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
@@ -98,14 +98,15 @@
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                 {{ $order->order_total }}<sup>{{ $order->currency }}</sup>
                                             </td>
-                                            <td style="width: 127px; padding-left: 0; padding-right: 0;padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
+                                            <td
+                                                style="width: 127px; padding-left: 0; padding-right: 0;padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                 {{ date('j M Y', strtotime($order->created_at)) }}
                                             </td>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                 @if ($order->delivery_date == null)
-                                                <p style="color: red"> Please Waiting for Confirmation</p>
+                                                    <p style="color: red"> Please Waiting for Confirmation</p>
                                                 @else
-                                                {{ $order->delivery_date }}
+                                                    {{ $order->delivery_date }}
                                                 @endif
                                             </td>
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
