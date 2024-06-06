@@ -82,6 +82,8 @@ class SslCommerzPaymentController extends Controller
                 'transaction_id'     => $post_data['tran_id'],
                 'currency'           => $post_data['currency'],
                 'created_at'         => now(),
+                'updated_at'         => now(),
+
 
             ]);
 
@@ -98,6 +100,8 @@ class SslCommerzPaymentController extends Controller
                     'product_qty'    => $item->qty,
                     'product_price'  => $item->price,
                     'created_at'         => now(),
+                    'updated_at'         => now(),
+
                 ];
             })->all()
         );
