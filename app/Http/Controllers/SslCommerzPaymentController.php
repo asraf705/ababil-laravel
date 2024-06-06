@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use Cart;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -82,6 +83,26 @@ class SslCommerzPaymentController extends Controller
                 'currency'           => $post_data['currency']
             ]);
 
+        $order_id = DB::getPdo()->lastInsertId();
+
+        DB::table('order_details')->insert(
+            collect(Cart::content())->map(function ($item) use ($order_id, $customer) {
+                return [
+                    'order_id'       => $order_id,
+                    'customer_id'    => $customer->id,
+                    'product_id'     => $item->id,
+                    'product_name'   => $item->name,
+                    'product_code'   => $item->options->code,
+                    'product_qty'    => $item->qty,
+                    'product_price'  => $item->price,
+                ];
+            })->all()
+        );
+
+        Cart::content()->each(function ($item) {
+            Cart::remove($item->rowId);
+        });
+
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
@@ -91,6 +112,10 @@ class SslCommerzPaymentController extends Controller
             $payment_options = array();
         }
     }
+
+    // public function orderDetiles(Request $request){
+
+    // }
 
     public function payViaAjax(Request $request)
     {

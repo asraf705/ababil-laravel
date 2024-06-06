@@ -27,9 +27,9 @@ class WebsiteController extends Controller
     }
 
     // single-template
-    public static function singleTemplate($title){
+    public static function singleTemplate($name){
         return view('website.template.single-template',[
-            'theme'=> Product::where('title',$title)->first(),
+            'theme'=> Product::where('name',$name)->first(),
             'prices' => ProductPrice::all(),
         ]);
     }

@@ -64,7 +64,7 @@
                         <div class="col-12 col-sm-6 col-md-12 col-xl-6">
                             <div class="single-product-wrapper">
 
-                                <a href="{{ route('single.template', ['title' => $theme->title]) }}">
+                                <a href="{{ route('single.template', ['name' => $theme->name]) }}">
                                     <!-- Product Image -->
                                     <div class="product-img">
                                         <img src="{{ asset($theme->image) }}" style="height: 484px;" alt="">
@@ -90,8 +90,8 @@
                                         @else
                                             <h4 class="text-success">FREE</h4>
                                         @endif
-                                        <a href="{{ route('single.template', ['title' => $theme->title]) }}">
-                                            <h6>{{ $theme->title }}</h6>
+                                        <a href="{{ route('single.template', ['name' => $theme->name]) }}">
+                                            <h6>{{ $theme->name }}</h6>
                                         </a>
                                     </div>
                                     <!-- Ratings & Cart -->

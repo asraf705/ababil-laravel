@@ -32,7 +32,7 @@ use App\Http\Controllers\SslCommerzPaymentController;
 
 Route::get('/', [WebsiteController::class, 'home'])->name('home');
 Route::get('/template', [WebsiteController::class, 'template'])->name('template');
-Route::get('/template/single-template/{title}', [WebsiteController::class, 'singleTemplate'])->name('single.template');
+Route::get('/template/single-template/{name}', [WebsiteController::class, 'singleTemplate'])->name('single.template');
 Route::get('/template/category-wise-template/{id}', [WebsiteController::class, 'categoryWiseTemplate'])->name('category.wise.template');
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
 Route::get('/team', [WebsiteController::class, 'team'])->name('team');
@@ -56,8 +56,6 @@ Route::get('/complete-order', [CheckoutController::class, 'completeOrder'])->nam
 // End Order
 
 // SSLCOMMERZ Start
-Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
 Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
 Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);

@@ -1,7 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    {{ $theme->title }}
+    {{ $theme->name }}
 @endsection
 
 @section('template')
@@ -21,7 +21,7 @@
                                 <li class="breadcrumb-item"><a
                                         href="{{ route('category.wise.template', $theme->category_id) }}">{{ $theme->category->name }}</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">{{ $theme->title }}</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ $theme->name }}</li>
                             </ol>
                         </nav>
                     </div>
@@ -48,14 +48,14 @@
 
                                 <!-- hidden input start -->
                                 <input type="hidden" name="id" value="{{ $theme->id }}" />
-                                <input type="hidden" name="name" value="{{ $theme->title }}" />
+                                <input type="hidden" name="name" value="{{ $theme->name }}" />
                                 <input type="hidden" name="code" value="{{ $theme->code }}" />
                                 <input type="hidden" name="qty" value="1" />
                                 <input type="hidden" name="price" value="{{ $theme->template_selling_price }}" />
 
                                 <!-- Product Meta Data -->
                                 <div class="product-meta-data">
-                                    <h4><b>{{ $theme->title }}</b></h4>
+                                    <h4><b>{{ $theme->name }}</b></h4>
                                     <div class="line"></div>
                                     <p class="product-price">
                                         @if ($theme->template_discount_amount > 0)

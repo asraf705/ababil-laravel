@@ -61,7 +61,7 @@
                                                         <table>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <h5 class="card-title">{{ $product->title }}</h5>
+                                                                    <h5 class="card-title">{{ $product->name }}</h5>
                                                                 </td>
                                                             </tr>
                                                             <tr>

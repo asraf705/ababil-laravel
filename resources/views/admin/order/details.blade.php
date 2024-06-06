@@ -136,7 +136,7 @@
                                         @foreach ($order->orderDetails as $orderDetail)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $orderDetail->product->title }}</td>
+                                                <td>{{ $orderDetail->product_name }}</td>
                                                 <td>{{ $orderDetail->product->code }}</td>
                                                 <td>{{ $orderDetail->product_qty }}</td>
                                                 <td>{{ $orderDetail->product_price }}<sup>{{$order->currency}}</sup></td>
