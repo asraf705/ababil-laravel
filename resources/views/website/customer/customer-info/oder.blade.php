@@ -102,13 +102,17 @@
                                                 style="width: 127px; padding-left: 0; padding-right: 0;padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                 {{ date('j M Y', strtotime($order->created_at)) }}
                                             </td>
-                                            <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
-                                                @if ($order->delivery_date == null)
-                                                    <p style="color: red"> Please Waiting for Confirmation</p>
-                                                @else
+
+                                            @if ($order->delivery_date == null)
+                                                <td
+                                                    style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle; color: #959595;">
+                                                    DD-MM-YYYY
+                                                </td>
+                                            @else
+                                                <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                     {{ $order->delivery_date }}
-                                                @endif
-                                            </td>
+                                                </td>
+                                            @endif
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
                                                 {{ $order->order_status }}
                                             </td>

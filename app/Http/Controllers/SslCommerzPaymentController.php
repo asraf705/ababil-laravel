@@ -61,8 +61,8 @@ class SslCommerzPaymentController extends Controller
         # OPTIONAL PARAMETERS
         $post_data['value_a'] = $customer->id;
         $post_data['value_b'] = $customer->name;
-        $post_data['value_c'] = "ref003";
-        $post_data['value_d'] = "ref004";
+        $post_data['value_c'] = $request->company_name;
+        $post_data['value_d'] = $request->comment;
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
         $update_product = DB::table('orders')
@@ -80,7 +80,9 @@ class SslCommerzPaymentController extends Controller
                 'order_status'       => 'Pending',
                 'payment_method'     => $request->payment_method,
                 'transaction_id'     => $post_data['tran_id'],
-                'currency'           => $post_data['currency']
+                'currency'           => $post_data['currency'],
+                'created_at'         => now(),
+
             ]);
 
         $order_id = DB::getPdo()->lastInsertId();
@@ -95,6 +97,7 @@ class SslCommerzPaymentController extends Controller
                     'product_code'   => $item->options->code,
                     'product_qty'    => $item->qty,
                     'product_price'  => $item->price,
+                    'created_at'         => now(),
                 ];
             })->all()
         );

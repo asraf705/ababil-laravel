@@ -119,6 +119,10 @@
                             </div>
                         </div>
 
+                        <div class="card-header">
+                            <h4>Order Info</h4>
+                        </div>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover">
@@ -139,11 +143,34 @@
                                                 <td>{{ $orderDetail->product_name }}</td>
                                                 <td>{{ $orderDetail->product->code }}</td>
                                                 <td>{{ $orderDetail->product_qty }}</td>
-                                                <td>{{ $orderDetail->product_price }}<sup>{{$order->currency}}</sup></td>
-
+                                                <td>{{ $orderDetail->product_price }}<sup>{{ $order->currency }}</sup>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3"> </td>
+                                            <td style="text-align: center;">Package:</td>
+                                            <td style="text-align: center;">
+                                                {{ $order->package_price }}<sup>{{ $order->currency }}</sup>
+                                            </td>
+                                        </tr>
+                                        <tr style="border-bottom-color: black;">
+                                            <td colspan="3"> </td>
+                                            <td style="text-align: center;">Tax:</td>
+                                            <td style="text-align: center;">
+                                                {{ $order->tax_ammount }}%
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> </td>
+                                            <td style="text-align: center;font-weight: bold;">Total:</td>
+                                            <td style="text-align: center;">
+                                                {{ $order->order_total }}<sup>{{ $order->currency }}</sup>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
