@@ -70,7 +70,7 @@
                                                         class="btn btn-primary" style="margin-right: 10px;">
                                                         <i class="fa fa-edit"></i></a> --}}
 
-                                                    <a href="{{route('admin-order.invoice')}}" title="Order Detail" class="btn btn-primary"
+                                                    <a href="{{route('admin-order.invoice')}}" title="Order Invoice" class="btn btn-primary"
                                                         style="margin-right: 10px;">
                                                         <i class="fa fa-file"></i></a>
 

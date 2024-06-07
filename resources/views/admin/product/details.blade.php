@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-    Product Detail
+    {{ $product->name }}
 @endsection
 
 @section('products')
@@ -51,7 +51,7 @@
                                                                 href="{{ route('category.wise.product', ['categoryId' => $product->category_id]) }}"><i
                                                                     class="far fa-file"></i>{{ $product->category->name }}</a>
                                                         </li>
-                                                        <li class="breadcrumb-item">{{ $product->title }}</li>
+                                                        <li class="breadcrumb-item">{{ $product->name }}</li>
                                                     </ol>
                                                 </nav>
                                             </div>
@@ -82,7 +82,7 @@
                                                 <div class="single_product_desc">
                                                     <!-- Product Meta Data -->
                                                     <div class="product-meta-data">
-                                                        <h4><b>{{ $product->title }}</b></h4>
+                                                        <h4><b>{{ $product->name }}</b></h4>
                                                         <h6>Auther Name: <b>
                                                                 @if ($product->auther_id == 0)
                                                                     Admin

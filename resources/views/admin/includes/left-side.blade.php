@@ -22,7 +22,7 @@
                     <li class="dropdown @yield('product-type')"><a class="nav-link"
                             href="{{ route('product-type.index') }}">Product Type</a></li>
                     <li class="dropdown @yield('tex')"><a class="nav-link"
-                            href="{{ route('texInfo.edit', 1) }}">Manage Tex & Currency</a></li>
+                            href="{{ route('texInfo.edit', 1) }}">Manage Tax & Currency</a></li>
                     <li class="dropdown @yield('post')"><a class="nav-link" href="{{ route('post.index') }}">Post</a>
                     </li>
                     <li class="dropdown @yield('skill')"><a class="nav-link"
@@ -90,7 +90,7 @@
 
             <!-- theime -->
             <li class="menu-header">Theme</li>
-            <li class="dropdown @yield('theme')">
+            <li class="dropdown @yield('themes')">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="copy"></i><span>Theme</span></a>
                 <ul class="dropdown-menu">

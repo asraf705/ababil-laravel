@@ -21,6 +21,26 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Manage Detail</h4>
+
+                            <div class="card-header-action d-flex">
+
+                                <a href="" title="Order Edit" class="btn btn-primary" style="margin-right: 10px;">
+                                    <i class="fa fa-edit"></i></a>
+
+                                <a href="{{ route('admin-order.invoice') }}" title="Order Invoice" class="btn btn-success"
+                                    style="margin-right: 10px;">
+                                    <i class="fa fa-file"></i></a>
+
+                                <form action=" "
+                                    method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger " title="Delete"
+                                        onclick="return confirm('Are you sure delete this!!')"><i
+                                            class="fa fa-trash"></i></button>
+                                </form>
+                            </div>
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -133,6 +153,7 @@
                                             <th>Product Code</th>
                                             <th>Quantity</th>
                                             <th>Product Price</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
@@ -143,7 +164,13 @@
                                                 <td>{{ $orderDetail->product_name }}</td>
                                                 <td>{{ $orderDetail->product->code }}</td>
                                                 <td>{{ $orderDetail->product_qty }}</td>
-                                                <td>{{ $orderDetail->product_price }}<sup>{{ $order->currency }}</sup>
+                                                <td>
+                                                    {{ $orderDetail->product_price }}<sup>{{ $order->currency }}</sup>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('products.show', $orderDetail->id) }}" title="Product Details"
+                                                        class="btn btn-dark" style="margin-right: 10px;"><i
+                                                            class="fa fa-info-circle"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
