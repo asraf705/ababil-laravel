@@ -8,7 +8,7 @@
     active
 @endsection
 
-@section('manageOrder')
+@section('completeOrder')
     active
 @endsection
 
@@ -40,7 +40,6 @@
                                             <th>Order Date</th>
                                             <th>Order Total</th>
                                             <th>Order Status</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
@@ -60,29 +59,6 @@
                                                 <td>{{ date('j M Y', strtotime($order->created_at)) }}</td>
                                                 <td>{{ $order->order_total }}<sup>{{ $order->currency }}</sup></td>
                                                 <td>{{ $order->order_status }}</td>
-                                                <td class="justify-content-center d-flex">
-                                                    <a title="Order Detail"
-                                                        href="{{ route('admin-order.detail', ['id' => $order->id]) }}"
-                                                        class="btn btn-dark" style="margin-right: 10px;"><i
-                                                            class="fa fa-info-circle"></i>
-                                                    </a>
-                                                    <a href="{{ route('admin-order.edit', ['id' => $order->id]) }}" title="Order Edit"
-                                                        class="btn btn-primary" style="margin-right: 10px;">
-                                                        <i class="fa fa-edit"></i></a>
-
-                                                    <a href="{{route('admin-order.invoice')}}" title="Order Invoice" class="btn btn-warning" {{$order->order_status == 'Pending' || $order->order_status =='Cancel' ? 'hidden' : ''}}
-                                                        style="margin-right: 10px;">
-                                                        <i class="fa fa-file"></i></a>
-
-                                                    <form action="{{ route('admin-order.delete', ['id' => $order->id]) }}" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger "
-                                                            onclick="return confirm('Are you sure delete this!!')" {{$order->order_status == 'Cancel' ? '' : 'hidden'}}><i
-                                                                class="fa fa-trash"></i></button>
-                                                    </form>
-
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\admin\PolicyController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductPriceController;
+use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\ThemeInfoController;
 use App\Http\Controllers\website\CheckoutController;
@@ -114,4 +115,23 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/admin/all-order', [AdminOrderController::class, 'index'])->name('admin-order.manage');
     Route::get('/admin/order-detail/{id}', [AdminOrderController::class, 'detail'])->name('admin-order.detail');
     Route::get('/admin/order/invoice', [AdminOrderController::class, 'invoice'])->name('admin-order.invoice');
+    Route::get('/admin/order-edit/{id}',[AdminOrderController::class,'edit'])->name('admin-order.edit');
+    Route::post('/admin/order-update/{id}',[AdminOrderController::class,'update'])->name('admin-order.update');
+    Route::post('/admin/order-delete/{id}',[AdminOrderController::class,'delete'])->name('admin-order.delete');
+
+    Route::get('/admin/processing-order', [AdminOrderController::class, 'processingOrder'])->name('admin-order.processingOrder');
+    Route::get('/admin/complete-order', [AdminOrderController::class, 'completeOrder'])->name('admin-order.completeOrder');
+
+
+    //Report management Routes//
+    Route::get('/admin/selles-report', [ReportController::class, 'sellesReport'])->name('admin.sellesReport');
+    Route::get('/admin/product-report', [ReportController::class, 'productReport'])->name('admin.productReport');
+
+
+
+
+
+
+
+
 });

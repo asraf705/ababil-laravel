@@ -83,7 +83,7 @@ class SslCommerzPaymentController extends Controller
                 'currency'           => $post_data['currency'],
                 'created_at'         => now(),
                 'updated_at'         => now(),
-
+                'payment_date'       => now(),
 
             ]);
 

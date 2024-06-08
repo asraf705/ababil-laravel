@@ -110,7 +110,7 @@
                                                 </td>
                                             @else
                                                 <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">
-                                                    {{ $order->delivery_date }}
+                                                    {{date('j M Y',strtotime($order->delivery_date)) }}
                                                 </td>
                                             @endif
                                             <td style="padding-top: 3%; padding-bottom: 3%;vertical-align: middle;">

@@ -57,7 +57,7 @@
                                                 <tr>
 
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $product->title }}</td>
+                                                    <td>{{ $product->name }}</td>
                                                     <td><a
                                                             href="{{ route('category.wise.product', ['categoryId' => $product->category_id]) }}">
                                                             {{ $product->category->name }} </a></td>
@@ -74,7 +74,6 @@
                                                             Free
                                                         @else
                                                             {{ number_format($product->template_selling_price, 2) }}<sup>{{ $currency->currency_type }}</sup>
-                                                            {{-- {{ $product->template_selling_price }} --}}
                                                         @endif
                                                     </td>
                                                     <td>

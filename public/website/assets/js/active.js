@@ -44,15 +44,15 @@
         $('.header-area').removeClass('bp-xs-on');
     });
 
-        // :: 3.0 whatapp Active Code
-        if ($.fn.whatsApp) {
-            $.whatsApp({
-                scrollSpeed: 1000,
-                whatappeasingType: 'easeInOutQuart',
-                whatappText: '<i class="fa fa-whatsapp" aria-hidden="true"></i>'
+    // :: 3.0 whatapp Active Code
+    if ($.fn.whatsApp) {
+        $.whatsApp({
+            scrollSpeed: 1000,
+            whatappeasingType: 'easeInOutQuart',
+            whatappText: '<i class="fa fa-whatsapp" aria-hidden="true"></i>'
 
-            });
-        }
+        });
+    }
 
     // :: 3.0 ScrollUp Active Code
     if ($.fn.scrollUp) {
@@ -132,28 +132,28 @@
 })(jQuery);
 
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     "use strict";
     //  TESTIMONIALS CAROUSEL HOOK
     $('#customers-testimonials').owlCarousel({
         loop: true,
         center: true,
-        margin:-38,
-        dots:false,
+        margin: -38,
+        dots: false,
         speed: 1000,
         autoplay: true,
         autoplaySpeed: 900,
         smartSpeed: 1500,
         responsive: {
-          0: {
-            items: 1
-          },
-          768: {
-            items: 2
-          },
-          1170: {
-            items: 3
-          }
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 3
+            }
         }
     });
 
@@ -161,21 +161,21 @@ jQuery(document).ready(function($) {
         loop: true,
         center: true,
         margin: 0,
-        dots:true,
+        dots: true,
         speed: 1000,
         autoplay: true,
         autoplaySpeed: 2000,
         smartSpeed: 150,
         responsive: {
-          0: {
-            items: 1
-          },
-          768: {
-            items: 2
-          },
-          1170: {
-            items: 3
-          }
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 3
+            }
         }
     });
 });

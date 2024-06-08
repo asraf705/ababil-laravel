@@ -24,22 +24,35 @@
 
                             <div class="card-header-action d-flex">
 
-                                <a href="" title="Order Edit" class="btn btn-primary" style="margin-right: 10px;">
+                                <a href="{{ route('admin-order.edit', ['id' => $order->id]) }}" title="Order Edit"
+                                    class="btn btn-primary" style="margin-right: 10px;">
                                     <i class="fa fa-edit"></i></a>
 
-                                <a href="{{ route('admin-order.invoice') }}" title="Order Invoice" class="btn btn-success"
+                                <a href="{{ route('admin-order.invoice') }}" title="Order Invoice" class="btn btn-warning" {{$order->order_status == 'Pending' || $order->order_status =='Cancel' ? 'hidden' : ''}}
                                     style="margin-right: 10px;">
                                     <i class="fa fa-file"></i></a>
 
-                                <form action=" "
-                                    method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger " title="Delete"
-                                        onclick="return confirm('Are you sure delete this!!')"><i
-                                            class="fa fa-trash"></i></button>
-                                </form>
+                                @if ($order->order_status == 'Cancel')
+                                    <form action="{{ route('admin-order.delete', ['id' => $order->id]) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger " title="Delete" style="margin-right: 10px;"
+                                            onclick="return confirm('Are you sure delete this!!')"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>
+
+                                    <a href="{{ route('admin-order.manage') }}" title="Order Back" class="btn btn-danger">Back</a>
+                                @else
+                                    <a href="{{ route('admin-order.manage') }}" title="Order Back" class="btn btn-danger">Back</a>
+                                @endif
+
                             </div>
+
+                            @if (session('Gmessage'))
+                                <p class="text-center text-success">{{ session('Gmessage') }}</p>
+                            @else
+                                <p class="text-center text-danger">{{ session('Rmessage') }}</p>
+                            @endif
 
                         </div>
                         <div class="card-body">
@@ -168,9 +181,9 @@
                                                     {{ $orderDetail->product_price }}<sup>{{ $order->currency }}</sup>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('products.show', $orderDetail->id) }}" title="Product Details"
-                                                        class="btn btn-dark" style="margin-right: 10px;"><i
-                                                            class="fa fa-info-circle"></i></a>
+                                                    <a href="{{ route('products.show', $orderDetail->id) }}"
+                                                        title="Product Details" class="btn btn-dark"
+                                                        style="margin-right: 10px;"><i class="fa fa-info-circle"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

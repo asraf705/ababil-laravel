@@ -57,15 +57,19 @@
                         data-feather="copy"></i><span>Order</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown @yield('manageOrder')" href="{{ route('admin-order.manage') }}">Manage Order</a></li>
+                    <li><a class="dropdown @yield('processingOrder')" href="{{ route('admin-order.processingOrder') }}">Order Processing</a></li>
+                    <li><a class="dropdown @yield('completeOrder')" href="{{ route('admin-order.completeOrder') }}">Order Complete</a></li>
+
                 </ul>
             </li>
 
-            <li class="dropdown">
+            <li class="menu-header">Report</li>
+            <li class="dropdown @yield('allReport')">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="copy"></i><span>Sell</span></a>
+                        data-feather="copy"></i><span>Report</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="sell/manage-sell.html">Manage Sell</a></li>
-                    <li><a class="nav-link" href="sell/print-sell.html">Sell info Print</a></li>
+                    <li><a class="nav-link @yield('sellesReport')" href="{{ route('admin.sellesReport') }}">Selles Report</a></li>
+                    <li><a class="nav-link @yield('productReport')" href="{{ route('admin.productReport') }}">Product Report</a></li>
                 </ul>
             </li>
 
