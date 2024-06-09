@@ -108,7 +108,7 @@ class Product extends Model
     private static function saveBasicInfo($product, $request, $imageUrl)
     {
         $product->category_id                    = $request->category_id;
-        $product->title                          = $request->title;
+        $product->name                          = $request->name;
         $product->auther_id                      = $request->auther_id;
         $product->code                           = $request->code;
         $product->short_description              = $request->short_description;

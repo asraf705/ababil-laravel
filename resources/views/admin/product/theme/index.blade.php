@@ -25,7 +25,7 @@
                                 <h4>Manage Theme</h4>
                                 <div class="card-header-action">
                                     <a href="{{ route('products.create') }}" class="btn btn-info">
-                                        <i class="fa fa-plus"></i> Add Theme</a>
+                                        <i class="fa fa-plus"></i> Add</a>
                                 </div>
                             </div>
                             <div class="card-body">

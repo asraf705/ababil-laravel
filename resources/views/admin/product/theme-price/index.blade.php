@@ -13,6 +13,13 @@
 @endsection
 
 @section('body')
+    <style>
+        .offer-type {
+            height: 150px;
+            vertical-align: middle;
+        }
+    </style>
+
     @foreach ($currencys as $currency)
         <!-- Main Content -->
         <section class="section">
@@ -24,7 +31,7 @@
                                 <h4>Manage Theme Price</h4>
                                 <div class="card-header-action">
                                     <a href="{{ route('theme-price.edit', 1) }}" class="btn btn-info">
-                                        <i class="fa fa-plus"></i> Edit Price</a>
+                                        <i class="fa fa-edit"></i> Edit Price</a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -43,9 +50,13 @@
                                                                 {{ ' 0 to ' . $price->basic_page }} Pages
                                                             </li>
 
-                                                            <li class="grey">
-                                                                @foreach ($basicPrice as $basicType)
-                                                                    {{ $basicType->basic_type_id }}<br>
+                                                            <li class="grey offer-type">
+                                                                @foreach ($basicPrices as $basicType)
+                                                                    @foreach ($productTypes as $productType)
+                                                                        @if ($basicType->basic_type_id == $productType->id)
+                                                                            {{ $productType->name }}<br>
+                                                                        @endif
+                                                                    @endforeach
                                                                 @endforeach
                                                             </li>
 
@@ -77,11 +88,16 @@
                                                     <div class="columns col-md-4">
                                                         <ul class="price">
                                                             <li class="header" style="background-color:#CBA070">Pro</li>
-                                                            <li style="font-size: 20px">{{ ' 0 to ' . $price->pro_page }}
+                                                            <li style="font-size: 20px">
+                                                                {{ ' 0 to ' . $price->pro_page }}
                                                                 Pages</li>
-                                                            <li class="grey">
-                                                                @foreach ($price->proTypes as $proType)
-                                                                    {{ $proType->pro_type }}<br>
+                                                            <li class="grey offer-type">
+                                                                @foreach ($proPrices as $proType)
+                                                                    @foreach ($productTypes as $productType)
+                                                                        @if ($proType->pro_type == $productType->id)
+                                                                            {{ $productType->name }}<br>
+                                                                        @endif
+                                                                    @endforeach
                                                                 @endforeach
                                                             </li>
                                                             <li style="font-size: 20px">{{ $price->pro_delivery }} Days
@@ -109,12 +125,16 @@
                                                     <div class="columns col-md-4">
                                                         <ul class="price">
                                                             <li class="header">Premium</li>
-                                                            <li style="font-size: 20px">{{ ' 0 to ' . $price->pre_page }}
+                                                            <li style="font-size: 20px">
+                                                                {{ ' 0 to ' . $price->pre_page }}
                                                                 Pages</li>
-                                                            <li class="grey">
-                                                                @foreach ($price->preTypes as $preType)
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-dark disabled">{{ $preType->pre_type }}</button>
+                                                            <li class="grey offer-type">
+                                                                @foreach ($prePrices as $preType)
+                                                                    @foreach ($productTypes as $productType)
+                                                                        @if ($preType->pre_type == $productType->id)
+                                                                            {{ $productType->name }}<br>
+                                                                        @endif
+                                                                    @endforeach
                                                                 @endforeach
                                                             </li>
                                                             <li style="font-size: 20px">{{ $price->pre_delivery }} Days

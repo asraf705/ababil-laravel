@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\ProductPrice;
 use Illuminate\Http\Request;
+use PDF;
 
 class AdminOrderController extends Controller
 {
@@ -52,9 +53,22 @@ class AdminOrderController extends Controller
         return view('admin.order.details', ['order' => Order::find($id)]);
     }
 
-    public function invoice()
+    public function invoice($id)
     {
-        return view('admin.order.invoice');
+        return view('admin.order.invoice',[
+            'order' => Order::find($id),
+            'orderDetails' =>OrderDetail::where('order_id',$id)->get(),
+        ]);
+    }
+
+    public function downloadInvoice($id){
+
+        $pdf = PDF::loadView('admin.order.download-invoice',[
+            'order'=> Order::find($id),
+            'orderDetails'=>OrderDetail::where('order_id',$id)->get()
+        ]);
+        return $pdf->stream('invoice.pdf');
+
     }
 
 

@@ -12,7 +12,7 @@ class Customer extends Model
 {
     use HasFactory;
 
-    private static $customer, $image, $imageUrl, $directory, $imageName, $extension, $images;
+    private static $customer, $blockCoustomer, $image, $imageUrl, $directory, $imageName, $extension, $images;
 
     private static function getImageUrl($request)
     {
@@ -54,21 +54,23 @@ class Customer extends Model
 
     public static function loginCheck($request)
     {
-        self::$customer = Customer::where('email', $request->user_name)
-            ->orWhere('phone', $request->user_name)
-            ->first();
-        if (self::$customer) {
-            if (password_verify($request->password, self::$customer->password)) {
-
-                Session::put('customer_id', self::$customer->id);
-                Session::put('customer_name', self::$customer->fname);
-                return redirect(route('home'));
+        self::$blockCoustomer = Customer::where('status', 1)->get();
+        if (self::$blockCoustomer) {
+            self::$customer = Customer::where('email', $request->user_name)
+                ->orWhere('phone', $request->user_name)
+                ->first();
+            if (self::$customer) {
+                if (password_verify($request->password, self::$customer->password)) {
+                    Session::put('customer_id', self::$customer->id);
+                    Session::put('customer_name', self::$customer->fname);
+                    return redirect(route('home'));
+                } else {
+                    Session::put('passwordMessage', 'passwordMessage');
+                    return redirect(route('customer.login'));
+                }
             } else {
-                Session::put('passwordMessage', 'passwordMessage');
-                return redirect(route('customer.login'));
+                return redirect(route('customer.login'))->with('nameMessage', 'nameMessage');
             }
-        } else {
-            return redirect(route('customer.login'))->with('nameMessage', 'nameMessage');
         }
     }
 
@@ -93,6 +95,19 @@ class Customer extends Model
         self::$customer->gender             = $request->gender;
         self::$customer->address            = $request->address;
         self::$customer->image              = self::$imageUrl;
+        self::$customer->save();
+    }
+
+
+
+    public static function checkStatus($id)
+    {
+        self::$customer = Customer::find($id);
+        if (self::$customer->status == 1) {
+            self::$customer->status = 0;
+        } else {
+            self::$customer->status = 1;
+        }
         self::$customer->save();
     }
 }

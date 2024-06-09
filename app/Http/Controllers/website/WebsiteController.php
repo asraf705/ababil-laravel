@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Policy;
+use App\Models\ProductBasicAuth;
+use App\Models\ProductPreAuth;
 use App\Models\ProductPrice;
+use App\Models\ProductProAuth;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -68,7 +72,13 @@ class WebsiteController extends Controller
     // price
     public static function price()
     {
-        return view('website.price.index');
+        return view('website.price.index',[
+            'prices'      => ProductPrice::where('id', 1)->get(),
+            'productTypes' => ProductType::where('status', 1)->get(),
+            'basicPrices'  => ProductBasicAuth::where('product_price_id', 1)->get(),
+            'proPrices'    => ProductProAuth::where('product_price_id', 1)->get(),
+            'prePrices'    => ProductPreAuth::where('product_price_id', 1)->get(),
+        ]);
     }
 
     // policyOne

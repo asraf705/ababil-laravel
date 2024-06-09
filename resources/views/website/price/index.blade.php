@@ -9,6 +9,15 @@
 @endsection
 
 @section('body')
+    <style>
+        .offer-type {
+            height: 130px;
+            vertical-align: middle;
+        }
+    </style>
+
+
+
     @foreach ($currencys as $currency)
         <div class="cart-table-area section-padding-100">
             <div class="container-fluid">
@@ -20,7 +29,7 @@
                             <ul class="price">
                                 <li class="header" style="background-color:#CBA070">Info</li>
                                 <li class="grey">Page</li>
-                                <li>Our offer</li>
+                                <li class="offer-type" style="vertical-align: middle;padding-top: 50px;">Our offer</li>
                                 <li class="grey">Delivery</li>
                                 <li>Price</li>
                             </ul>
@@ -31,10 +40,13 @@
                                 <ul class="price">
                                     <li class="header">Basic</li>
                                     <li class="grey">{{ ' 0 to ' . $price->basic_page }}</li>
-                                    <li>
-                                        @foreach ($price->basicTypes as $basicType)
-                                            <button type="button"
-                                                class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                    <li class="offer-type">
+                                        @foreach ($basicPrices as $basicType)
+                                            @foreach ($productTypes as $productType)
+                                                @if ($basicType->basic_type_id == $productType->id)
+                                                    {{ $productType->name }}<br>
+                                                @endif
+                                            @endforeach
                                         @endforeach
                                     </li>
                                     <li class="grey">{{ $price->basic_delivery }} Days</li>
@@ -53,10 +65,13 @@
                                 <ul class="price">
                                     <li class="header" style="background-color:#CBA070">Pro</li>
                                     <li class="grey">{{ ' 0 to ' . $price->pro_page }}</li>
-                                    <li>
-                                        @foreach ($price->proTypes as $proType)
-                                            <button type="button"
-                                                class="btn btn-outline-dark disabled">{{ $proType->pro_type }}</button>
+                                    <li class="offer-type">
+                                        @foreach ($proPrices as $proType)
+                                            @foreach ($productTypes as $productType)
+                                                @if ($proType->pro_type == $productType->id)
+                                                    {{ $productType->name }}<br>
+                                                @endif
+                                            @endforeach
                                         @endforeach
                                     </li>
                                     <li class="grey">{{ $price->pro_delivery }} Days</li>
@@ -75,10 +90,13 @@
                                 <ul class="price">
                                     <li class="header">Premium</li>
                                     <li class="grey">{{ ' 0 to ' . $price->pre_page }}</li>
-                                    <li>
-                                        @foreach ($price->preTypes as $preType)
-                                            <button type="button"
-                                                class="btn btn-outline-dark disabled">{{ $preType->pre_type }}</button>
+                                    <li class="offer-type">
+                                        @foreach ($prePrices as $preType)
+                                            @foreach ($productTypes as $productType)
+                                                @if ($preType->pre_type == $productType->id)
+                                                    {{ $productType->name }}<br>
+                                                @endif
+                                            @endforeach
                                         @endforeach
                                     </li>
                                     <li class="grey">{{ $price->pre_delivery }} Days</li>

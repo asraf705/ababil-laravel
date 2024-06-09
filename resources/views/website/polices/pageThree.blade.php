@@ -31,7 +31,7 @@
                     <div class="checkout_details_area mt-50 clearfix">
 
                         <div class="cart-title">
-                            <h2>{{ $policy->three_name }} Informetion</h2>
+                            <h2>{{ $policy->three_name }}</h2>
                             <hr>
                         </div>
                         <!-- body code -->

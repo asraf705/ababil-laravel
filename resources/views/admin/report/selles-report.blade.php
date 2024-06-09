@@ -39,21 +39,25 @@
                                         </thead>
                                         <tbody class="text-center">
 
+                                            <?php $tableSl = 1; ?>
                                             @foreach ($products as $product)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $product->category->name }}</td>
-                                                    <td>{{ $product->name }}</td>
-                                                    <td>{{ $product->code }}</td>
-                                                    <td>
-                                                        @if ($product->template_selling_price == 0)
-                                                            Free
-                                                        @else
-                                                            {{ $product->template_selling_price }}<sup>{{ $currency->currency_type }}</sup>
-                                                        @endif
-                                                    </td>
-                                                    <td>{{ $product->sales_count }}</td>
-                                                </tr>
+                                                @if ($product->sales_count > 0)
+                                                    <tr>
+                                                        <td>{{ $tableSl }}</td>
+                                                        <td>{{ $product->category->name }}</td>
+                                                        <td>{{ $product->name }}</td>
+                                                        <td>{{ $product->code }}</td>
+                                                        <td>
+                                                            @if ($product->template_selling_price == 0)
+                                                                Free
+                                                            @else
+                                                                {{ $product->template_selling_price }}<sup>{{ $currency->currency_type }}</sup>
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ $product->sales_count }}</td>
+                                                    </tr>
+                                                    <?php $tableSl++; ?>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>

@@ -73,12 +73,12 @@
                 </ul>
             </li>
 
-            <li class="menu-header">Team Account</li>
-            <li class="dropdown @yield('discount')">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Team
-                        Members</span></a>
+            <li class="menu-header">Account</li>
+            <li class="dropdown @yield('allaccount')">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Members</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="account/manage-account.html">Manage Members</a></li>
+                    <li><a class="dropdown @yield('')" href="#">Team Members</a></li>
+                    <li><a class="dropdown @yield('customerUser')" href="{{ route('customer.account') }}">Customer Account</a></li>
                 </ul>
             </li>
 

@@ -66,19 +66,30 @@
                                                         class="btn btn-dark" style="margin-right: 10px;"><i
                                                             class="fa fa-info-circle"></i>
                                                     </a>
-                                                    <a href="{{ route('admin-order.edit', ['id' => $order->id]) }}" title="Order Edit"
-                                                        class="btn btn-primary" style="margin-right: 10px;">
+                                                    <a href="{{ route('admin-order.edit', ['id' => $order->id]) }}"
+                                                        title="Order Edit" class="btn btn-primary"
+                                                        style="margin-right: 10px;">
                                                         <i class="fa fa-edit"></i></a>
 
-                                                    <a href="{{route('admin-order.invoice')}}" title="Order Invoice" class="btn btn-warning" {{$order->order_status == 'Pending' || $order->order_status =='Cancel' ? 'hidden' : ''}}
+                                                    <a href="{{ route('admin-order.invoice', ['id' => $order->id]) }}"
+                                                        title="Order Invoice" class="btn btn-warning"
+                                                        {{ $order->order_status == 'Pending' || $order->order_status == 'Cancel' ? 'hidden' : '' }}
                                                         style="margin-right: 10px;">
                                                         <i class="fa fa-file"></i></a>
 
-                                                    <form action="{{ route('admin-order.delete', ['id' => $order->id]) }}" method="post">
+                                                    <a href="{{ route('admin-order.download-invoice', ['id' => $order->id]) }}"
+                                                        title="Order Invoice" class="btn btn-success"
+                                                        {{ $order->order_status == 'Pending' || $order->order_status == 'Cancel' ? 'hidden' : '' }}
+                                                        style="margin-right: 10px;">
+                                                        <i class="fas fa-download"></i></a>
+
+                                                    <form action="{{ route('admin-order.delete', ['id' => $order->id]) }}"
+                                                        method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger "
-                                                            onclick="return confirm('Are you sure delete this!!')" {{$order->order_status == 'Cancel' ? '' : 'hidden'}}><i
+                                                            onclick="return confirm('Are you sure delete this!!')"
+                                                            {{ $order->order_status == 'Cancel' ? '' : 'hidden' }}><i
                                                                 class="fa fa-trash"></i></button>
                                                     </form>
 

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Models\ProductBasicAuth;
+use App\Models\ProductPreAuth;
+use App\Models\ProductProAuth;
+use App\Models\ProductType;
 use Cart;
 use App\Models\ProductPrice;
 use App\Models\Customer;
@@ -27,6 +31,11 @@ class CheckoutController extends Controller
             'products' => Cart::content(),
             'customer' => $this->customer,
             'cartsProduct' => Cart::content(),
+            'prices'      => ProductPrice::where('id', 1)->get(),
+            'productTypes' => ProductType::where('status', 1)->get(),
+            'basicPrices'  => ProductBasicAuth::where('product_price_id', 1)->get(),
+            'proPrices'    => ProductProAuth::where('product_price_id', 1)->get(),
+            'prePrices'    => ProductPreAuth::where('product_price_id', 1)->get(),
         ]);
     }
 
@@ -46,16 +55,14 @@ class CheckoutController extends Controller
             Session::put('customer_name', $this->customer->name);
         }
 
-        if ($request->payment_method == 'Online')
-        {
+        if ($request->payment_method == 'Online') {
             $sslCommerzePayment = new SslCommerzPaymentController();
             $sslCommerzePayment->index($request, $this->customer);
         }
-
-
     }
 
-    public function completeOrder(){
+    public function completeOrder()
+    {
         return view('website.checkout.complete-order');
     }
 }

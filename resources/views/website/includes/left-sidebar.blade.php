@@ -5,7 +5,7 @@
 <div class="mobile-nav">
     <!-- Navbar Brand -->
     <div class="amado-navbar-brand">
-        <a href="{{ route('home') }}"><img src="{{ asset('/') }}website/assets/img/core-img/logo.png"
+        <a href="{{ route('home') }}"><img src="{{ asset($themeInfo->header_logo) }}"
                 alt=""></a>
     </div>
     <!-- Navbar Toggler -->
@@ -22,7 +22,7 @@
     </div>
     <!-- Logo -->
     <div class="logo">
-        <a href="{{ route('home') }}"><img src="{{ asset('/') }}website/assets/img/core-img/logo.png"
+        <a href="{{ route('home') }}"><img src="{{ asset($themeInfo->header_logo) }}"
                 alt=""></a>
     </div>
     <!-- Amado Nav -->
@@ -32,7 +32,7 @@
             <li class="@yield('template')"><a href="{{ route('template') }}">Template</a></li>
             <li class="@yield('price')"><a href="{{ route('price') }}">Price</a></li>
             <li class="@yield('team')"><a href="{{ route('team') }}">Team</a></li>
-            <li class="@yield('policy')"><a href="{{ route('policyOne') }}">Privacy Policy</a></li>
+            <li class="@yield('policy')"><a href="{{ route('policyOne') }}">Terms & Condition</a></li>
             @if (Session::get('customer_id'))
                 <li class="@yield('customer')">
                     <a href="{{ route('customer.profile') }}">

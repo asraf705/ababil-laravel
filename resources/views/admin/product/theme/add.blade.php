@@ -55,7 +55,7 @@
                                         <div class="col-md-12">
                                             <div class="section-title mt-0">Title<samp class="required">*</samp></div>
                                             <div class="form-group">
-                                                <input type="text" name="title" class="form-control" required>
+                                                <input type="text" name="name" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +151,7 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-4">
-                                            <div class="section-title mt-0">Delivery Date</div>
+                                            <div class="section-title mt-0">Delivery Days</div>
                                             <div class="form-group">
                                                 <input type="number" name="template_delivery" class="form-control"
                                                     placeholder="(exmple:10)">

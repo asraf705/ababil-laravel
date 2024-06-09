@@ -58,7 +58,7 @@
                                         <div class="col-md-12">
                                             <div class="section-title mt-0">Title</div>
                                             <div class="form-group">
-                                                <input type="text" value=" {{ $product->title }}" name="title"
+                                                <input type="text" value=" {{ $product->name }}" name="name"
                                                     class="form-control">
                                             </div>
                                         </div>

@@ -1,18 +1,25 @@
-@extends('admin.master')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title')
-    Order Invoice
-@endsection
 
-@section('allOrder')
-    active
-@endsection
+<!-- invoice.html  21 Nov 2019 04:05:05 GMT -->
 
-@section('manageOrder')
-    active
-@endsection
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Otika - Admin Dashboard Template</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="assets/css/app.min.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+</head>
 
-@section('body')
+<body>
+
     @foreach ($themeInfos as $themeInfo)
         <!-- Main Content -->
         <section class="section">
@@ -88,7 +95,8 @@
                                                     <td></td>
                                                     <td>{{ $item->product_name }}</td>
                                                     <td class="text-center">{{ $item->product_qty }}</td>
-                                                    <td class="text-center">${{ number_format($item->product_price, 2) }}
+                                                    <td class="text-center">
+                                                        ${{ number_format($item->product_price, 2) }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -96,7 +104,8 @@
                                                 <td></td>
                                                 <td>{{ $order->package_type }}</td>
                                                 <td class="text-center">1</td>
-                                                <td class="text-center">${{ number_format($order->package_price, 2) }}</td>
+                                                <td class="text-center">${{ number_format($order->package_price, 2) }}
+                                                </td>
                                             </tfoot>
                                         </table>
                                     </div>
@@ -114,7 +123,8 @@
                                             </div>
                                             <hr class="mt-2 mb-2">
                                             <div class="invoice-detail-item">
-                                                <div><span class="invoice-detail-name" style="text-align: left">Total</span>
+                                                <div><span class="invoice-detail-name"
+                                                        style="text-align: left">Total</span>
                                                     <span
                                                         class="invoice-detail-value-lg">${{ number_format($order->order_total, 2) }}</span>
                                                 </div>
@@ -128,13 +138,10 @@
                     <hr>
                     <div class="text-md-right">
                         <div class="float-lg-left mb-lg-0 mb-3">
-                            <a href="{{ route('admin-order.download-invoice', ['id' => $order->id]) }}"
-                                style="color: white; text-decoration: no;"> <button type="button"
-                                    class="btn btn-primary btn-icon icon-left" id="invoice-download"><i
-                                        class="fas fa-download"></i>Invoice Download</button></a>
-                            <a href="{{ route('admin-order.manage') }}"><button
-                                    class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i>
-                                    Cancel</button></a>
+                            <button type="button" class="btn btn-primary btn-icon icon-left" id="invoice-download"><i
+                                    class="fas fa-download"></i>Invoice Download</button>
+                            <button class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i>
+                                Cancel</button>
                         </div>
                         <button class="btn btn-warning btn-icon icon-left" onclick="printPage('invoice-container')"><i
                                 class="fas fa-print"></i> Print</button>
@@ -156,16 +163,30 @@
         </script>
     @endforeach
 
+    <!-- General JS Scripts -->
+    <script src="assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <!-- Page Specific JS File -->
+    <!-- Template JS File -->
+    <script src="assets/js/scripts.js"></script>
+    <!-- Custom JS File -->
+    <script src="assets/js/custom.js"></script>
+
     <script>
-        $(document).ready(function() {
-            $('#invoice-download').on('click', function() {
-                var container = document.getElementById('invoice-container');
-                var html = container.innerHTML;
-                var pdf = new jsPDF('p', 'pt', 'a4');
-                pdf.fromHTML(html, 15, 15);
-                pdf.save('invoice.pdf');
-            });
-        });
+        function printPage(containerId) {
+            var printContents = document.getElementById(containerId).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-@endsection
+
+
+</body>
+
+
+<!-- invoice.html  21 Nov 2019 04:05:05 GMT -->
+
+</html>

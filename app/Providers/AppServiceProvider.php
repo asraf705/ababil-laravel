@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\ProductBasicAuth;
+use App\Models\ProductPreAuth;
 use App\Models\ProductPrice;
+use App\Models\ProductProAuth;
+use App\Models\ProductType;
 use Illuminate\Support\ServiceProvider;
 use View;
 use App\Models\Category;
@@ -48,7 +52,14 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('*', function ($view) {
-            $view->with('prices', ProductPrice::where('id', 1)->get());
+            $view->with(
+                'prices', ProductPrice::where('id', 1)->get(),
+                'productTypes' , ProductType::where('status',1)->get(),
+                'basicPrices'  , ProductBasicAuth::where('product_price_id', 1)->get(),
+                'proPrices'    , ProductProAuth::where('product_price_id', 1)->get(),
+                'prePrices'    , ProductPreAuth::where('product_price_id', 1)->get(),
+        );
         });
+
     }
 }

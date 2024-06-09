@@ -74,21 +74,30 @@
                                                 Our offer
                                             </td>
                                             <td>
-                                                @foreach ($price->basicTypes as $basicType)
-                                                    <button type="button"
-                                                        class="btn btn-outline-dark disabled">{{ $basicType->basic_type_id }}</button>
+                                                @foreach ($basicPrices as $basicType)
+                                                    @foreach ($productTypes as $productType)
+                                                        @if ($basicType->basic_type_id == $productType->id)
+                                                            {{ $productType->name }}<br>
+                                                        @endif
+                                                    @endforeach
                                                 @endforeach
                                             </td>
                                             <td>
-                                                @foreach ($price->proTypes as $proType)
-                                                    <button type="button"
-                                                        class="btn btn-outline-dark disabled">{{ $proType->pro_type }}</button>
+                                                @foreach ($proPrices as $proType)
+                                                    @foreach ($productTypes as $productType)
+                                                        @if ($proType->pro_type == $productType->id)
+                                                            {{ $productType->name }}<br>
+                                                        @endif
+                                                    @endforeach
                                                 @endforeach
                                             </td>
                                             <td>
-                                                @foreach ($price->preTypes as $preType)
-                                                    <button type="button"
-                                                        class="btn btn-outline-dark disabled">{{ $preType->pre_type }}</button>
+                                                @foreach ($prePrices as $preType)
+                                                    @foreach ($productTypes as $productType)
+                                                        @if ($preType->pre_type == $productType->id)
+                                                            {{ $productType->name }}<br>
+                                                        @endif
+                                                    @endforeach
                                                 @endforeach
                                             </td>
                                         </tr>
@@ -195,8 +204,8 @@
 
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <input type="text" class="form-control" id="company" name="company_name"
-                                                        placeholder="Company Name">
+                                                    <input type="text" class="form-control" id="company"
+                                                        name="company_name" placeholder="Company Name">
                                                 </div>
 
                                                 <div class="col-12 mb-3">
@@ -214,8 +223,8 @@
                                                 <div class="col-12 mb-3">
                                                     @if (isset($customer->email))
                                                         <input type="email" class="form-control" name="email "
-                                                            id="email" value="{{ $customer->email }}" readonly
-                                                            required placeholder="Email">
+                                                            id="email" value="{{ $customer->email }}" readonly required
+                                                            placeholder="Email">
                                                     @else
                                                         <input type="email" class="form-control" name="email "
                                                             id="email" placeholder="Email">
@@ -238,7 +247,7 @@
 
                                                 <div class="col-12 mb-3">
                                                     <textarea name="comment" class="form-control w-100" id="comment" cols="30" rows="10"
-                                                        placeholder="Leave a comment about your order" ></textarea>
+                                                        placeholder="Leave a comment about your order"></textarea>
                                                 </div>
 
                                                 <div class="col-12">
@@ -259,7 +268,8 @@
                                             <ul class="summary-table">
                                                 <li><span>subtotal:</span>
                                                     <span>{{ Cart::subtotal() }}<sup>{{ $currency->currency_type }} </sup>
-                                                        <input type="hidden" name="subtotel_price" value="{{ Cart::subtotal() }}"/>
+                                                        <input type="hidden" name="subtotel_price"
+                                                            value="{{ Cart::subtotal() }}" />
                                                 </li>
                                                 <li>
                                                     <span>Package:</span>
@@ -298,8 +308,10 @@
                                                     </span>
 
                                                     <input type="hidden" id="packagePrice" value="0">
-                                                    <input type="hidden" id="taxRate" name="tax_ammount" value="{{ $currency->tex }}">
-                                                    <input type="hidden" name="currency" value="{{ $currency->tex }}"/>
+                                                    <input type="hidden" id="taxRate" name="tax_ammount"
+                                                        value="{{ $currency->tex }}">
+                                                    <input type="hidden" name="currency"
+                                                        value="{{ $currency->tex }}" />
                                                 </li>
                                             </ul>
                                             <div class="payment-method">

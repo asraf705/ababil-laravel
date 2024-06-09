@@ -23,9 +23,10 @@ class ProductPriceController extends Controller
     {
         return view('admin.product.theme-price.index',[
             'prices'      => ProductPrice::where('id',1)->get(),
-            'basicPrice'  => ProductBasicAuth::where('product_price_id', 1)->get(),
-            'proPrice'    => ProductProAuth::where('product_price_id', 1)->get(),
-            'prePrice'    => ProductPreAuth::where('product_price_id', 1)->get(),
+            'productTypes' => ProductType::where('status',1)->get(),
+            'basicPrices'  => ProductBasicAuth::where('product_price_id', 1)->get(),
+            'proPrices'    => ProductProAuth::where('product_price_id', 1)->get(),
+            'prePrices'    => ProductPreAuth::where('product_price_id', 1)->get(),
         ]);
     }
 

@@ -28,7 +28,7 @@
                                     class="btn btn-primary" style="margin-right: 10px;">
                                     <i class="fa fa-edit"></i></a>
 
-                                <a href="{{ route('admin-order.invoice') }}" title="Order Invoice" class="btn btn-warning" {{$order->order_status == 'Pending' || $order->order_status =='Cancel' ? 'hidden' : ''}}
+                                <a href="{{ route('admin-order.invoice', ['id' => $order->id]) }}" title="Order Invoice" class="btn btn-warning" {{$order->order_status == 'Pending' || $order->order_status =='Cancel' ? 'hidden' : ''}}
                                     style="margin-right: 10px;">
                                     <i class="fa fa-file"></i></a>
 
