@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,10 @@ class DashboardController extends Controller
 
     public static function dashboard()
     {
-        return view('admin.dashboard.index');
+        return view('admin.dashboard.index',[
+            'newOrders' => Order::all(),
+            'countCustomers' => Customer::all(),
+        ]);
     }
 
     public static function customerAccount()

@@ -19,54 +19,22 @@
                             <div class="row ">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                     <div class="card-content">
-                                        <h5 class="font-15">New Booking</h5>
-                                        <h2 class="mb-3 font-18">258</h2>
-                                        <p class="mb-0"><span class="col-green">10%</span> Increase</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                    <div class="banner-img">
-                                        <img src="{{ asset('/') }}admin/assets/img/banner/1.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="card">
-                    <div class="card-statistic-4">
-                        <div class="align-items-center justify-content-between">
-                            <div class="row ">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                    <div class="card-content">
-                                        <h5 class="font-15"> Customers</h5>
-                                        <h2 class="mb-3 font-18">1,287</h2>
-                                        <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                    <div class="banner-img">
-                                        <img src="{{ asset('/') }}admin/assets/img/banner/2.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="card">
-                    <div class="card-statistic-4">
-                        <div class="align-items-center justify-content-between">
-                            <div class="row ">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                    <div class="card-content">
-                                        <h5 class="font-15">New Project</h5>
-                                        <h2 class="mb-3 font-18">128</h2>
-                                        <p class="mb-0"><span class="col-green">18%</span>
-                                            Increase</p>
+                                        <h5 class="font-15">New Order</h5>
+                                        <h2 class="mb-3 font-18">
+                                            @php
+                                                $pendingOrderCount = 0;
+                                            @endphp
+
+                                            @foreach ($newOrders as $newOrder)
+                                                @if ($newOrder->order_status == 'Pending')
+                                                    @php
+                                                        $pendingOrderCount++;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+
+                                            {{ $pendingOrderCount }}
+                                        </h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -86,9 +54,76 @@
                             <div class="row ">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                     <div class="card-content">
+                                        <h5 class="font-15"> Customers</h5>
+                                        <h2 class="mb-3 font-18">
+                                            @php
+                                                $customerCount = 0;
+                                            @endphp
+
+                                            @foreach ($countCustomers as $countCustomer)
+                                                @php
+                                                    $customerCount++;
+                                                @endphp
+                                            @endforeach
+
+                                            {{ $customerCount }}
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                    <div class="banner-img">
+                                        <img src="{{ asset('/') }}admin/assets/img/banner/2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-statistic-4">
+                        <div class="align-items-center justify-content-between">
+                            <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                        <h5 class="font-15">Team Members</h5>
+                                        <h2 class="mb-3 font-18">128 Defult</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                    <div class="banner-img">
+                                        <img src="{{ asset('/') }}admin/assets/img/banner/1.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-statistic-4">
+                        <div class="align-items-center justify-content-between">
+                            <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
                                         <h5 class="font-15">Revenue</h5>
-                                        <h2 class="mb-3 font-18">$48,697</h2>
-                                        <p class="mb-0"><span class="col-green">42%</span> Increase</p>
+                                        <h2 class="mb-3 font-18">
+                                            @php
+                                                $RevenueCount = 0;
+                                            @endphp
+
+                                            @foreach ($newOrders as $newOrder)
+                                                @if ($newOrder->order_status !== 'Pending' && $newOrder->order_status !== 'Cancel')
+                                                    @php
+                                                        $RevenueCount += $newOrder->order_total;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+
+                                            ${{ $RevenueCount }}
+                                        </h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -130,9 +165,9 @@
                                 <div class="row mb-0">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <div class="list-inline text-center">
-                                            <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
+                                            <div class="list-inline-item p-r-20"><i data-feather="arrow-up-circle"
                                                     class="col-green"></i>
-                                                <h5 class="m-b-0">$675</h5>
+                                                <h5 class="m-b-0">$65</h5>
                                                 <p class="text-muted font-14 m-b-0">Weekly Earnings</p>
                                             </div>
                                         </div>
@@ -141,7 +176,7 @@
                                         <div class="list-inline text-center">
                                             <div class="list-inline-item p-r-30"><i data-feather="arrow-down-circle"
                                                     class="col-orange"></i>
-                                                <h5 class="m-b-0">$1,587</h5>
+                                                <h5 class="m-b-0">$17</h5>
                                                 <p class="text-muted font-14 m-b-0">Monthly Earnings</p>
                                             </div>
                                         </div>
@@ -150,7 +185,7 @@
                                         <div class="list-inline text-center">
                                             <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
                                                     class="col-green"></i>
-                                                <h5 class="mb-0 m-b-0">$45,965</h5>
+                                                <h5 class="mb-0 m-b-0">$45</h5>
                                                 <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
                                             </div>
                                         </div>
@@ -187,44 +222,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-sm-12 col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Chart</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart4" class="chartsh"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Chart</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="summary">
-                            <div class="summary-chart active" data-tab-group="summary-tab" id="summary-chart">
-                                <div id="chart3" class="chartsh"></div>
-                            </div>
-                            <div data-tab-group="summary-tab" id="summary-text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Chart</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart2" class="chartsh"></div>
                     </div>
                 </div>
             </div>
@@ -292,9 +289,9 @@
                                         </ul>
                                     </td>
                                     <td class="align-middle">
-                                        <div class="progress-text">50%</div>
+                                        <div class="progress-text">10%</div>
                                         <div class="progress" data-height="6">
-                                            <div class="progress-bar bg-success" data-width="50%"></div>
+                                            <div class="progress-bar bg-success" data-width="10%"></div>
                                         </div>
                                     </td>
                                     <td>2018-01-20</td>

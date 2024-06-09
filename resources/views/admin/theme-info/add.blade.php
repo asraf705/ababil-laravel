@@ -4,7 +4,7 @@
     Theme Info
 @endsection
 
-@section('themes')
+@section('themeInfo')
     active
 @endsection
 

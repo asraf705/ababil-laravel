@@ -4,7 +4,7 @@
     Privacy Policy
 @endsection
 
-@section('themes')
+@section('themeInfo')
     active
 @endsection
 

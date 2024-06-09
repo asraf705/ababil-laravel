@@ -94,7 +94,7 @@
 
             <!-- theime -->
             <li class="menu-header">Theme</li>
-            <li class="dropdown @yield('themes')">
+            <li class="dropdown @yield('themeInfo')">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="copy"></i><span>Theme</span></a>
                 <ul class="dropdown-menu">

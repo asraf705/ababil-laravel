@@ -91,32 +91,6 @@
                                                                         </i>
                                                                     </h6>
                                                                 </td>
-                                                                <td>
-                                                                    <h6 class="d-flex">
-                                                                        <i class="fas fa-user" style="margin-right: 10px;">
-                                                                            <samp>
-                                                                                @if ($product->auther_id == 0)
-                                                                                    <b>Admin</b>
-                                                                                @else
-                                                                                    {{ $product->auther_id }}
-                                                                                @endif
-                                                                            </samp>
-                                                                        </i>
-                                                                        <i class="fas fa-barcode"
-                                                                            style="margin-right: 10px;">
-                                                                            <samp> {{ $product->code }}</samp>
-                                                                        </i>
-                                                                        <i class="far fa-file">
-                                                                            <samp>
-                                                                                @if ($product->web_page <= 1)
-                                                                                    <b> {{ $product->web_page }} Page</b>
-                                                                                @else
-                                                                                    <b> {{ $product->web_page }} Pages</b>
-                                                                                @endif
-                                                                            </samp>
-                                                                        </i>
-                                                                    </h6>
-                                                                </td>
                                                             </tr>
                                                             <br>
                                                             <tr>
