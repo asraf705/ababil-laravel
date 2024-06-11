@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
                 'basicPrices'  , ProductBasicAuth::where('product_price_id', 1)->get(),
                 'proPrices'    , ProductProAuth::where('product_price_id', 1)->get(),
                 'prePrices'    , ProductPreAuth::where('product_price_id', 1)->get(),
-        );
+            );
         });
 
     }

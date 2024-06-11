@@ -8,6 +8,7 @@
 <script src="{{ asset('/') }}website/assets/js/plugins.js"></script>
 <!-- Active js -->
 <script src="{{ asset('/') }}website/assets/js/active.js"></script>
+<script src="{{ asset('/') }}website/assets/js/ajax-custom.js"></script>
 
 
 <script>

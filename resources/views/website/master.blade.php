@@ -28,40 +28,39 @@
             <div class="row">
                 <div class="col-12">
                     <div class="search-content">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
-                            <button type="submit"><img src="{{ asset('/') }}website/assets/img/core-img/search.png"
+                            <input type="search" name="search" class="typeahead" id="searchText"
+                                placeholder="Type your keyword...">
+                            <button><img src="{{ asset('/') }}website/assets/img/core-img/search.png"
                                     alt=""></button>
-                        </form>
+                            <div class="result-box"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Search Wrapper Area End -->
+        <!-- Search Wrapper Area End -->
 
-    <!-- ##### Main Content Wrapper Start ##### -->
-    <div class="main-content-wrapper d-flex clearfix">
+        <!-- ##### Main Content Wrapper Start ##### -->
+        <div class="main-content-wrapper d-flex clearfix">
 
 
-        <!-- left Area Start -->
-        @include('website.includes.left-sidebar')
-        <!-- left Area End -->
+            <!-- left Area Start -->
+            @include('website.includes.left-sidebar')
+            <!-- left Area End -->
             <!-- Body Area Start -->
             @yield('body')
             <!--  Area End -->
 
 
-    </div>
-    <!-- ##### Main Content Wrapper End ##### -->
+        </div>
+        <!-- ##### Main Content Wrapper End ##### -->
 
 
-    <!-- ##### Footer Area Start ##### -->
-    @include('website.includes.footer')
-    <!-- ##### Footer Area End ##### -->
+        <!-- ##### Footer Area Start ##### -->
+        @include('website.includes.footer')
+        <!-- ##### Footer Area End ##### -->
 
-    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    @include('website.includes.script')
+        <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+        @include('website.includes.script')
 </body>
 
 </html>
