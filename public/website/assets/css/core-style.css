@@ -535,6 +535,8 @@ img {
 .search-wrapper .search-content .result-box ul{
     padding-left: 28px;
     padding-right: 15px;
+    background-color: white;
+
 }
 
 .search-wrapper .search-content .result-box ul li{
